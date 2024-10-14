@@ -191,6 +191,11 @@ h6 {
   background: var(--accent-color);
 }
 
+
+
+
+
+
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;
@@ -1725,8 +1730,8 @@ section,
 
 .image-container {
   display: flex;
-  width: 40%;
-  padding: 11em;
+  width: 35%;
+  padding: 8em;
 }
 
 .image-container img {
@@ -1764,4 +1769,30 @@ section,
     height: 40%;
     transform: translate(0%, -10%);
   }
+}
+
+
+
+
+
+.btn-wsp {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25d366;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-wsp:hover {
+  background-color: #1ebe57;
+}
+
+.btn-wsp i {
+  margin-right: 10px;
+  font-size: 20px;
 }
