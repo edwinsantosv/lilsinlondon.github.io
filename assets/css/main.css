@@ -1762,6 +1762,6 @@ section,
   .image-container img {
     max-width: auto;
     height: 40%;
-    transform: translate(-10%, -10%);
+    transform: translate(15%, -10%);
   }
 }
