@@ -1581,17 +1581,17 @@ section,
 /*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
-.service-details .service-box {
+.traducciones .service-box {
   background-color: var(--surface-color);
   padding: 20px;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
 }
 
-.service-details .service-box+.service-box {
+.traducciones .service-box+.service-box {
   margin-top: 30px;
 }
 
-.service-details .service-box h4 {
+.traducciones .service-box h4 {
   font-size: 20px;
   font-weight: 700;
   border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
@@ -1599,11 +1599,11 @@ section,
   margin-bottom: 15px;
 }
 
-.service-details .services-list {
+.traducciones .services-list {
   background-color: var(--surface-color);
 }
 
-.service-details .services-list a {
+.traducciones .services-list a {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   background-color: color-mix(in srgb, var(--default-color), transparent 96%);
   display: flex;
@@ -1613,31 +1613,31 @@ section,
   transition: 0.3s;
 }
 
-.service-details .services-list a:first-child {
+.traducciones .services-list a:first-child {
   margin-top: 0;
 }
 
-.service-details .services-list a i {
+.traducciones .services-list a i {
   font-size: 16px;
   margin-right: 8px;
   color: var(--accent-color);
 }
 
-.service-details .services-list a.active {
+.traducciones .services-list a.active {
   color: var(--contrast-color);
   background-color: var(--accent-color);
 }
 
-.service-details .services-list a.active i {
+.traducciones .services-list a.active i {
   color: var(--contrast-color);
 }
 
-.service-details .services-list a:hover {
+.traducciones .services-list a:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
   color: var(--accent-color);
 }
 
-.service-details .download-catalog a {
+.traducciones .download-catalog a {
   color: var(--default-color);
   display: flex;
   align-items: center;
@@ -1646,67 +1646,67 @@ section,
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
-.service-details .download-catalog a:first-child {
+.traducciones .download-catalog a:first-child {
   border-top: 0;
   padding-top: 0;
 }
 
-.service-details .download-catalog a:last-child {
+.traducciones .download-catalog a:last-child {
   padding-bottom: 0;
 }
 
-.service-details .download-catalog a i {
+.traducciones .download-catalog a i {
   font-size: 24px;
   margin-right: 8px;
   color: var(--accent-color);
 }
 
-.service-details .download-catalog a:hover {
+.traducciones .download-catalog a:hover {
   color: var(--accent-color);
 }
 
-.service-details .help-box {
+.traducciones .help-box {
   background-color: var(--accent-color);
   color: var(--contrast-color);
   margin-top: 30px;
   padding: 30px 15px;
 }
 
-.service-details .help-box .help-icon {
+.traducciones .help-box .help-icon {
   font-size: 48px;
 }
 
-.service-details .help-box h4,
-.service-details .help-box a {
+.traducciones .help-box h4,
+.traducciones .help-box a {
   color: var(--contrast-color);
 }
 
-.service-details .services-img {
+.traducciones .services-img {
   margin-bottom: 20px;
 }
 
-.service-details h3 {
+.traducciones h3 {
   font-size: 26px;
   font-weight: 700;
 }
 
-.service-details p {
+.traducciones p {
   font-size: 15px;
 }
 
-.service-details ul {
+.traducciones ul {
   list-style: none;
   padding: 0;
   font-size: 15px;
 }
 
-.service-details ul li {
+.traducciones ul li {
   padding: 5px 0;
   display: flex;
   align-items: center;
 }
 
-.service-details ul i {
+.traducciones ul i {
   font-size: 20px;
   margin-right: 8px;
   color: var(--accent-color);
