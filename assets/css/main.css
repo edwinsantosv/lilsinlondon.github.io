@@ -1746,7 +1746,7 @@ section,
   }
   
   .image-container img {
-    max-width: 100%;
+    max-width: 90%;
     height: 50%;
     transform: translate(0%, -20%);
   }
@@ -1760,8 +1760,8 @@ section,
   }
   
   .image-container img {
-    max-width: 100%;
+    max-width: auto;
     height: 40%;
-    transform: translate(0%, -20%);
+    transform: translate(0%, -10%);
   }
 }
