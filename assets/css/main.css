@@ -1842,3 +1842,9 @@ section,
     width: 20px;
   }
 }
+
+
+.center-text {
+  text-align: center;
+  font-style: italic;
+}
