@@ -1796,3 +1796,49 @@ section,
   margin-right: 10px;
   font-size: 20px;
 }
+
+
+.scrolling-text {
+  overflow: hidden;
+  width: 100%;
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: bold;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.scrolling-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-continuous 30s linear infinite;
+}
+
+.scrolling-content p {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px; /* Adjust spacing between countries */
+  font-size: 1rem;
+}
+
+.flag-icon {
+  width: 24px;
+  height: auto;
+}
+
+@keyframes scroll-continuous {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .scrolling-content p {
+    font-size: 0.9rem;
+  }
+  .flag-icon {
+    width: 20px;
+  }
+}
