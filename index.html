@@ -38,6 +38,20 @@
 
 <body class="index-page">
 
+  <!-- Christmas Popup -->
+  <div id="christmasPopup" class="christmas-popup" style="display:none;">
+    <div class="popup-content">
+        <!-- <img src="path_to_decorative_overlay.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"> -->
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>¡Por Navidad!</h2>
+        <p>Regálate una asesoría personalizada para estudiar en el extranjero.</p>
+        <a href="https://wa.me/51949086668?text=Hola%20Lils!%20Estoy%20interesado%20en%20tus%20servicios%20de%20asesoría%20para%20estudiar%20en%20el%20extranjero." class="whatsapp-btn">Contáctanos vía WhatsApp</a>
+    </div>
+</div>
+
+
+
+
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
@@ -441,6 +455,44 @@
               </div>
             </div><!-- End testimonial item -->
 
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/woman-2.png" class="testimonial-img" alt="">
+                <h3>Katherine</h3>
+                <h4>Perú</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Me parece que el acompañamiento fue muy bueno, desde mi punto de vista, ya que para una persona que quiere postular, pero quizás no sabe por dónde comenzar,  ha sido bastante informativo, ya que se muestran las opciones a donde puedes aplicar y qué requisitos debes tener.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="assets/img/testimonials/woman-2.png" class="testimonial-img" alt="">
+                <h3>Sthef</h3>
+                <h4>Perú</h4>
+                <div class="stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Recurrí al servicio de traducción de Lils in London con la traductora Natali porque necesitaba que documentos sensibles estuvieran en otro idioma. 
+                    La asistencia fue rápida, precisa y muy profesional. 
+                    Definitivamente un servicio que recomiendo si necesitas documentos con urgencia, con la seguridad de que estarán bien traducidos y a precios razonables.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+
+
           </div>
           <div class="swiper-pagination"></div>
         </div>
@@ -802,6 +854,19 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+function closePopup() {
+    document.getElementById('christmasPopup').style.display = 'none';
+}
+
+window.onload = function() {
+    setTimeout(function() {
+        document.getElementById('christmasPopup').style.display = 'flex';
+    }, 1000); // Ajusta el tiempo según lo necesites
+}
+
+
+  </script>
 
 </body>
 
