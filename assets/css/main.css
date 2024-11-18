@@ -813,7 +813,12 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('assets/img/hero-bg-large.jpg'); /* Imagen por defecto para pantallas grandes */
+  background-size: cover;
+  background-position: center;
+  z-index: 1; /* Asegúrate que el índice sea adecuado para ver el fondo */
 }
+
 
 .hero img {
   position: absolute;
@@ -897,7 +902,18 @@ section,
   color: var(--accent-color);
 }
 
+@media (max-width: 1024px) {
+  .hero {
+    background-image: url('assets/img/hero-bg-medium.jpg');
+  }
+}
+
+
 @media (max-width: 768px) {
+  .hero {
+    background-image: url('assets/img/hero-bg-small.png');
+  }
+
   .hero h2 {
     font-size: 32px;
   }
