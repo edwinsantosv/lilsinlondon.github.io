@@ -1883,11 +1883,34 @@ section,
   align-items: center;
 }
 
+.christmas-gift-img {
+  width: 100px; /* Ajusta según la necesidad */
+  height: 100px; /* Mantiene la proporción como círculo */
+  border-radius: 50%; /* Hace la imagen completamente circular */
+  position: absolute;
+  top: 10px; /* Ajusta esta propiedad para mover la imagen hacia arriba */
+  left: calc(50% - 50px); /* Centra la imagen horizontalmente */
+}
+
+.christmas-gift-img-container {
+  width: 130px; /* Más grande que la imagen para formar un fondo */
+  height: 130px; /* Igual que el ancho para mantener la forma circular */
+  border-radius: 50%; /* Crea un círculo */
+  background: rgba(0, 0, 0, 0.301); /* Fondo semi-transparente negro */
+  position: absolute;
+  top: -80px; /* Ajusta la posición hacia arriba */
+  left: calc(50% - 65px); /* Centra el contenedor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .popup-content {
   /* background: url('path_to_your_christmas_image.jpg'); */ /* Añade tu imagen de fondo */
   background-size: cover;
   backdrop-filter: blur(5px); /* Añade desenfoque al fondo */
-  padding: 20px;
+  padding: 60px;
   text-align: center;
   width: 90%;
   max-width: 500px;
