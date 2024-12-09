@@ -1430,6 +1430,28 @@ section,
   align-items: center;
 }
 
+@media (max-width: 991px) {
+  .team .team-member .social a {
+      width: 60px;
+      height: 60px;
+  }
+
+  .team .team-member .social i.bi {
+    font-size: 20px; /* Aumenta el tamaño un poco en tablets */
+}
+}
+
+@media (max-width: 767px) {
+  .team .team-member .social a {
+      width: 60px;
+      height: 60px;
+  }
+
+  .team .team-member .social i.bi {
+    font-size: 24px; /* Aumenta el tamaño un poco en tablets */
+  }
+}
+
 .team .team-member .social a:hover {
   color: var(--contrast-color);
   background: var(--accent-color);
@@ -1438,6 +1460,10 @@ section,
 .team .team-member .social i {
   font-size: 18px;
   line-height: 0;
+}
+
+.team .team-member .social a {
+  color: orange; /* Ajusta este color a tu preferencia */
 }
 
 .team .team-member .member-info {
@@ -1461,6 +1487,29 @@ section,
   opacity: 1;
   bottom: 15px;
 }
+
+.custom-col-lg-2-5 {
+  flex: 0 0 19%; /* Esto es equivalente a 2.5 de 12 columnas, es decir (2.5/12*100) */
+  max-width: 19%;
+}
+
+/* En dispositivos más pequeños, se podrían ajustar las columnas para mejor visualización */
+@media (max-width: 991px) {
+      .custom-col-lg-2-5 {
+          flex: 0 0 50%; /* Ocupar 50% del ancho en pantallas medianas */
+          max-width: 50%;
+      }
+  }
+
+@media (max-width: 767px) {
+      .custom-col-lg-2-5 {
+          flex: 0 0 100%; /* Ocupar 100% del ancho en pantallas pequeñas */
+          max-width: 100%;
+      }
+}
+
+
+
 
 /*--------------------------------------------------------------
 # Contact Section
