@@ -208,4 +208,34 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  // Inicializa el carrusel de Casos de Éxito si existe en la página
+  if (document.querySelector('.news-swiper')) {
+    new Swiper('.news-swiper', {
+      loop: true,
+      speed: 600,
+      autoplay: {
+        delay: 5000
+      },
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination-news',
+        type: 'bullets',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.swiper-button-next-news',
+        prevEl: '.swiper-button-prev-news'
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2
+        },
+        1200: {
+          slidesPerView: 3
+        }
+      }
+    });
+  }
+
 })();

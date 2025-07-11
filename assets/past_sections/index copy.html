@@ -192,57 +192,86 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          <div class="col-lg-4 col-md-6">
-            <div class="news-card" style="border: 2px solid #FFD700; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-              <div style="position: relative;">
-                <img src="assets/img/news section/Guillermo Medina.jpg" class="img-fluid" alt="Guillermo Medina" style="width: 100%; height: 200px; object-fit: cover;">
-                <i class="bi bi-trophy-fill" style="position: absolute; top: 10px; right: 10px; color: #FFD700; font-size: 24px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"></i>
+        <div class="swiper news-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": 1,
+              "spaceBetween": 30,
+              "pagination": {
+                "el": ".swiper-pagination-news",
+                "type": "bullets",
+                "clickable": true
+              },
+              "navigation": {
+                "nextEl": ".swiper-button-next-news",
+                "prevEl": ".swiper-button-prev-news"
+              },
+              "breakpoints": {
+                "768": {
+                  "slidesPerView": 2
+                },
+                "1200": {
+                  "slidesPerView": 3
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="news-card" style="border: 2px solid #FFD700; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <div style="position: relative;">
+                  <img src="assets/img/news section/Guillermo Medina.jpg" class="img-fluid" alt="Guillermo Medina" style="width: 100%; height: 200px; object-fit: cover;">
+                  <i class="bi bi-trophy-fill" style="position: absolute; top: 10px; right: 10px; color: #FFD700; font-size: 24px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"></i>
+                </div>
+                <div class="news-content" style="padding: 15px;">
+                  <h3 style="font-size: 18px; font-weight: bold;">Guillermo Medina</h3>
+                  <p style="font-size: 14px; color: #555; text-align: justify; word-spacing: normal;">Quiero agradecer sinceramente la asesoría brindada. La recomiendo mucho, tanto en la <b>búsqueda de becas</b> como en el proceso de postulación a universidades. El acompañamiento es permanente, y la revisión de los documentos es muy detallada y útil.<br><br><i><b>Guillermo Medina fue el ganador de la beca International Excellence Scholarship de la Universidad de Leeds.</b></i></p>
+                  <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
+                    <span style="display: inline-block; background: #FFD700; color: #000; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">🏆 University of Leeds (Beca Ganada)</span>
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Universidad Complutense de Madrid</span>
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Maastricht University</span>
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Denver University</span>
+                  </div>
+                </div>
               </div>
-              <div class="news-content" style="padding: 15px;">
-                <h3 style="font-size: 18px; font-weight: bold;">Guillermo Medina</h3>
-                <p style="font-size: 14px; color: #555; text-align: justify; word-spacing: normal;">Quiero agradecer sinceramente la asesoría brindada. La recomiendo mucho, tanto en la <b>búsqueda de becas</b> como en el proceso de postulación a universidades. El acompañamiento es permanente, y la revisión de los documentos es muy detallada y útil.<br><br><i><b>Guillermo Medina fue el ganador de la beca International Excellence Scholarship de la Universidad de Leeds.</b></i></p>
-                <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
-                  <span style="display: inline-block; background: #FFD700; color: #000; padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold;">🏆 University of Leeds (Beca Ganada)</span>
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Universidad Complutense de Madrid</span>
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Maastricht University</span>
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Denver University</span>
+            </div>
+            <div class="swiper-slide">
+              <div class="news-card" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff;">
+                <img src="assets/img/news section/Diana Quiroga.jpg" class="img-fluid" alt="Diana Quiroga" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="news-content" style="padding: 15px;">
+                  <h3 style="font-size: 18px; font-weight: bold;">Diana Quiroga</h3>
+                  <p style="font-size: 14px; color: #555; text-align: justify; word-spacing: -0.5px;">Agradezco profundamente su apoyo. Ha sido clave para mí contar con ustedes. Mi rubro es bastante competitivo, especialmente en universidades del Reino Unido, pero me siento inmensamente feliz de haber logrado este sueño.</p>
+                  <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Warwick University</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="news-card" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff;">
+                <img src="assets/img/news section/Fabiana Mariscal.jpg" class="img-fluid" alt="Fabiana Mariscal" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="news-content" style="padding: 15px;">
+                  <h3 style="font-size: 18px; font-weight: bold;">Fabiana Mariscal</h3>
+                  <p style="font-size: 14px; color: #555; text-align: justify; word-spacing: -0.5px;">Uno de mis más grandes sueños siempre fue estudiar en el extranjero, y lo logré gracias a Lils in London. Me guiaron en todo el proceso: elección de universidades, becas y, sobre todo, en la redacción del personal statement, que fue una carta decisiva.</p>
+                  <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Birmingham</span>
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Newcastle University</span>
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Warwick</span>
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Exeter</span>
+                    <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Glasgow</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div class="col-lg-4 col-md-6">
-            <div class="news-card" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff;">
-              <img src="assets/img/news section/Diana Quiroga.jpg" class="img-fluid" alt="Diana Quiroga" style="width: 100%; height: 200px; object-fit: cover;">
-              <div class="news-content" style="padding: 15px;">
-                <h3 style="font-size: 18px; font-weight: bold;">Diana Quiroga</h3>
-                <p style="font-size: 14px; color: #555; text-align: justify; word-spacing: -0.5px;">Agradezco profundamente su apoyo. Ha sido clave para mí contar con ustedes. Mi rubro es bastante competitivo, especialmente en universidades del Reino Unido, pero me siento inmensamente feliz de haber logrado este sueño.</p>
-                <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Warwick University</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="news-card" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff;">
-              <img src="assets/img/news section/Fabiana Mariscal.jpg" class="img-fluid" alt="Fabiana Mariscal" style="width: 100%; height: 200px; object-fit: cover;">
-              <div class="news-content" style="padding: 15px;">
-                <h3 style="font-size: 18px; font-weight: bold;">Fabiana Mariscal</h3>
-                <p style="font-size: 14px; color: #555; text-align: justify; word-spacing: -0.5px;">Uno de mis más grandes sueños siempre fue estudiar en el extranjero, y lo logré gracias a Lils in London. Me guiaron en todo el proceso: elección de universidades, becas y, sobre todo, en la redacción del personal statement, que fue una carta decisiva.</p>
-                <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px;">
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Birmingham</span>
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">Newcastle University</span>
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Warwick</span>
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Exeter</span>
-                  <span style="display: inline-block; background: #000; color: #fff; padding: 5px 10px; border-radius: 15px; font-size: 12px;">University of Glasgow</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
+          <div class="swiper-pagination-news"></div>
+          <div class="swiper-button-prev-news"></div>
+          <div class="swiper-button-next-news"></div>
         </div>
       </div>
 
