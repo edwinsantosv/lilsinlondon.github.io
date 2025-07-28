@@ -27,6 +27,130 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- Custom Styles for Featured News Section -->
+  <style>
+    /* Featured News Section Responsive Styles */
+    .featured-news {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .featured-news::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      pointer-events: none;
+    }
+    
+    .featured-news-image-container {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .featured-news-image-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4) !important;
+    }
+    
+    .featured-news-content h2 {
+      transition: color 0.3s ease;
+    }
+    
+    .featured-news-actions .btn {
+      transition: all 0.3s ease;
+    }
+    
+    .featured-news-actions .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    
+    .featured-news-actions .btn-light:hover {
+      background: #f8f9fa !important;
+      color: #667eea !important;
+    }
+    
+    .featured-news-actions .btn-outline-light:hover {
+      background: white !important;
+      color: #667eea !important;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 991.98px) {
+      .featured-news-content h2 {
+        font-size: 2rem !important;
+      }
+      
+      .featured-news-content p {
+        font-size: 1rem !important;
+      }
+      
+      .featured-news-actions .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+    }
+    
+    @media (max-width: 767.98px) {
+      .featured-news {
+        padding: 60px 0 !important;
+      }
+      
+      .featured-news-content h2 {
+        font-size: 1.8rem !important;
+      }
+      
+      .featured-news-content {
+        padding: 15px !important;
+      }
+      
+      .featured-news-image-container {
+        margin-bottom: 30px;
+      }
+    }
+    
+    @media (max-width: 575.98px) {
+      .featured-news-content h2 {
+        font-size: 1.5rem !important;
+      }
+      
+      .featured-news-content p {
+        font-size: 0.95rem !important;
+      }
+      
+      .featured-news-badge {
+        font-size: 12px !important;
+        padding: 6px 12px !important;
+      }
+    }
+    
+    /* Animation for highlight items */
+    .highlight-item {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .highlight-item:nth-child(1) { animation-delay: 0.2s; }
+    .highlight-item:nth-child(2) { animation-delay: 0.4s; }
+    .highlight-item:nth-child(3) { animation-delay: 0.6s; }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
   <!-- =======================================================
   * Template Name: Gp
   * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -181,6 +305,69 @@
       </div>
 
     </section><!-- /Hero Section -->
+
+    <!-- Featured News Section -->
+    <section id="featured-news" class="featured-news section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 0; color: white;">
+      
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-center">
+          
+          <!-- Image Column -->
+          <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+            <div class="featured-news-image-container" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+              <img src="assets/img/Lils-in-London-news-main-image.jpg" alt="Loughborough University News" class="img-fluid" style="width: 100%; height: auto; display: block;">
+              <div class="featured-news-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)); opacity: 0.3;"></div>
+            </div>
+          </div>
+          
+          <!-- Content Column -->
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+            <div class="featured-news-content" style="padding: 20px;">
+              <div class="featured-news-badge" style="display: inline-block; background: rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 25px; font-size: 14px; font-weight: 600; margin-bottom: 20px; backdrop-filter: blur(10px);">
+                🏆 NOTICIA DESTACADA
+              </div>
+              
+              <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; color: white; line-height: 1.2;">
+                Lils in London en Loughborough University 💜
+              </h2>
+              
+              <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px; color: rgba(255,255,255,0.9);">
+                Loughborough University —mi alma mater en el Reino Unido— compartió la historia detrás del inicio de este proyecto.
+Me honra que una de las universidades más prestigiosas del país haya reconocido el compromiso con la excelencia académica y la asesoría personalizada a estudiantes internacionales que promovemos desde Lils in London.
+              </p>
+              
+              <div class="featured-news-highlights" style="margin-bottom: 30px;">
+                <div class="highlight-item" style="display: flex; align-items: center; margin-bottom: 15px;">
+                  <i class="bi bi-check-circle-fill" style="color: #FFD700; font-size: 1.2rem; margin-right: 12px;"></i>
+                  <span style="color: white; font-weight: 500;">Reconocimiento oficial de la universidad</span>
+                </div>
+                <div class="highlight-item" style="display: flex; align-items: center; margin-bottom: 15px;">
+                  <i class="bi bi-check-circle-fill" style="color: #FFD700; font-size: 1.2rem; margin-right: 12px;"></i>
+                  <span style="color: white; font-weight: 500;">Validación de nuestros servicios de asesoría</span>
+                </div>
+                <div class="highlight-item" style="display: flex; align-items: center; margin-bottom: 15px;">
+                  <i class="bi bi-check-circle-fill" style="color: #FFD700; font-size: 1.2rem; margin-right: 12px;"></i>
+                  <span style="color: white; font-weight: 500;">Compromiso con la excelencia académica</span>
+                </div>
+              </div>
+              
+              <div class="featured-news-actions">
+                <a href="https://www.lboro.ac.uk/alumni/news/2025/july/lils-in-london/" target="_blank" class="btn btn-light btn-lg" style="background: white; color: #667eea; font-weight: 600; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; margin-right: 15px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                  <i class="bi bi-external-link" style="margin-right: 8px;"></i>
+                  Leer Noticia Completa
+                </a>
+                <a href="#contact" class="btn btn-outline-light btn-lg" style="border: 2px solid white; color: white; font-weight: 600; padding: 12px 30px; border-radius: 30px; text-decoration: none; display: inline-block; transition: all 0.3s ease;">
+                  <i class="bi bi-whatsapp" style="margin-right: 8px;"></i>
+                  Contáctanos
+                </a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+    </section><!-- /Featured News Section -->
 
     <!-- News Section -->
     <section id="news" class="news section" style="background: linear-gradient(to right, #f7f7f7, #eaeaea); padding: 50px 0;">
