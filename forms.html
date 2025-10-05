@@ -10,9 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- DISEÑO ATRACTIVO Y MODERNO --- */
-
-        /* 1. Estilos generales y la nueva fuente 'Poppins' */
+        /* El CSS no cambia, se mantiene igual */
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -21,8 +19,6 @@
             margin: 0;
             padding: 2rem;
         }
-
-        /* 2. Contenedor principal con efecto de "flotación" */
         .form-container {
             max-width: 800px;
             margin: 20px auto;
@@ -33,166 +29,36 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
         }
-
-        /* 3. Títulos y textos mejorados */
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        h3 {
-            color: #34495e;
-            border-bottom: 2px solid #5a67d8;
-            padding-bottom: 10px;
-            margin-top: 40px;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        p {
-            text-align: center;
-            color: #555;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        hr {
-            border: none;
-            height: 1px;
-            background-color: #e0e0e0;
-            margin: 30px 0;
-        }
-
-        /* 4. Estilos para los campos del formulario */
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
-            font-size: 1rem;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="number"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #dcdcdc;
-            border-radius: 10px;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #fdfdfd;
-            transition: all 0.3s ease;
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: #5a67d8;
-            box-shadow: 0 0 0 4px rgba(90, 103, 216, 0.2);
-            background-color: #fff;
-        }
-
-        textarea {
-            resize: vertical;
-        }
-
-        /* 5. Grupos de radio y checkbox más elegantes */
-        .radio-group label, .checkbox-group label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-weight: normal;
-            background-color: #f9f9f9;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .radio-group label:hover, .checkbox-group label:hover{
-            background-color: #f0f2f5;
-        }
-
-        .radio-group input, .checkbox-group input {
-            margin-right: 12px;
-            transform: scale(1.1);
-        }
-
-        /* 6. Campo de subir archivos rediseñado */
-        .file-instructions {
-            text-align: left;
-            font-size: 14px;
-            color: #777;
-            margin-top: -10px;
-            margin-bottom: 10px;
-        }
-
-        input[type="file"] {
-            border: 2px dashed #ccc;
-            padding: 25px;
-            border-radius: 10px;
-            background-color: #fafafa;
-            cursor: pointer;
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-        input[type="file"]:hover{
-            border-color: #5a67d8;
-            background-color: #f5f6ff;
-        }
-
-        /* 7. Botón de envío con gradiente y efecto hover */
-        button[type="submit"] {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(90deg, #5a67d8 0%, #8254d4 100%);
-            color: #ffffff;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 20px;
-        }
-
-        button[type="submit"]:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(90, 103, 216, 0.3);
-        }
-
-        /* Clase para ocultar las secciones */
-        .specific-questions {
-            display: none;
-        }
-
-        /* Media Query para responsividad en móviles */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            .form-container {
-                padding: 1.5rem;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-        }
+        h1 { color: #2c3e50; text-align: center; margin-bottom: 10px; font-weight: 700; }
+        h3 { color: #34495e; border-bottom: 2px solid #5a67d8; padding-bottom: 10px; margin-top: 40px; margin-bottom: 25px; font-weight: 600; }
+        p { text-align: center; color: #555; margin-bottom: 30px; font-size: 1.1rem; }
+        hr { border: none; height: 1px; background-color: #e0e0e0; margin: 30px 0; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 1rem; }
+        input[type="text"], input[type="email"], input[type="number"], textarea, select { width: 100%; padding: 15px; border: 1px solid #dcdcdc; border-radius: 10px; font-size: 16px; box-sizing: border-box; background-color: #fdfdfd; transition: all 0.3s ease; }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: #5a67d8; box-shadow: 0 0 0 4px rgba(90, 103, 216, 0.2); background-color: #fff; }
+        textarea { resize: vertical; }
+        .radio-group label, .checkbox-group label { display: flex; align-items: center; margin-bottom: 12px; font-weight: normal; background-color: #f9f9f9; padding: 12px; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; }
+        .radio-group label:hover, .checkbox-group label:hover { background-color: #f0f2f5; }
+        .radio-group input, .checkbox-group input { margin-right: 12px; transform: scale(1.1); }
+        .file-instructions { text-align: left; font-size: 14px; color: #777; margin-top: -10px; margin-bottom: 10px; }
+        input[type="file"] { border: 2px dashed #ccc; padding: 25px; border-radius: 10px; background-color: #fafafa; cursor: pointer; transition: border-color 0.3s, background-color 0.3s; }
+        input[type="file"]:hover { border-color: #5a67d8; background-color: #f5f6ff; }
+        button[type="submit"] { width: 100%; padding: 16px; background: linear-gradient(90deg, #5a67d8 0%, #8254d4 100%); color: #ffffff; border: none; border-radius: 10px; font-size: 18px; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 20px; }
+        button[type="submit"]:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(90, 103, 216, 0.3); }
+        button[type="submit"]:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+        .specific-questions { display: none; }
+        #form-message { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; display: none; }
+        #form-message.success { background-color: #d4edda; color: #155724; display: block; }
+        #form-message.error { background-color: #f8d7da; color: #721c24; display: block; }
+        @media (max-width: 768px) { body { padding: 1rem; } .form-container { padding: 1.5rem; } h1 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
-
     <div class="form-container">
         <h1>Formulario de Aplicación Académica 🎓</h1>
         <p>¡Estás a un paso de encontrar la mejor oportunidad para tu futuro!</p>
-
         <form id="applicationForm" action="https://edwinsantos.app.n8n.cloud/webhook-test/forms-asesorias" method="POST" enctype="multipart/form-data">
-
+            
             <input type="hidden" id="asesorField" name="asesor_asignado" value="">
             
             <div class="form-group">
@@ -203,173 +69,160 @@
                     <option value="pregrado">Pregrado (Licenciatura, Grado)</option>
                 </select>
             </div>
-
             <hr>
 
             <div id="commonFields" style="display: none;">
-                <h3>👤 Información Personal</h3>
-                <div class="form-group">
-                    <label for="fullName">Nombre y apellido completo</label>
-                    <input type="text" id="fullName" name="fullName" required>
-                </div>
-                <div class="form-group">
-                    <label for="age">🎂 Edad</label>
-                    <input type="number" id="age" name="age" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">📧 Correo electrónico</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="nationality">🌎 Nacionalidad</label>
-                    <input type="text" id="nationality" name="nationality" required>
-                </div>
+                 <h3>👤 Información Personal</h3>
+                 <div class="form-group"><label for="fullName">Nombre y apellido completo</label><input type="text" id="fullName" name="fullName" required></div>
+                 <div class="form-group"><label for="age">🎂 Edad</label><input type="number" id="age" name="age" required></div>
+                 <div class="form-group"><label for="email">📧 Correo electrónico</label><input type="email" id="email" name="email" required></div>
+                 <div class="form-group"><label for="nationality">🌎 Nacionalidad</label><input type="text" id="nationality" name="nationality" required></div>
             </div>
 
             <div id="postgraduateQuestions" class="specific-questions">
                 <h3>🧑‍🏫 Información de Posgrado</h3>
-                <div class="form-group">
-                    <label for="undergradMajor">Carrera de pregrado</label>
-                    <input type="text" id="undergradMajor" name="undergradMajor" required>
-                </div>
-                <div class="form-group">
-                    <label for="undergradGpa">📊 Nota promedio de pregrado (GPA)</label>
-                    <input type="text" id="undergradGpa" name="undergradGpa" placeholder="Ej: 17.5/20 o 3.8/4.0" required>
-                </div>
-                <div class="form-group">
-                    <label for="masterSpecialty">Especialidad que deseas cursar</label>
-                    <input type="text" id="masterSpecialty" name="masterSpecialty" required>
-                </div>
-                 <div class="form-group">
-                    <label>¿Has cursado algún posgrado previamente?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="prevPostgrad" value="si" required> Sí</label>
-                        <label><input type="radio" name="prevPostgrad" value="no"> No</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="distinctions">🏆 ¿Alguna distinción académica o reconocimiento?</label>
-                    <textarea id="distinctions" name="distinctions" rows="4" required></textarea>
-                </div>
-                 <div class="form-group">
-                    <label for="volunteer">🤝 ¿Actividades voluntarias o proyectos sociales?</label>
-                    <textarea id="volunteer" name="volunteer" rows="4" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="workExperience">💼 Cuéntanos tu experiencia laboral</label>
-                    <textarea id="workExperience" name="workExperience" rows="4" placeholder="Ej: Analista Financiero, 2 años, Grupo Axo" required></textarea>
-                </div>
+                <div class="form-group"><label for="undergradMajor">Carrera de pregrado</label><input type="text" id="undergradMajor" name="undergradMajor" required></div>
+                <div class="form-group"><label for="undergradGpa">📊 Nota promedio de pregrado (GPA)</label><input type="text" id="undergradGpa" name="undergradGpa" placeholder="Ej: 17.5/20 o 3.8/4.0" required></div>
+                <div class="form-group"><label for="masterSpecialty">Especialidad que deseas cursar</label><input type="text" id="masterSpecialty" name="masterSpecialty" required></div>
+                <div class="form-group"><label>¿Has cursado algún posgrado previamente?</label><div class="radio-group"><label><input type="radio" name="prevPostgrad" value="si" required> Sí</label><label><input type="radio" name="prevPostgrad" value="no"> No</label></div></div>
+                <div class="form-group"><label for="distinctions">🏆 ¿Alguna distinción académica o reconocimiento?</label><textarea id="distinctions" name="distinctions" rows="4" required></textarea></div>
+                <div class="form-group"><label for="volunteer">🤝 ¿Actividades voluntarias o proyectos sociales?</label><textarea id="volunteer" name="volunteer" rows="4" required></textarea></div>
+                <div class="form-group"><label for="workExperience">💼 Cuéntanos tu experiencia laboral</label><textarea id="workExperience" name="workExperience" rows="4" placeholder="Ej: Analista Financiero, 2 años, Grupo Axo" required></textarea></div>
             </div>
 
-            <div id="undergraduateQuestions" class="specific-questions">
+             <div id="undergraduateQuestions" class="specific-questions">
                 <h3>🧑‍🎓 Información de Pregrado</h3>
-                <div class="form-group">
-                    <label for="highSchool">Colegio de procedencia</label>
-                    <input type="text" id="highSchool" name="highSchool" required>
-                </div>
-                <div class="form-group">
-                    <label for="highSchoolGpa">📊 Nota promedio de secundaria</label>
-                    <input type="text" id="highSchoolGpa" name="highSchoolGpa" required>
-                </div>
-                <div class="form-group">
-                    <label for="intendedMajor">Carrera a la que deseas aplicar</label>
-                    <input type="text" id="intendedMajor" name="intendedMajor" required>
-                </div>
-                 <div class="form-group">
-                    <label for="extracurricular">🎨 Actividades extracurriculares (deportes, clubes, etc.)</label>
-                    <textarea id="extracurricular" name="extracurricular" rows="4" required></textarea>
-                </div>
+                <div class="form-group"><label for="highSchool">Colegio de procedencia</label><input type="text" id="highSchool" name="highSchool" required></div>
+                <div class="form-group"><label for="highSchoolGpa">📊 Nota promedio de secundaria</label><input type="text" id="highSchoolGpa" name="highSchoolGpa" required></div>
+                <div class="form-group"><label for="intendedMajor">Carrera a la que deseas aplicar</label><input type="text" id="intendedMajor" name="intendedMajor" required></div>
+                <div class="form-group"><label for="extracurricular">🎨 Actividades extracurriculares (deportes, clubes, etc.)</label><textarea id="extracurricular" name="extracurricular" rows="4" required></textarea></div>
             </div>
-            
+
             <div id="finalFields" style="display: none;">
-                <h3>🎯 Preferencias y Metas</h3>
-                <div class="form-group">
-                    <label for="targetUnis">Posibles universidades (max. 3)</label>
-                    <textarea id="targetUnis" name="targetUnis" rows="3" required></textarea>
-                </div>
-                 <div class="form-group">
-                    <label for="targetCountries">Posibles países donde estudiar (max. 3)</label>
-                    <textarea id="targetCountries" name="targetCountries" rows="3" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="englishLevel">🗣️ ¿Cuál es tu nivel de inglés?</label>
-                    <input type="text" id="englishLevel" name="englishLevel" placeholder="Ej: Básico, Intermedio B2, Avanzado C1" required>
-                </div>
-                <div class="form-group">
-                    <label for="otherLanguages">¿Conoces otros idiomas?</label>
-                    <input type="text" id="otherLanguages" name="otherLanguages" placeholder="Si no tienes, escribe 'Ninguno'" required>
-                </div>
-                <div class="form-group">
-                    <label>¿Dispuesto a estudiar en otros idiomas (francés, alemán, etc.)?</label>
-                     <div class="radio-group">
-                        <label><input type="radio" name="openToLanguages" value="si" required> Sí</label>
-                        <label><input type="radio" name="openToLanguages" value="no"> No</label>
-                    </div>
-                </div>
-                 <div class="form-group">
-                    <label>💸 ¿Cuál es tu presupuesto aproximado?</label>
-                    <div class="checkbox-group">
-                        <label><input type="radio" name="budget" value="parcial" required> Necesito apoyo parcial.</label>
-                        <label><input type="radio" name="budget" value="costos-adicionales"> Necesito ayuda para costos adicionales.</label>
-                        <label><input type="radio" name="budget" value="completa"> Busco una beca completa.</label>
-                    </div>
-                </div>
-                
+                 <h3>🎯 Preferencias y Metas</h3>
+                 <div class="form-group"><label for="targetUnis">Posibles universidades (max. 3)</label><textarea id="targetUnis" name="targetUnis" rows="3" required></textarea></div>
+                 <div class="form-group"><label for="targetCountries">Posibles países donde estudiar (max. 3)</label><textarea id="targetCountries" name="targetCountries" rows="3" required></textarea></div>
+                 <div class="form-group"><label for="englishLevel">🗣️ ¿Cuál es tu nivel de inglés?</label><input type="text" id="englishLevel" name="englishLevel" placeholder="Ej: Básico, Intermedio B2, Avanzado C1" required></div>
+                 <div class="form-group"><label for="otherLanguages">¿Conoces otros idiomas?</label><input type="text" id="otherLanguages" name="otherLanguages" placeholder="Si no tienes, escribe 'Ninguno'" required></div>
+                 <div class="form-group"><label>¿Dispuesto a estudiar en otros idiomas (francés, alemán, etc.)?</label><div class="radio-group"><label><input type="radio" name="openToLanguages" value="si" required> Sí</label><label><input type="radio" name="openToLanguages" value="no"> No</label></div></div>
+                 <div class="form-group"><label>💸 ¿Cuál es tu presupuesto aproximado?</label><div class="checkbox-group"><label><input type="radio" name="budget" value="parcial" required> Necesito apoyo parcial.</label><label><input type="radio" name="budget" value="costos-adicionales"> Necesito ayuda para costos adicionales.</label><label><input type="radio" name="budget" value="completa"> Busco una beca completa.</label></div></div>
                 <h3>📎 Carga de Documentos</h3>
                 <div class="form-group">
                     <label for="files">Sube tus documentos (CV, notas, etc.)</label>
                     <p class="file-instructions">Puedes seleccionar varios archivos a la vez.</p>
                     <input type="file" id="files" name="files[]" multiple>
                 </div>
-
-                <button type="submit">Enviar mi Aplicación 🚀</button>
+                <button type="submit" id="submit-button">Enviar mi Aplicación 🚀</button>
+                <div id="form-message"></div>
             </div>
         </form>
     </div>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            
+            // =================================================================
+            // ===               CAMBIOS IMPORTANTES AQUÍ                    ===
+            // =================================================================
+
+            function setupDynamicFields() {
+                const programTypeSelect = document.getElementById('programType');
+                if (!programTypeSelect) return;
+                
+                const commonFields = document.getElementById('commonFields');
+                const postgraduateQuestions = document.getElementById('postgraduateQuestions');
+                const undergraduateQuestions = document.getElementById('undergraduateQuestions');
+                const finalFields = document.getElementById('finalFields');
+
+                // NUEVA FUNCIÓN para activar/desactivar 'required' en los campos
+                function setRequired(section, isRequired) {
+                    const fields = section.querySelectorAll('input, textarea, select');
+                    fields.forEach(field => {
+                        // Solo modificamos los que originalmente eran 'required'
+                        // para no añadirlo a campos opcionales.
+                        if (field.hasAttribute('required') || isRequired) {
+                           field.required = isRequired;
+                        }
+                    });
+                }
+
+                function toggleQuestionVisibility() {
+                    const selectedType = programTypeSelect.value;
+                    
+                    [commonFields, postgraduateQuestions, undergraduateQuestions, finalFields].forEach(el => el.style.display = 'none');
+                    
+                    // Desactivamos la obligatoriedad de todas las secciones específicas primero
+                    setRequired(postgraduateQuestions, false);
+                    setRequired(undergraduateQuestions, false);
+
+                    if (selectedType) {
+                        commonFields.style.display = 'block';
+                        finalFields.style.display = 'block';
+                        
+                        if (selectedType === 'posgrado') {
+                            postgraduateQuestions.style.display = 'block';
+                            setRequired(postgraduateQuestions, true); // ACTIVAMOS required para posgrado
+                        } else if (selectedType === 'pregrado') {
+                            undergraduateQuestions.style.display = 'block';
+                            setRequired(undergraduateQuestions, true); // ACTIVAMOS required para pregrado
+                        }
+                    }
+                }
+                programTypeSelect.addEventListener('change', toggleQuestionVisibility);
+                toggleQuestionVisibility();
+            }
+
             function setAdvisorFromURL() {
                 const urlParams = new URLSearchParams(window.location.search);
                 const advisorName = urlParams.get('asesor');
                 if (advisorName) {
                     const advisorField = document.getElementById('asesorField');
-                    if (advisorField) {
-                        advisorField.value = advisorName;
+                    if (advisorField) advisorField.value = advisorName;
+                }
+            }
+
+            function handleFormSubmission() {
+                const form = document.getElementById('applicationForm');
+                if (!form) return;
+                form.addEventListener('submit', async function(event) {
+                    event.preventDefault();
+                    const submitButton = document.getElementById('submit-button');
+                    const messageDiv = document.getElementById('form-message');
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Enviando... ⏳';
+                    messageDiv.style.display = 'none';
+                    messageDiv.className = '';
+                    const formData = new FormData(form);
+                    const formAction = form.action;
+                    try {
+                        const response = await fetch(formAction, {
+                            method: 'POST',
+                            body: formData,
+                        });
+                        if (response.ok) {
+                            messageDiv.textContent = '¡Formulario enviado con éxito! Gracias por tu postulación. ✅';
+                            messageDiv.className = 'success';
+                            form.reset();
+                            // Volvemos a llamar a la lógica para ocultar todo tras el reseteo
+                            document.getElementById('programType').dispatchEvent(new Event('change'));
+                        } else {
+                            throw new Error(`Error del servidor: ${response.statusText}`);
+                        }
+                    } catch (error) {
+                        console.error('Error al enviar el formulario:', error);
+                        messageDiv.textContent = '❌ Hubo un problema al enviar el formulario. Por favor, revisa tu conexión e inténtalo de nuevo.';
+                        messageDiv.className = 'error';
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Enviar mi Aplicación 🚀';
                     }
-                }
+                });
             }
+
             setAdvisorFromURL();
-            
-            const programTypeSelect = document.getElementById('programType');
-            const commonFields = document.getElementById('commonFields');
-            const postgraduateQuestions = document.getElementById('postgraduateQuestions');
-            const undergraduateQuestions = document.getElementById('undergraduateQuestions');
-            const finalFields = document.getElementById('finalFields');
-
-            function toggleQuestionVisibility() {
-                const selectedType = programTypeSelect.value;
-                commonFields.style.display = 'none';
-                postgraduateQuestions.style.display = 'none';
-                undergraduateQuestions.style.display = 'none';
-                finalFields.style.display = 'none';
-
-                if (selectedType) {
-                    commonFields.style.display = 'block';
-                    finalFields.style.display = 'block';
-                }
-
-                if (selectedType === 'posgrado') {
-                    postgraduateQuestions.style.display = 'block';
-                } else if (selectedType === 'pregrado') {
-                    undergraduateQuestions.style.display = 'block';
-                }
-            }
-            
-            programTypeSelect.addEventListener('change', toggleQuestionVisibility);
-            toggleQuestionVisibility();
+            setupDynamicFields();
+            handleFormSubmission();
         });
     </script>
-
 </body>
 </html>
