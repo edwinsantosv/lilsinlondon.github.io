@@ -8,52 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* El CSS no cambia, se mantiene igual */
-        body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            color: #4a4a4a;
-            line-height: 1.6;
-            margin: 0;
-            padding: 2rem;
-        }
-        .form-container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 2.5rem;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-        }
-        h1 { color: #2c3e50; text-align: center; margin-bottom: 10px; font-weight: 700; }
-        h3 { color: #34495e; border-bottom: 2px solid #5a67d8; padding-bottom: 10px; margin-top: 40px; margin-bottom: 25px; font-weight: 600; }
-        p { text-align: center; color: #555; margin-bottom: 30px; font-size: 1.1rem; }
-        hr { border: none; height: 1px; background-color: #e0e0e0; margin: 30px 0; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: #333; font-size: 1rem; }
-        input[type="text"], input[type="email"], input[type="number"], textarea, select { width: 100%; padding: 15px; border: 1px solid #dcdcdc; border-radius: 10px; font-size: 16px; box-sizing: border-box; background-color: #fdfdfd; transition: all 0.3s ease; }
-        input:focus, textarea:focus, select:focus { outline: none; border-color: #5a67d8; box-shadow: 0 0 0 4px rgba(90, 103, 216, 0.2); background-color: #fff; }
-        textarea { resize: vertical; }
-        .radio-group label, .checkbox-group label { display: flex; align-items: center; margin-bottom: 12px; font-weight: normal; background-color: #f9f9f9; padding: 12px; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; }
-        .radio-group label:hover, .checkbox-group label:hover { background-color: #f0f2f5; }
-        .radio-group input, .checkbox-group input { margin-right: 12px; transform: scale(1.1); }
-        .file-instructions { text-align: left; font-size: 14px; color: #777; margin-top: -10px; margin-bottom: 10px; }
-        input[type="file"] { border: 2px dashed #ccc; padding: 25px; border-radius: 10px; background-color: #fafafa; cursor: pointer; transition: border-color 0.3s, background-color 0.3s; }
-        input[type="file"]:hover { border-color: #5a67d8; background-color: #f5f6ff; }
-        button[type="submit"] { width: 100%; padding: 16px; background: linear-gradient(90deg, #5a67d8 0%, #8254d4 100%); color: #ffffff; border: none; border-radius: 10px; font-size: 18px; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 20px; }
-        button[type="submit"]:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(90, 103, 216, 0.3); }
-        button[type="submit"]:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
-        .specific-questions { display: none; }
-        #form-message { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: 600; display: none; }
-        #form-message.success { background-color: #d4edda; color: #155724; display: block; }
-        #form-message.error { background-color: #f8d7da; color: #721c24; display: block; }
-        @media (max-width: 768px) { body { padding: 1rem; } .form-container { padding: 1.5rem; } h1 { font-size: 1.8rem; } }
-    </style>
+    
+    <link rel="stylesheet" href="assets/css/forms.css">
 </head>
 <body>
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Cambiar modo">
+        <span class="icon">🌙</span>
+        <span class="text">Modo Noche</span>
+    </button>
+    
     <div class="form-container">
         <h1>Formulario de Aplicación Académica 🎓</h1>
         <p>¡Estás a un paso de encontrar la mejor oportunidad para tu futuro!</p>
@@ -73,156 +37,128 @@
 
             <div id="commonFields" style="display: none;">
                  <h3>👤 Información Personal</h3>
-                 <div class="form-group"><label for="fullName">Nombre y apellido completo</label><input type="text" id="fullName" name="fullName" required></div>
-                 <div class="form-group"><label for="age">🎂 Edad</label><input type="number" id="age" name="age" required></div>
-                 <div class="form-group"><label for="email">📧 Correo electrónico</label><input type="email" id="email" name="email" required></div>
-                 <div class="form-group"><label for="nationality">🌎 Nacionalidad</label><input type="text" id="nationality" name="nationality" required></div>
+                 <div class="form-group"><label for="fullName">Nombre y apellido completo <span class="required">*</span></label><input type="text" id="fullName" name="fullName" placeholder="Ej: Juan Pérez García" required></div>
+                 <div class="form-group"><label for="age">🎂 Edad <span class="required">*</span></label><input type="number" id="age" name="age" placeholder="Ej: 25" min="16" max="100" required></div>
+                 <div class="form-group"><label for="email">📧 Correo electrónico <span class="required">*</span></label><input type="email" id="email" name="email" placeholder="Ej: juan.perez@email.com" required></div>
+                 <div class="form-group">
+                     <label for="phone">📱 Teléfono / WhatsApp <span class="required">*</span></label>
+                     <div style="display: flex; gap: 10px;">
+                         <div class="country-code-container" style="width: 120px; flex-shrink: 0;">
+                             <input type="text" id="countryCode" name="countryCode" placeholder="Código" style="width: 100%;" required>
+                             <div class="country-dropdown" id="countryDropdown">
+                                 <div class="country-option" data-value="+1">🇺🇸 +1 Estados Unidos</div>
+                                 <div class="country-option" data-value="+52">🇲🇽 +52 México</div>
+                                 <div class="country-option" data-value="+57">🇨🇴 +57 Colombia</div>
+                                 <div class="country-option" data-value="+51">🇵🇪 +51 Perú</div>
+                                 <div class="country-option" data-value="+56">🇨🇱 +56 Chile</div>
+                                 <div class="country-option" data-value="+54">🇦🇷 +54 Argentina</div>
+                                 <div class="country-option" data-value="+34">🇪🇸 +34 España</div>
+                                 <div class="country-option" data-value="+44">🇬🇧 +44 Reino Unido</div>
+                                 <div class="country-option" data-value="+49">🇩🇪 +49 Alemania</div>
+                                 <div class="country-option" data-value="+33">🇫🇷 +33 Francia</div>
+                                 <div class="country-option" data-value="+39">🇮🇹 +39 Italia</div>
+                                 <div class="country-option" data-value="+31">🇳🇱 +31 Países Bajos</div>
+                                 <div class="country-option" data-value="+46">🇸🇪 +46 Suecia</div>
+                                 <div class="country-option" data-value="+47">🇳🇴 +47 Noruega</div>
+                                 <div class="country-option" data-value="+45">🇩🇰 +45 Dinamarca</div>
+                                 <div class="country-option" data-value="+41">🇨🇭 +41 Suiza</div>
+                                 <div class="country-option" data-value="+43">🇦🇹 +43 Austria</div>
+                                 <div class="country-option" data-value="+32">🇧🇪 +32 Bélgica</div>
+                                 <div class="country-option" data-value="+351">🇵🇹 +351 Portugal</div>
+                                 <div class="country-option" data-value="+353">🇮🇪 +353 Irlanda</div>
+                                 <div class="country-option" data-value="+358">🇫🇮 +358 Finlandia</div>
+                                 <div class="country-option" data-value="+7">🇷🇺 +7 Rusia</div>
+                                 <div class="country-option" data-value="+86">🇨🇳 +86 China</div>
+                                 <div class="country-option" data-value="+81">🇯🇵 +81 Japón</div>
+                                 <div class="country-option" data-value="+82">🇰🇷 +82 Corea del Sur</div>
+                                 <div class="country-option" data-value="+91">🇮🇳 +91 India</div>
+                                 <div class="country-option" data-value="+61">🇦🇺 +61 Australia</div>
+                                 <div class="country-option" data-value="+64">🇳🇿 +64 Nueva Zelanda</div>
+                                 <div class="country-option" data-value="+55">🇧🇷 +55 Brasil</div>
+                                 <div class="country-option" data-value="+58">🇻🇪 +58 Venezuela</div>
+                                 <div class="country-option" data-value="+593">🇪🇨 +593 Ecuador</div>
+                                 <div class="country-option" data-value="+595">🇵🇾 +595 Paraguay</div>
+                                 <div class="country-option" data-value="+598">🇺🇾 +598 Uruguay</div>
+                                 <div class="country-option" data-value="+591">🇧🇴 +591 Bolivia</div>
+                                 <div class="country-option" data-value="+592">🇬🇾 +592 Guyana</div>
+                                 <div class="country-option" data-value="+597">🇸🇷 +597 Surinam</div>
+                                 <div class="country-option" data-value="+1-242">🇧🇸 +1-242 Bahamas</div>
+                                 <div class="country-option" data-value="+1-246">🇧🇧 +1-246 Barbados</div>
+                                 <div class="country-option" data-value="+1-264">🇦🇮 +1-264 Anguila</div>
+                                 <div class="country-option" data-value="+1-268">🇦🇬 +1-268 Antigua y Barbuda</div>
+                                 <div class="country-option" data-value="+1-284">🇻🇬 +1-284 Islas Vírgenes Británicas</div>
+                                 <div class="country-option" data-value="+1-345">🇰🇾 +1-345 Islas Caimán</div>
+                                 <div class="country-option" data-value="+1-473">🇬🇩 +1-473 Granada</div>
+                                 <div class="country-option" data-value="+1-649">🇹🇨 +1-649 Islas Turcas y Caicos</div>
+                                 <div class="country-option" data-value="+1-664">🇲🇸 +1-664 Montserrat</div>
+                                 <div class="country-option" data-value="+1-670">🇲🇵 +1-670 Islas Marianas del Norte</div>
+                                 <div class="country-option" data-value="+1-671">🇬🇺 +1-671 Guam</div>
+                                 <div class="country-option" data-value="+1-684">🇦🇸 +1-684 Samoa Americana</div>
+                                 <div class="country-option" data-value="+1-721">🇸🇽 +1-721 San Martín</div>
+                                 <div class="country-option" data-value="+1-758">🇱🇨 +1-758 Santa Lucía</div>
+                                 <div class="country-option" data-value="+1-767">🇩🇲 +1-767 Dominica</div>
+                                 <div class="country-option" data-value="+1-784">🇻🇨 +1-784 San Vicente y las Granadinas</div>
+                                 <div class="country-option" data-value="+1-787">🇵🇷 +1-787 Puerto Rico</div>
+                                 <div class="country-option" data-value="+1-809">🇩🇴 +1-809 República Dominicana</div>
+                                 <div class="country-option" data-value="+1-829">🇩🇴 +1-829 República Dominicana</div>
+                                 <div class="country-option" data-value="+1-849">🇩🇴 +1-849 República Dominicana</div>
+                                 <div class="country-option" data-value="+1-868">🇹🇹 +1-868 Trinidad y Tobago</div>
+                                 <div class="country-option" data-value="+1-869">🇰🇳 +1-869 San Cristóbal y Nieves</div>
+                                 <div class="country-option" data-value="+1-876">🇯🇲 +1-876 Jamaica</div>
+                                 <div class="country-option" data-value="+1-939">🇵🇷 +1-939 Puerto Rico</div>
+                             </div>
+                         </div>
+                         <input type="tel" id="phone" name="phone" placeholder="Número de teléfono" style="flex: 1;" required>
+                     </div>
+                 </div>
+                 <div class="form-group"><label for="nationality">🌎 Nacionalidad <span class="required">*</span></label><input type="text" id="nationality" name="nationality" placeholder="Ej: Mexicana, Colombiana, Española" required></div>
             </div>
 
             <div id="postgraduateQuestions" class="specific-questions">
                 <h3>🧑‍🏫 Información de Posgrado</h3>
-                <div class="form-group"><label for="undergradMajor">Carrera de pregrado</label><input type="text" id="undergradMajor" name="undergradMajor" required></div>
-                <div class="form-group"><label for="undergradGpa">📊 Nota promedio de pregrado (GPA)</label><input type="text" id="undergradGpa" name="undergradGpa" placeholder="Ej: 17.5/20 o 3.8/4.0" required></div>
-                <div class="form-group"><label for="masterSpecialty">Especialidad que deseas cursar</label><input type="text" id="masterSpecialty" name="masterSpecialty" required></div>
-                <div class="form-group"><label>¿Has cursado algún posgrado previamente?</label><div class="radio-group"><label><input type="radio" name="prevPostgrad" value="si" required> Sí</label><label><input type="radio" name="prevPostgrad" value="no"> No</label></div></div>
-                <div class="form-group"><label for="distinctions">🏆 ¿Alguna distinción académica o reconocimiento?</label><textarea id="distinctions" name="distinctions" rows="4" required></textarea></div>
-                <div class="form-group"><label for="volunteer">🤝 ¿Actividades voluntarias o proyectos sociales?</label><textarea id="volunteer" name="volunteer" rows="4" required></textarea></div>
-                <div class="form-group"><label for="workExperience">💼 Cuéntanos tu experiencia laboral</label><textarea id="workExperience" name="workExperience" rows="4" placeholder="Ej: Analista Financiero, 2 años, Grupo Axo" required></textarea></div>
+                <div class="form-group"><label for="undergradMajor">Carrera de pregrado <span class="required">*</span></label><input type="text" id="undergradMajor" name="undergradMajor" placeholder="Ej: Ingeniería Industrial, Administración de Empresas" required></div>
+                <div class="form-group"><label for="undergradGpa">📊 Nota promedio de pregrado (GPA) <span class="required">*</span></label><input type="text" id="undergradGpa" name="undergradGpa" placeholder="Ej: 17.5/20 o 3.8/4.0" required></div>
+                <div class="form-group"><label for="masterSpecialty">Especialidad que deseas cursar <span class="required">*</span></label><input type="text" id="masterSpecialty" name="masterSpecialty" placeholder="Ej: MBA, Maestría en Finanzas, Doctorado en Ciencias" required></div>
+                <div class="form-group"><label>¿Has cursado algún posgrado previamente? <span class="required">*</span></label><div class="radio-group"><label><input type="radio" name="prevPostgrad" value="si" required> Sí</label><label><input type="radio" name="prevPostgrad" value="no"> No</label></div></div>
+                <div class="form-group"><label for="distinctions">🏆 ¿Alguna distinción académica o reconocimiento? <span class="optional">(Opcional)</span></label><textarea id="distinctions" name="distinctions" rows="4" placeholder="Ej: Mención honorífica, Beca de excelencia académica, Primer lugar en concurso..."></textarea></div>
+                <div class="form-group"><label for="volunteer">🤝 ¿Actividades voluntarias o proyectos sociales? <span class="optional">(Opcional)</span></label><textarea id="volunteer" name="volunteer" rows="4" placeholder="Ej: Voluntario en Cruz Roja, Fundación de ayuda a niños, Proyecto comunitario..."></textarea></div>
+                <div class="form-group"><label for="workExperience">💼 Cuéntanos tu experiencia laboral <span class="required">*</span></label><textarea id="workExperience" name="workExperience" rows="4" placeholder="Ej: Analista Financiero, 2 años, Grupo Axo" required></textarea></div>
             </div>
 
              <div id="undergraduateQuestions" class="specific-questions">
                 <h3>🧑‍🎓 Información de Pregrado</h3>
-                <div class="form-group"><label for="highSchool">Colegio de procedencia</label><input type="text" id="highSchool" name="highSchool" required></div>
-                <div class="form-group"><label for="highSchoolGpa">📊 Nota promedio de secundaria</label><input type="text" id="highSchoolGpa" name="highSchoolGpa" required></div>
-                <div class="form-group"><label for="intendedMajor">Carrera a la que deseas aplicar</label><input type="text" id="intendedMajor" name="intendedMajor" required></div>
-                <div class="form-group"><label for="extracurricular">🎨 Actividades extracurriculares (deportes, clubes, etc.)</label><textarea id="extracurricular" name="extracurricular" rows="4" required></textarea></div>
+                <div class="form-group"><label for="highSchool">Colegio de procedencia <span class="required">*</span></label><input type="text" id="highSchool" name="highSchool" placeholder="Ej: Colegio San Patricio, Instituto Tecnológico, Preparatoria UNAM" required></div>
+                <div class="form-group"><label for="highSchoolGpa">📊 Nota promedio de secundaria <span class="required">*</span></label><input type="text" id="highSchoolGpa" name="highSchoolGpa" placeholder="Ej: 9.2/10 o 85/100" required></div>
+                <div class="form-group"><label>¿Tienes Bachillerato Internacional (IB)? <span class="required">*</span></label><div class="radio-group"><label><input type="radio" name="hasIB" value="si" required> Sí</label><label><input type="radio" name="hasIB" value="no"> No</label></div></div>
+                <div class="form-group"><label for="intendedMajor">Carrera a la que deseas aplicar <span class="required">*</span></label><input type="text" id="intendedMajor" name="intendedMajor" placeholder="Ej: Medicina, Ingeniería, Derecho, Psicología" required></div>
+                <div class="form-group"><label for="extracurricular">🎨 Actividades extracurriculares (deportes, clubes, etc.) <span class="optional">(Opcional)</span></label><textarea id="extracurricular" name="extracurricular" rows="4" placeholder="Ej: Fútbol escolar, Club de debate, Voluntariado, Música..."></textarea></div>
             </div>
 
             <div id="finalFields" style="display: none;">
                  <h3>🎯 Preferencias y Metas</h3>
-                 <div class="form-group"><label for="targetUnis">Posibles universidades (max. 3)</label><textarea id="targetUnis" name="targetUnis" rows="3" required></textarea></div>
-                 <div class="form-group"><label for="targetCountries">Posibles países donde estudiar (max. 3)</label><textarea id="targetCountries" name="targetCountries" rows="3" required></textarea></div>
-                 <div class="form-group"><label for="englishLevel">🗣️ ¿Cuál es tu nivel de inglés?</label><input type="text" id="englishLevel" name="englishLevel" placeholder="Ej: Básico, Intermedio B2, Avanzado C1" required></div>
-                 <div class="form-group"><label for="otherLanguages">¿Conoces otros idiomas?</label><input type="text" id="otherLanguages" name="otherLanguages" placeholder="Si no tienes, escribe 'Ninguno'" required></div>
-                 <div class="form-group"><label>¿Dispuesto a estudiar en otros idiomas (francés, alemán, etc.)?</label><div class="radio-group"><label><input type="radio" name="openToLanguages" value="si" required> Sí</label><label><input type="radio" name="openToLanguages" value="no"> No</label></div></div>
-                 <div class="form-group"><label>💸 ¿Cuál es tu presupuesto aproximado?</label><div class="checkbox-group"><label><input type="radio" name="budget" value="parcial" required> Necesito apoyo parcial.</label><label><input type="radio" name="budget" value="costos-adicionales"> Necesito ayuda para costos adicionales.</label><label><input type="radio" name="budget" value="completa"> Busco una beca completa.</label></div></div>
+                 <div class="form-group"><label for="targetUnis">Posibles universidades (max. 3) <span class="optional">(Opcional)</span></label><textarea id="targetUnis" name="targetUnis" rows="3" placeholder="Ej: Harvard University, Universidad de Oxford, MIT, Universidad de Cambridge"></textarea></div>
+                 <div class="form-group"><label for="targetCountries">Posibles países donde estudiar (max. 3) <span class="optional">(Opcional)</span></label><textarea id="targetCountries" name="targetCountries" rows="3" placeholder="Ej: Estados Unidos, Reino Unido, Canadá, Australia"></textarea></div>
+                 <div class="form-group"><label for="englishLevel">🗣️ ¿Cuál es tu nivel de inglés? <span class="required">*</span></label><input type="text" id="englishLevel" name="englishLevel" placeholder="Ej: Básico, Intermedio B2, Avanzado C1" required></div>
+                 <div class="form-group"><label for="otherLanguages">¿Conoces otros idiomas? <span class="optional">(Opcional)</span></label><input type="text" id="otherLanguages" name="otherLanguages" placeholder="Ej: Francés B1, Alemán A2, Italiano básico. Si no tienes, escribe 'Ninguno'"></div>
+                 <div class="form-group"><label>¿Dispuesto a estudiar en otros idiomas (francés, alemán, etc.)? <span class="required">*</span></label><div class="radio-group"><label><input type="radio" name="openToLanguages" value="si" required> Sí</label><label><input type="radio" name="openToLanguages" value="no"> No</label></div></div>
+                 <div class="form-group"><label>💸 ¿Cuál es tu presupuesto aproximado? (Puedes seleccionar múltiples opciones) <span class="required">*</span></label><div class="checkbox-group"><label><input type="checkbox" name="budget[]" value="parcial"> Necesito apoyo parcial.</label><label><input type="checkbox" name="budget[]" value="costos-adicionales"> Necesito ayuda para costos adicionales.</label><label><input type="checkbox" name="budget[]" value="completa"> Busco una beca completa.</label></div></div>
                 <h3>📎 Carga de Documentos</h3>
                 <div class="form-group">
-                    <label for="files">Sube tus documentos (CV, notas, etc.)</label>
-                    <p class="file-instructions">Puedes seleccionar varios archivos a la vez.</p>
-                    <input type="file" id="files" name="files[]" multiple>
+                    <label for="files">Sube tus documentos (CV, notas, etc.) <span class="optional">(Opcional)</span></label>
+                    <p class="file-instructions">Puedes seleccionar hasta 5 archivos. Tamaño máximo por archivo: 10MB.</p>
+                    <input type="file" id="files" name="files[]" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt" maxlength="5">
                 </div>
                 <button type="submit" id="submit-button">Enviar mi Aplicación 🚀</button>
                 <div id="form-message"></div>
             </div>
         </form>
+        
+        <!-- Logo at the end of the form -->
+        <div class="logo-container footer-logo">
+            <img src="assets/img/index_01_logo.png" alt="Logo" class="logo">
+        </div>
     </div>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // =================================================================
-            // ===               CAMBIOS IMPORTANTES AQUÍ                    ===
-            // =================================================================
-
-            function setupDynamicFields() {
-                const programTypeSelect = document.getElementById('programType');
-                if (!programTypeSelect) return;
-                
-                const commonFields = document.getElementById('commonFields');
-                const postgraduateQuestions = document.getElementById('postgraduateQuestions');
-                const undergraduateQuestions = document.getElementById('undergraduateQuestions');
-                const finalFields = document.getElementById('finalFields');
-
-                // NUEVA FUNCIÓN para activar/desactivar 'required' en los campos
-                function setRequired(section, isRequired) {
-                    const fields = section.querySelectorAll('input, textarea, select');
-                    fields.forEach(field => {
-                        // Solo modificamos los que originalmente eran 'required'
-                        // para no añadirlo a campos opcionales.
-                        if (field.hasAttribute('required') || isRequired) {
-                           field.required = isRequired;
-                        }
-                    });
-                }
-
-                function toggleQuestionVisibility() {
-                    const selectedType = programTypeSelect.value;
-                    
-                    [commonFields, postgraduateQuestions, undergraduateQuestions, finalFields].forEach(el => el.style.display = 'none');
-                    
-                    // Desactivamos la obligatoriedad de todas las secciones específicas primero
-                    setRequired(postgraduateQuestions, false);
-                    setRequired(undergraduateQuestions, false);
-
-                    if (selectedType) {
-                        commonFields.style.display = 'block';
-                        finalFields.style.display = 'block';
-                        
-                        if (selectedType === 'posgrado') {
-                            postgraduateQuestions.style.display = 'block';
-                            setRequired(postgraduateQuestions, true); // ACTIVAMOS required para posgrado
-                        } else if (selectedType === 'pregrado') {
-                            undergraduateQuestions.style.display = 'block';
-                            setRequired(undergraduateQuestions, true); // ACTIVAMOS required para pregrado
-                        }
-                    }
-                }
-                programTypeSelect.addEventListener('change', toggleQuestionVisibility);
-                toggleQuestionVisibility();
-            }
-
-            function setAdvisorFromURL() {
-                const urlParams = new URLSearchParams(window.location.search);
-                const advisorName = urlParams.get('asesor');
-                if (advisorName) {
-                    const advisorField = document.getElementById('asesorField');
-                    if (advisorField) advisorField.value = advisorName;
-                }
-            }
-
-            function handleFormSubmission() {
-                const form = document.getElementById('applicationForm');
-                if (!form) return;
-                form.addEventListener('submit', async function(event) {
-                    event.preventDefault();
-                    const submitButton = document.getElementById('submit-button');
-                    const messageDiv = document.getElementById('form-message');
-                    submitButton.disabled = true;
-                    submitButton.textContent = 'Enviando... ⏳';
-                    messageDiv.style.display = 'none';
-                    messageDiv.className = '';
-                    const formData = new FormData(form);
-                    const formAction = form.action;
-                    try {
-                        const response = await fetch(formAction, {
-                            method: 'POST',
-                            body: formData,
-                        });
-                        if (response.ok) {
-                            messageDiv.textContent = '¡Formulario enviado con éxito! Gracias por tu postulación. ✅';
-                            messageDiv.className = 'success';
-                            form.reset();
-                            // Volvemos a llamar a la lógica para ocultar todo tras el reseteo
-                            document.getElementById('programType').dispatchEvent(new Event('change'));
-                        } else {
-                            throw new Error(`Error del servidor: ${response.statusText}`);
-                        }
-                    } catch (error) {
-                        console.error('Error al enviar el formulario:', error);
-                        messageDiv.textContent = '❌ Hubo un problema al enviar el formulario. Por favor, revisa tu conexión e inténtalo de nuevo.';
-                        messageDiv.className = 'error';
-                    } finally {
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Enviar mi Aplicación 🚀';
-                    }
-                });
-            }
-
-            setAdvisorFromURL();
-            setupDynamicFields();
-            handleFormSubmission();
-        });
-    </script>
+    <script src="assets/js/forms.js"></script>
 </body>
 </html>
