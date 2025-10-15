@@ -59,9 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
         function setRequired(section, isRequired) {
             const fields = section.querySelectorAll('input, textarea, select');
             fields.forEach(field => {
-                // Solo modificamos los que originalmente eran 'required'
-                // para no añadirlo a campos opcionales.
-                if (field.hasAttribute('required') || isRequired) {
+                // Solo modifica los campos que originalmente tienen el atributo required
+                if (field.hasAttribute('required')) {
                    field.required = isRequired;
                 }
             });
@@ -141,8 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'undergradMajor': 'Carrera de pregrado',
                     'undergradGpa': 'Nota promedio de pregrado (GPA)',
                     'masterSpecialty': 'Especialidad que deseas cursar',
-                    'prevPostgrad': '¿Has cursado algún posgrado previamente?',
-                    'workExperience': 'Experiencia laboral'
+                    'prevPostgrad': '¿Has cursado algún posgrado previamente?'
                 };
             } else if (programType === 'pregrado') {
                 programFields = {
