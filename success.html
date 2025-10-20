@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>¡Envío exitoso! 🎉</title>
+    <link href="assets/css/forms.css" rel="stylesheet">
+    <style>
+        /* Estilos específicos para la página de éxito */
+        .success-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            padding: 3rem 1rem;
+        }
+        .success-card {
+            background: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-primary);
+            max-width: 720px;
+            width: 100%;
+        }
+        .success-icon {
+            font-size: 64px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .success-title {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 700;
+        }
+        .success-text {
+            color: var(--text-tertiary);
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+        .success-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 18px;
+        }
+        .btn-primary {
+            padding: 12px 18px;
+            background: linear-gradient(90deg, #5a67d8 0%, #8254d4 100%);
+            color: #fff;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .btn-outline {
+            padding: 12px 18px;
+            background: transparent;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-page">
+        <div class="success-card">
+            <!-- Logo (mismo que en index) -->
+            <div style="text-align: center; margin-bottom: 16px;">
+                <img src="assets/img/index_01_logo.png" alt="Lilsinlondon" style="max-width:180px;height:auto;filter: inherit;">
+            </div>
+            <div class="success-title">¡Formulario enviado con éxito! ✅</div>
+            <div class="success-text">Hemos recibido tu postulación. Nuestro equipo revisará tu información y te contactaremos pronto por correo o WhatsApp. Gracias por confiar en nosotros.</div>
+            <div class="success-actions">
+                <a class="btn-primary" href="index.html">Vuelve a Lilsinlondon</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Aplicar tema (dark/light) guardado en localStorage para mantener consistencia con el sitio
+        (function(){
+            try {
+                var theme = localStorage.getItem('theme') || 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                // Si localStorage está deshabilitado, no hacemos nada
+            }
+        })();
+    </script>
+</body>
+</html>

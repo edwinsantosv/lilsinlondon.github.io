@@ -141,12 +141,17 @@
                  <div class="form-group"><label for="englishLevel">🗣️ ¿Cuál es tu nivel de inglés? <span class="required">*</span></label><input type="text" id="englishLevel" name="englishLevel" placeholder="Ej: Básico, Intermedio B2, Avanzado C1" required></div>
                  <div class="form-group"><label for="otherLanguages">¿Conoces otros idiomas? <span class="optional">(Opcional)</span></label><input type="text" id="otherLanguages" name="otherLanguages" placeholder="Ej: Francés B1, Alemán A2, Italiano básico. Si no tienes, escribe 'Ninguno'"></div>
                  <div class="form-group"><label>¿Dispuesto a estudiar en otros idiomas (francés, alemán, etc.)? <span class="required">*</span></label><div class="radio-group"><label><input type="radio" name="openToLanguages" value="si" required> Sí</label><label><input type="radio" name="openToLanguages" value="no"> No</label></div></div>
-                 <div class="form-group"><label>💸 ¿Cuál es tu presupuesto aproximado? (Puedes seleccionar múltiples opciones) <span class="required">*</span></label><div class="checkbox-group"><label><input type="checkbox" name="budget[]" value="parcial"> Necesito apoyo parcial.</label><label><input type="checkbox" name="budget[]" value="costos-adicionales"> Necesito ayuda para costos adicionales.</label><label><input type="checkbox" name="budget[]" value="completa"> Busco una beca completa.</label></div></div>
+                 <div class="form-group"><label>💸 ¿Cuál es tu presupuesto aproximado? (Puedes seleccionar múltiples opciones) <span class="required">*</span></label><div class="checkbox-group"><label><input type="checkbox" name="budget[]" value="Necesito apoyo parcial"> Necesito apoyo parcial.</label><label><input type="checkbox" name="budget[]" value="Necesito ayuda para costos adicionales"> Necesito ayuda para costos adicionales.</label><label><input type="checkbox" name="budget[]" value="Busco una beca completa"> Busco una beca completa.</label></div></div>
                 <h3>📎 Carga de Documentos</h3>
                 <div class="form-group">
                     <label for="files">Sube tus documentos (CV, notas, etc.) <span class="optional">(Opcional)</span></label>
                     <p class="file-instructions">Puedes seleccionar hasta 5 archivos. Tamaño máximo por archivo: 10MB.</p>
                     <input type="file" id="files" name="files[]" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt" maxlength="5">
+                </div>
+                <h3>❓ Otras dudas y consultas</h3>
+                <div class="form-group">
+                    <label for="otherQuery">¿Tienes alguna otra duda o comentario? <span class="optional">(Opcional)</span></label>
+                    <textarea id="otherQuery" name="otherQuery" rows="4" placeholder="Escribe aquí cualquier otra duda o comentario adicional..."></textarea>
                 </div>
                 <button type="submit" id="submit-button">Enviar mi Aplicación 🚀</button>
                 <div id="form-message"></div>

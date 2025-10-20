@@ -368,8 +368,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     method: 'POST',
                     body: formData,
                 });
-                if (response.ok) {
-                    messageDiv.textContent = '¡Formulario enviado con éxito! Gracias por tu postulación. ✅';
+                // Intentamos parsear JSON seguro (no todos los endpoints devuelven JSON)
+                let json = {};
+                try {
+                    json = await response.json();
+                } catch (err) {
+                    // Si no es JSON, lo dejamos vacío y seguiremos con response.ok
+                }
+
+                if (response.ok && json && json.success === true) {
+                    // Redirigir a página de éxito cuando la API confirme success=true
+                    window.location.href = 'success.html';
+                    return;
+                } else if (response.ok) {
+                    // Respuesta OK pero no indicó success === true; mostramos mensaje y reseteamos
+                    messageDiv.textContent = (json && json.message) ? json.message : '¡Formulario enviado con éxito! Gracias por tu postulación. ✅';
                     messageDiv.className = 'success';
                     form.reset();
                     // Volvemos a llamar a la lógica para ocultar todo tras el reseteo
