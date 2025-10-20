@@ -21,7 +21,7 @@
     <div class="form-container">
         <h1>Formulario de Aplicación Académica 🎓</h1>
         <p>¡Estás a un paso de encontrar la mejor oportunidad para tu futuro!</p>
-        <form id="applicationForm" action="https://edwinsantos.app.n8n.cloud/webhook-test/forms-asesorias" method="POST" enctype="multipart/form-data">
+        <form id="applicationForm" action="https://edwinsantos.app.n8n.cloud/webhook/forms-asesorias" method="POST" enctype="multipart/form-data">
             
             <input type="hidden" id="asesorField" name="asesor_asignado" value="">
             
@@ -29,8 +29,8 @@
                 <label for="programType">📚 ¿A qué tipo de programa aplicas?</label>
                 <select id="programType" name="programType" required>
                     <option value="" disabled selected>-- Elige una opción --</option>
-                    <option value="posgrado">Posgrado (Maestría, Doctorado)</option>
-                    <option value="pregrado">Pregrado (Licenciatura, Grado)</option>
+                    <option value="Maestría">Posgrado (Maestría, Doctorado)</option>
+                    <option value="Pregrado">Pregrado (Licenciatura, Grado)</option>
                 </select>
             </div>
             <hr>
@@ -129,8 +129,9 @@
                 <h3>🧑‍🎓 Información de Pregrado</h3>
                 <div class="form-group"><label for="highSchool">Colegio de procedencia <span class="required">*</span></label><input type="text" id="highSchool" name="highSchool" placeholder="Ej: Colegio San Patricio, Instituto Tecnológico, Preparatoria UNAM" required></div>
                 <div class="form-group"><label for="highSchoolGpa">📊 Nota promedio de secundaria <span class="required">*</span></label><input type="text" id="highSchoolGpa" name="highSchoolGpa" placeholder="Ej: 9.2/10 o 85/100" required></div>
-                <div class="form-group"><label>¿Tienes Bachillerato Internacional (IB)? <span class="required">*</span></label><div class="radio-group"><label><input type="radio" name="hasIB" value="si" required> Sí</label><label><input type="radio" name="hasIB" value="no"> No</label></div></div>
+                <div class="form-group"><label >¿Tienes Bachillerato Internacional (IB)? <span class="required">*</span></label><div class="radio-group"><label><input type="radio" name="hasIB" value="si" required> Sí</label><label><input type="radio" name="hasIB" value="no"> No</label></div></div>
                 <div class="form-group"><label for="intendedMajor">Carrera a la que deseas aplicar <span class="required">*</span></label><input type="text" id="intendedMajor" name="intendedMajor" placeholder="Ej: Medicina, Ingeniería, Derecho, Psicología" required></div>
+                <div class="form-group"><label>¿Has cursado algún pregrado previamente? <span class="required">*</span></label><div class="radio-group"><label><input type="radio" name="prevUndergrad" value="si" required> Sí</label><label><input type="radio" name="prevUndergrad" value="no"> No</label></div></div>
                 <div class="form-group"><label for="extracurricular">🎨 Actividades extracurriculares (deportes, clubes, etc.) <span class="optional">(Opcional)</span></label><textarea id="extracurricular" name="extracurricular" rows="4" placeholder="Ej: Fútbol escolar, Club de debate, Voluntariado, Música..."></textarea></div>
             </div>
 

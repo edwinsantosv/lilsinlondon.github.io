@@ -79,10 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 commonFields.style.display = 'block';
                 finalFields.style.display = 'block';
                 
-                if (selectedType === 'posgrado') {
+                if (selectedType === 'Maestría') {
                     postgraduateQuestions.style.display = 'block';
                     setRequired(postgraduateQuestions, true); // ACTIVAMOS required para posgrado
-                } else if (selectedType === 'pregrado') {
+                } else if (selectedType === 'Pregrado') {
                     undergraduateQuestions.style.display = 'block';
                     setRequired(undergraduateQuestions, true); // ACTIVAMOS required para pregrado
                 }
@@ -135,14 +135,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Program-specific required fields
             let programFields = {};
-            if (programType === 'posgrado') {
+            if (programType === 'Maestría') {
                 programFields = {
                     'undergradMajor': 'Carrera de pregrado',
                     'undergradGpa': 'Nota promedio de pregrado (GPA)',
                     'masterSpecialty': 'Especialidad que deseas cursar',
                     'prevPostgrad': '¿Has cursado algún posgrado previamente?'
                 };
-            } else if (programType === 'pregrado') {
+            } else if (programType === 'Pregrado') {
                 programFields = {
                     'highSchool': 'Colegio de procedencia',
                     'highSchoolGpa': 'Nota promedio de secundaria',
@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const missingFields = getMissingFields();
             if (missingFields.length > 0) {
                 const programType = document.getElementById('programType').value;
-                const programName = programType === 'posgrado' ? 'Posgrado (Maestría/Doctorado)' : 
-                                  programType === 'pregrado' ? 'Pregrado (Licenciatura/Grado)' : 'Programa';
+                const programName = programType === 'Maestría' ? 'Posgrado (Maestría/Doctorado)' : 
+                                  programType === 'Pregrado' ? 'Pregrado (Licenciatura/Grado)' : 'Programa';
                 
                 let alertMessage = `Para completar tu aplicación de ${programName}, necesitas llenar los siguientes campos obligatorios:\n\n`;
                 missingFields.forEach((field, index) => {
