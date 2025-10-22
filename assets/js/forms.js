@@ -251,34 +251,80 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupFileValidation() {
         const fileInput = document.getElementById('files');
         if (!fileInput) return;
-        
+        const fileListEl = document.getElementById('fileList');
+        const maxFiles = 5;
+        const maxSizePerFile = 10 * 1024 * 1024; // 10MB in bytes
+
+        // Mantener la lista actual en memoria para poder añadir sin reemplazar
+        let currentFiles = Array.from(fileInput.files || []);
+
+        function renderFileList(files) {
+            fileListEl.innerHTML = '';
+            files.forEach((file, idx) => {
+                const li = document.createElement('li');
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'file-name';
+                nameSpan.textContent = file.name;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'remove-file';
+                removeBtn.textContent = 'Eliminar';
+                removeBtn.addEventListener('click', function() {
+                    removeFileAtIndex(idx);
+                });
+
+                li.appendChild(nameSpan);
+                li.appendChild(removeBtn);
+                fileListEl.appendChild(li);
+            });
+        }
+
+        function setInputFiles(fileInput, filesArray) {
+            const dataTransfer = new DataTransfer();
+            filesArray.forEach(f => dataTransfer.items.add(f));
+            fileInput.files = dataTransfer.files;
+        }
+
+        function removeFileAtIndex(index) {
+            currentFiles.splice(index, 1);
+            setInputFiles(fileInput, currentFiles);
+            renderFileList(currentFiles);
+        }
+
         fileInput.addEventListener('change', function() {
-            const files = this.files;
-            const maxFiles = 5;
-            const maxSizePerFile = 10 * 1024 * 1024; // 10MB in bytes
-            
-            // Check number of files
-            if (files.length > maxFiles) {
-                alert(`Solo puedes subir máximo ${maxFiles} archivos. Has seleccionado ${files.length} archivos.`);
-                this.value = '';
-                return;
-            }
-            
-            // Check file sizes
-            for (let i = 0; i < files.length; i++) {
-                if (files[i].size > maxSizePerFile) {
-                    const fileSizeMB = (files[i].size / (1024 * 1024)).toFixed(1);
-                    alert(`El archivo "${files[i].name}" es demasiado grande (${fileSizeMB}MB). El tamaño máximo permitido es 10MB.`);
-                    this.value = '';
-                    return;
+            const newFiles = Array.from(this.files || []);
+
+            // If user cancelled dialog, newFiles will be empty — do nothing
+            if (newFiles.length === 0) return;
+
+            // Combine previous and new, avoiding duplicates (name+size)
+            const combined = currentFiles.slice();
+            newFiles.forEach(nf => {
+                const exists = combined.some(cf => cf.name === nf.name && cf.size === nf.size && cf.lastModified === nf.lastModified);
+                if (!exists) combined.push(nf);
+            });
+
+            // Enforce size limit: remove offending files and notify
+            for (let i = 0; i < combined.length; i++) {
+                if (combined[i].size > maxSizePerFile) {
+                    const fileSizeMB = (combined[i].size / (1024 * 1024)).toFixed(1);
+                    alert(`El archivo "${combined[i].name}" es demasiado grande (${fileSizeMB}MB). El tamaño máximo permitido es 10MB.`);
+                    combined.splice(i, 1);
+                    i--;
                 }
             }
-            
-            // Show success message if files are valid
-            if (files.length > 0) {
-                const totalSizeMB = Array.from(files).reduce((total, file) => total + file.size, 0) / (1024 * 1024);
-                console.log(`Archivos válidos: ${files.length} archivos, tamaño total: ${totalSizeMB.toFixed(1)}MB`);
+
+            // Enforce max files
+            if (combined.length > maxFiles) {
+                alert(`Solo puedes subir máximo ${maxFiles} archivos. Se guardarán los primeros ${maxFiles}.`);
+                combined.splice(maxFiles); // keep first maxFiles
             }
+
+            // Save and render
+            currentFiles = combined;
+            setInputFiles(this, currentFiles);
+            renderFileList(currentFiles);
         });
     }
 
@@ -327,6 +373,13 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Enviando... ⏳';
             messageDiv.style.display = 'none';
             messageDiv.className = '';
+
+            // Mostrar modal de carga
+            const loadingModal = document.getElementById('loadingModal');
+            if (loadingModal) {
+                loadingModal.style.display = 'flex';
+                loadingModal.setAttribute('aria-hidden', 'false');
+            }
             const formData = new FormData(form);
 
             // Asegurar que se envíe el código de país y que el teléfono incluya el prefijo.
@@ -409,6 +462,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 messageDiv.textContent = '❌ Hubo un problema al enviar el formulario. Por favor, revisa tu conexión e inténtalo de nuevo.';
                 messageDiv.className = 'error';
             } finally {
+                // Ocultar modal de carga
+                const loadingModal = document.getElementById('loadingModal');
+                if (loadingModal) {
+                    loadingModal.style.display = 'none';
+                    loadingModal.setAttribute('aria-hidden', 'true');
+                }
+
                 submitButton.disabled = false;
                 submitButton.textContent = 'Enviar mi Aplicación 🚀';
             }

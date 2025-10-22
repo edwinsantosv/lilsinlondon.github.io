@@ -148,6 +148,10 @@
                     <label for="files">Sube tus documentos (CV, notas, etc.) <span class="optional">(Opcional)</span></label>
                     <p class="file-instructions">Puedes seleccionar hasta 5 archivos. Tamaño máximo por archivo: 10MB.</p>
                     <input type="file" id="files" name="files[]" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.txt" maxlength="5">
+                    <!-- Contenedor para listar archivos seleccionados y permitir eliminar -->
+                    <div id="fileListContainer">
+                        <ul id="fileList" class="selected-files"></ul>
+                    </div>
                 </div>
                 <h3>❓ Otras dudas y consultas</h3>
                 <div class="form-group">
@@ -165,6 +169,16 @@
         </div>
     </div>
     
+</div>
+
+    <!-- Loading modal shown while the form is being submitted -->
+    <div id="loadingModal" class="loading-overlay" role="status" aria-hidden="true" style="display: none;">
+        <div class="loading-card">
+            <div class="spinner" aria-hidden="true"></div>
+            <div class="loading-text">Enviando tu aplicación... Por favor espera.</div>
+        </div>
+    </div>
+
     <script src="assets/js/forms.js"></script>
 </body>
 </html>
