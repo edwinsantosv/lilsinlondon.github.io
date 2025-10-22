@@ -287,57 +287,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // =================================================================
 
     function setupCountryCodeDropdown() {
-        const countryInput = document.getElementById('countryCode');
-        const countryDropdown = document.getElementById('countryDropdown');
-        const countryOptions = countryDropdown.querySelectorAll('.country-option');
-        
-        if (!countryInput || !countryDropdown) return;
-        
-        // Show dropdown on focus/click
-        countryInput.addEventListener('focus', function() {
-            countryDropdown.classList.add('show');
-            filterOptions('');
-        });
-        
-        countryInput.addEventListener('click', function() {
-            countryDropdown.classList.add('show');
-            filterOptions('');
-        });
-        
-        // Filter options as user types
-        countryInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            filterOptions(searchTerm);
-            countryDropdown.classList.add('show');
-        });
-        
-        // Handle option selection
-        countryOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                const value = this.getAttribute('data-value');
-                countryInput.value = value;
-                countryDropdown.classList.remove('show');
-            });
-        });
-        
-        // Hide dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!countryInput.contains(event.target) && !countryDropdown.contains(event.target)) {
-                countryDropdown.classList.remove('show');
+        // Ahora usamos un <select id="countryCode"> en vez del dropdown personalizado.
+        const countrySelect = document.getElementById('countryCode');
+        if (!countrySelect) return;
+
+        // Intentar prefijar la selección desde localStorage si existe
+        try {
+            const saved = localStorage.getItem('countryCode');
+            if (saved) {
+                const option = countrySelect.querySelector(`option[value="${saved}"]`);
+                if (option) option.selected = true;
             }
+        } catch (e) {}
+
+        // Guardar selección en localStorage para próxima vez
+        countrySelect.addEventListener('change', function() {
+            try { localStorage.setItem('countryCode', this.value); } catch (e) {}
         });
-        
-        // Filter function
-        function filterOptions(searchTerm) {
-            countryOptions.forEach(option => {
-                const text = option.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    option.classList.remove('hidden');
-                } else {
-                    option.classList.add('hidden');
-                }
-            });
-        }
     }
 
     // =================================================================
@@ -362,6 +328,54 @@ document.addEventListener('DOMContentLoaded', function() {
             messageDiv.style.display = 'none';
             messageDiv.className = '';
             const formData = new FormData(form);
+
+            // Asegurar que se envíe el código de país y que el teléfono incluya el prefijo.
+            try {
+                const countryInput = document.getElementById('countryCode');
+                const phoneInput = document.getElementById('phone');
+
+                let ccVal = countryInput ? countryInput.value.trim() : '';
+
+                // Si el usuario escribió el nombre del país en lugar del código, intentar resolverlo
+                if (countryInput && ccVal && !/^[+\d]/.test(ccVal)) {
+                    const countryOptions = document.querySelectorAll('.country-option');
+                    const search = ccVal.toLowerCase();
+                    for (let opt of countryOptions) {
+                        if (opt.textContent.toLowerCase().includes(search)) {
+                            const dv = opt.getAttribute('data-value');
+                            if (dv) {
+                                ccVal = dv;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Si tenemos un código válido, asegurarlo en formData
+                if (ccVal) {
+                    formData.set('countryCode', ccVal);
+                }
+
+                // Normalizar el teléfono para incluir country code si no tiene uno
+                if (phoneInput) {
+                    let phoneVal = phoneInput.value.trim();
+                    if (phoneVal) {
+                        const startsWithPlus = phoneVal.startsWith('+');
+                        const startsWithCc = ccVal && phoneVal.replace(/\s+/g, '').startsWith(ccVal.replace(/\s+/g, ''));
+
+                        if (!startsWithPlus && !startsWithCc && ccVal) {
+                            // Quitar ceros iniciales del número local para evitar +51 0123...
+                            phoneVal = phoneVal.replace(/^0+/, '');
+                            formData.set('phone', `${ccVal} ${phoneVal}`);
+                        } else {
+                            formData.set('phone', phoneVal);
+                        }
+                    }
+                }
+            } catch (err) {
+                // Si algo falla aquí, no queremos bloquear el envío — lo registramos y continuamos
+                console.warn('No se pudo normalizar countryCode/phone antes de enviar:', err);
+            }
             const formAction = form.action;
             try {
                 const response = await fetch(formAction, {
