@@ -409,18 +409,34 @@ document.addEventListener('DOMContentLoaded', function() {
                     formData.set('countryCode', ccVal);
                 }
 
-                // Normalizar el teléfono para incluir country code si no tiene uno
+                // Normalizar el teléfono: NO duplicar el countryCode en el campo phone.
+                // Envíaremos `countryCode` en su campo separado y `phone` contendrá sólo el número local (sin prefijo).
                 if (phoneInput) {
                     let phoneVal = phoneInput.value.trim();
                     if (phoneVal) {
-                        const startsWithPlus = phoneVal.startsWith('+');
-                        const startsWithCc = ccVal && phoneVal.replace(/\s+/g, '').startsWith(ccVal.replace(/\s+/g, ''));
+                        // Normalizar espacios
+                        phoneVal = phoneVal.replace(/\s+/g, ' ').trim();
 
-                        if (!startsWithPlus && !startsWithCc && ccVal) {
-                            // Quitar ceros iniciales del número local para evitar +51 0123...
+                        if (ccVal) {
+                            // Si el usuario incluyó el código en el teléfono, eliminarlo para evitar duplicados.
+                            try {
+                                const ccDigits = ccVal.replace(/\D/g, ''); // solo dígitos del código
+                                if (ccDigits) {
+                                    const prefixRe = new RegExp('^\\+?' + ccDigits + '[\\s-]*');
+                                    phoneVal = phoneVal.replace(prefixRe, '');
+                                }
+                            } catch (e) {
+                                // si falla el regex, no bloquear
+                            }
+
+                            // Quitar ceros iniciales locales
                             phoneVal = phoneVal.replace(/^0+/, '');
-                            formData.set('phone', `${ccVal} ${phoneVal}`);
+
+                            // Asegurar que enviamos el countryCode por separado
+                            formData.set('countryCode', ccVal);
+                            formData.set('phone', phoneVal);
                         } else {
+                            // Si no hay countryCode seleccionado, enviamos el teléfono tal cual
                             formData.set('phone', phoneVal);
                         }
                     }
