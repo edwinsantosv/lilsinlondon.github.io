@@ -1799,28 +1799,28 @@ section,
 .image-container img {
   display: block;
   margin: 0 auto;
-  max-width: 520px;
-  width: 48%;
+  max-width: 680px;
+  width: 65%;
   height: auto;
 }
 
 @media (max-width: 992px) {
   .image-container img {
-    width: 30%;
+    width: 42%;
   }
 }
 
 @media (max-width: 768px) {
   .image-container img {
-    width: 38%;
-    max-width: 210px;
+    width: 52%;
+    max-width: 280px;
   }
 }
 
 @media (max-width: 480px) {
   .image-container img {
-    width: 50%;
-    max-width: 170px;
+    width: 68%;
+    max-width: 230px;
   }
 }
 
