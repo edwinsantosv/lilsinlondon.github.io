@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Admissions Lab – By Lils in London</title>
+  <meta name="description" content="Asesorías personalizadas para estudiar en el extranjero. Becas, universidades, documentos e inglés en el Reino Unido.">
+
+  <link rel="icon" href="assets/img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F7F4EF;
+      --cream-dark: #EDE8DF;
+      --black:      #1C1C1C;
+      --gold:       #C9A84C;
+      --gold-light: #E8D5A3;
+      --border:     #DDD8CF;
+      --white:      #FFFFFF;
+      --gray:       #6B6B6B;
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* ── Navigation ──────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 1.6rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .3s, padding .3s, box-shadow .3s;
+    }
+
+    .nav.scrolled {
+      background: var(--cream);
+      padding: 1rem 3rem;
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .nav-brand span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .6rem 1.5rem;
+      border: 1.5px solid var(--black);
+      transition: background .2s, color .2s;
+    }
+    .nav-cta:hover { background: var(--black); color: var(--cream); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+      transition: all .3s;
+    }
+
+    /* ── Hero ────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 6rem;
+      position: relative;
+      background: var(--cream);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .hero-logo {
+      width: clamp(130px, 18vw, 220px);
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6.5vw, 6rem);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--black);
+      margin-bottom: 1.6rem;
+      max-width: 14ch;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(.95rem, 1.4vw, 1.1rem);
+      color: var(--gray);
+      font-weight: 300;
+      max-width: 40ch;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      padding: .9rem 2.4rem;
+      background: var(--black);
+      color: var(--cream);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: background .25s, transform .25s;
+    }
+    .btn-dark:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+
+    .btn-text {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--black);
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .btn-text:hover { color: var(--gold); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+    .scroll-hint span {
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.4;transform:scaleY(.6)} }
+
+    /* ── Shared ──────────────────────────────── */
+    .section { padding: 7rem 2rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .9rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 1.2rem;
+    }
+
+    .gold-rule {
+      width: 44px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.4rem 0;
+    }
+
+    .lead {
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 50ch;
+    }
+
+    /* ── Stats ───────────────────────────────── */
+    .stats-section {
+      background: var(--black);
+      padding: 5rem 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-left: 1px solid rgba(255,255,255,.1);
+    }
+
+    .stat-item {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(255,255,255,.1);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: .8rem;
+    }
+
+    .stat-label {
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--white);
+      margin-bottom: .35rem;
+      text-transform: uppercase;
+    }
+
+    .stat-sub {
+      font-size: .75rem;
+      color: rgba(255,255,255,.45);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(255,255,255,.1); }
+      .stat-item { border-top: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Services ────────────────────────────── */
+    .services { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .services-intro { margin-bottom: 4rem; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border: 1px solid var(--border);
+    }
+
+    .svc {
+      padding: 2.8rem 1.8rem;
+      border-right: 1px solid var(--border);
+      transition: background .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .svc:last-child { border-right: none; }
+    .svc:hover { background: var(--cream); }
+
+    .svc-num {
+      font-family: var(--serif);
+      font-size: .7rem;
+      color: var(--gold);
+      letter-spacing: .1em;
+      margin-bottom: 1.8rem;
+    }
+
+    .svc-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--black);
+      flex: 1;
+    }
+
+    .svc-arrow {
+      display: block;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-top: 2rem;
+      transition: transform .2s;
+    }
+    .svc:hover .svc-arrow { transform: translateX(5px); }
+
+    /* ── Cases ───────────────────────────────── */
+    .cases { background: var(--cream); }
+
+    .cases-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .cases-header .lead { text-align: right; max-width: 30ch; }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .case-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,.07); }
+
+    .case-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    .case-body { padding: 1.8rem; }
+
+    .case-badge {
+      display: inline-block;
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-light);
+      padding: .28rem .8rem;
+      margin-bottom: 1rem;
+    }
+
+    .case-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: .7rem;
+    }
+
+    .case-quote {
+      font-size: .84rem;
+      color: var(--gray);
+      font-style: italic;
+      line-height: 1.75;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ── Contact ─────────────────────────────── */
+    .contact-section {
+      background: var(--black);
+      color: var(--cream);
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+
+    .contact-section .eyebrow { color: var(--gold); }
+    .contact-section .section-title { color: var(--cream); }
+    .contact-section .gold-rule { margin: 1.4rem auto; }
+    .contact-section .lead { color: rgba(247,244,239,.6); margin: 0 auto 3.5rem; }
+
+    .contact-btns {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 1rem 2.5rem;
+      background: #25D366;
+      color: white;
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-wa:hover { opacity: .88; transform: translateY(-2px); color: white; }
+
+    .btn-mail {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 1rem 2.5rem;
+      border: 1.5px solid rgba(247,244,239,.25);
+      color: var(--cream);
+      font-size: .76rem;
+      font-weight: 400;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-mail:hover { border-color: var(--gold); background: rgba(201,168,76,.1); color: var(--cream); }
+
+    /* ── Footer ──────────────────────────────── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 1.8rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: .82rem;
+      color: rgba(247,244,239,.4);
+    }
+    .footer-brand span { color: var(--gold); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.8rem;
+    }
+    .footer-links a {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,.35);
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── Responsive ──────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .svc:nth-child(3) { border-right: none; }
+      .svc:nth-child(4) { border-top: 1px solid var(--border); }
+      .svc:nth-child(5) { border-top: 1px solid var(--border); border-right: none; }
+    }
+
+    @media (max-width: 900px) {
+      .cases-grid { grid-template-columns: repeat(2, 1fr); }
+      .cases-header .lead { text-align: left; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 1.2rem 1.5rem; }
+      .nav.scrolled { padding: .9rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .svc { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .svc:nth-child(even) { border-right: none; }
+      .svc:nth-child(n) { border-top: none; }
+      .svc:last-child { border-bottom: none; }
+
+      .cases-grid { grid-template-columns: 1fr; }
+
+      footer { padding: 1.5rem; flex-direction: column; align-items: center; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .svc { border-right: none !important; }
+    }
+
+    /* ── Team ────────────────────────────────── */
+    .team-section { background: var(--cream-dark); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem 2rem;
+      margin-top: 3rem;
+    }
+
+    .team-card {
+      text-align: center;
+    }
+
+    .team-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 2px solid var(--border);
+      filter: grayscale(20%);
+      transition: filter .3s;
+    }
+
+    .team-card:hover img { filter: grayscale(0%); }
+
+    .team-card h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: .3rem;
+    }
+
+    .team-card span {
+      font-size: .8rem;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    .partnerships-label {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .75rem;
+    }
+
+    .team-grid--partners {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 480px;
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid--partners { max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+    }
+
+    /* ── Mobile nav drawer ───────────────────── */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 190;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: .02em;
+    }
+    .nav-drawer a:hover { color: var(--gold); }
+    .nav-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--black);
+      line-height: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">The Admissions <span>Lab</span></div>
+    <ul class="nav-links">
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#cases">Casos de Éxito</a></li>
+      <li><a href="#team">Equipo</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Agenda</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <button class="nav-close" id="navClose" aria-label="Cerrar">✕</button>
+    <a href="#services" class="drawer-link">Servicios</a>
+    <a href="#cases" class="drawer-link">Casos de Éxito</a>
+    <a href="#team" class="drawer-link">Equipo</a>
+    <a href="#contact" class="drawer-link">Contacto</a>
+    <a href="https://wa.me/51949086668" target="_blank" style="font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">WhatsApp →</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <img class="hero-logo" src="assets/img/nuevo_logo.png" alt="The Admissions Lab">
+    <p class="hero-eyebrow">By Lils in London</p>
+    <h1 class="hero-title">Tu puerta al mundo académico.</h1>
+    <p class="hero-subtitle">Asesorías personalizadas para estudiar en Europa, Asia, Australia, Estados Unidos y Canadá.</p>
+    <div class="hero-actions">
+      <a class="btn-dark" href="https://wa.me/51949086668?text=Hola!%20Quiero%20información%20sobre%20sus%20servicios." target="_blank">Agenda tu asesoría</a>
+      <a class="btn-text" href="#services">Ver servicios →</a>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-hint-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item" data-target="550">
+          <div class="stat-number"><span class="stat-count">0</span>+</div>
+          <div class="stat-label">Clientes satisfechos</div>
+          <div class="stat-sub">de América Latina y el mundo</div>
+        </div>
+        <div class="stat-item" data-target="4500">
+          <div class="stat-number"><span class="stat-count">0</span>+</div>
+          <div class="stat-label">Horas de asesoría</div>
+          <div class="stat-sub">personalizadas para cada caso</div>
+        </div>
+        <div class="stat-item" data-target="3000">
+          <div class="stat-number"><span class="stat-count">0</span>+</div>
+          <div class="stat-label">Becas recopiladas</div>
+          <div class="stat-sub">para Europa, Asia, Oceanía y América</div>
+        </div>
+        <div class="stat-item" data-target="15">
+          <div class="stat-number"><span class="stat-count">0</span></div>
+          <div class="stat-label">Países representados</div>
+          <div class="stat-sub">por nuestros estudiantes asesorados</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="services-intro">
+        <p class="eyebrow">Lo que hacemos</p>
+        <h2 class="section-title">Servicios</h2>
+        <div class="gold-rule"></div>
+        <p class="lead">Cada servicio está diseñado para acompañarte en cada etapa de tu postulación internacional.</p>
+      </div>
+
+      <div class="services-grid">
+        <a class="svc" href="asesoria_becas.html">
+          <div class="svc-num">01</div>
+          <div class="svc-name">Asesoría personalizada de becas</div>
+          <span class="svc-arrow">→</span>
+        </a>
+        <a class="svc" href="asesoria_integral.html">
+          <div class="svc-num">02</div>
+          <div class="svc-name">Búsqueda de universidades según tu presupuesto</div>
+          <span class="svc-arrow">→</span>
+        </a>
+        <a class="svc" href="docs-post.html">
+          <div class="svc-num">03</div>
+          <div class="svc-name">Documentos de postulación</div>
+          <span class="svc-arrow">→</span>
+        </a>
+        <a class="svc" href="traducciones.html">
+          <div class="svc-num">04</div>
+          <div class="svc-name">Traducción de documentos</div>
+          <span class="svc-arrow">→</span>
+        </a>
+        <a class="svc" href="cursos-ingles.html">
+          <div class="svc-num">05</div>
+          <div class="svc-name">Estudia inglés en Inglaterra</div>
+          <span class="svc-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cases -->
+  <section class="section cases" id="cases">
+    <div class="container">
+      <div class="cases-header">
+        <div>
+          <p class="eyebrow">Historias reales</p>
+          <h2 class="section-title">Casos de Éxito</h2>
+          <div class="gold-rule"></div>
+        </div>
+        <p class="lead">Estudiantes que cumplieron su sueño de estudiar en el exterior con nuestra guía.</p>
+      </div>
+
+      <div class="cases-grid">
+
+        <div class="case-card">
+          <img class="case-img" src="assets/img/news section/Lucia.jpeg" alt="Lucía Armas">
+          <div class="case-body">
+            <span class="case-badge">Erasmus Mundus AquaH</span>
+            <h3 class="case-name">Lucía Armas</h3>
+            <p class="case-quote">"Lograr entrar a un programa tan exigente como el Erasmus Mundus AquaH es una meta que no podría haber alcanzado sin su ayuda. La guía constante y personalizada me hizo sentir segura en cada paso."</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <img class="case-img" src="assets/img/news section/Joselyn.jpeg" alt="Joselyn Berrocal">
+          <div class="case-body">
+            <span class="case-badge">LUMS MBA – Lancaster University</span>
+            <h3 class="case-name">Joselyn Berrocal</h3>
+            <p class="case-quote">"Gracias a su guía constante pude avanzar con confianza en cada etapa y alcanzar un logro que parecía lejano: obtener una beca del 50% para mi maestría en Inglaterra."</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <img class="case-img" src="assets/img/news section/Guillermo Medina.jpg" alt="Guillermo Medina">
+          <div class="case-body">
+            <span class="case-badge">University of Leeds – Beca Ganada</span>
+            <h3 class="case-name">Guillermo Medina</h3>
+            <p class="case-quote">"Recomiendo mucho la asesoría, tanto en la búsqueda de becas como en el proceso de postulación. El acompañamiento es permanente y la revisión de documentos muy detallada y útil."</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <img class="case-img" src="assets/img/news section/Diana Quiroga.jpg" alt="Diana Quiroga">
+          <div class="case-body">
+            <span class="case-badge">Warwick University</span>
+            <h3 class="case-name">Diana Quiroga</h3>
+            <p class="case-quote">"Su apoyo ha sido clave. Mi rubro es bastante competitivo, especialmente en universidades del Reino Unido, pero me siento inmensamente feliz de haber logrado este sueño."</p>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <img class="case-img" src="assets/img/news section/Fabiana Mariscal.jpg" alt="Fabiana Mariscal">
+          <div class="case-body">
+            <span class="case-badge">University of Birmingham</span>
+            <h3 class="case-name">Fabiana Mariscal</h3>
+            <p class="case-quote">"Uno de mis más grandes sueños fue estudiar en el extranjero, y lo logré gracias a The Admissions Lab. Me guiaron en todo: universidades, becas y la redacción del personal statement."</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section team-section" id="team">
+    <div class="container">
+      <div class="services-intro">
+        <p class="eyebrow">Quiénes somos</p>
+        <h2 class="section-title">Nuestro Equipo</h2>
+        <div class="gold-rule"></div>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="assets/img/team/liliane.jpeg" alt="Liliane Santos">
+          <h3>Liliane Santos</h3>
+          <span>Founder &amp; CEO · MSc Digital Innovation Management, UK</span>
+        </div>
+        <div class="team-card">
+          <img src="assets/img/team/gabrielavidal.jpeg" alt="Gabriela Vidal">
+          <h3>Gabriela Vidal</h3>
+          <span>Senior Consultant · Politics &amp; Policy Analysis, UCM Madrid</span>
+        </div>
+        <div class="team-card">
+          <img src="assets/img/team/natali_v.jpg" alt="Natali Vidal">
+          <h3>Natali Vidal</h3>
+          <span>Translator · Universidad Ricardo Palma</span>
+        </div>
+        <div class="team-card">
+          <img src="assets/img/team/edwinsantos.jpeg" alt="Edwin Santos">
+          <h3>Edwin Santos</h3>
+          <span>Data Specialist · Mechanical Engineer &amp; Postgraduate in Analytics, Canada</span>
+        </div>
+        <div class="team-card">
+          <img src="assets/img/team/Leda.jpg" alt="Leda Guzmán">
+          <h3>Leda Guzmán</h3>
+          <span>Political Scientist · PUCP</span>
+        </div>
+        <div class="team-card">
+          <img src="assets/img/team/mayra.jpeg" alt="Mayra Rojas">
+          <h3>Mayra Rojas</h3>
+          <span>Team Member</span>
+        </div>
+      </div>
+
+      <div class="partnerships-label">Partnerships</div>
+      <div class="team-grid team-grid--partners">
+        <div class="team-card">
+          <img src="assets/img/team/estefania.jpeg" alt="Estefanía Anticona">
+          <h3>Estefanía Anticona</h3>
+          <span>Admissions Documentation Specialist</span>
+        </div>
+        <div class="team-card">
+          <img src="assets/img/team/Stefany.jpg" alt="Stefanny Rojas">
+          <h3>Stefanny Rojas</h3>
+          <span>English Programs Partner · UK</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <p class="eyebrow">Hablemos</p>
+      <h2 class="section-title">¿Listo para dar el primer paso?</h2>
+      <div class="gold-rule"></div>
+      <p class="lead">Agenda una sesión personalizada y cuéntanos tu objetivo.<br>Nosotros trazamos el camino.</p>
+      <div class="contact-btns">
+        <a class="btn-wa" href="https://wa.me/51949086668?text=Hola!%20Quiero%20información%20sobre%20sus%20servicios." target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 23.784l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a class="btn-mail" href="mailto:contactolilsinlondon@gmail.com">
+          ✉&nbsp; contactolilsinlondon@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lils.29/profilecard" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@lils.299" target="_blank">TikTok</a>
+      <a href="https://www.linkedin.com/in/lilianesantosvidal" target="_blank">LinkedIn</a>
+      <a href="index.html">Versión completa</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stat-item');
+    const countUp = (el) => {
+      const target = +el.dataset.target;
+      const span   = el.querySelector('.stat-count');
+      const step   = Math.ceil(target / 60);
+      let current  = 0;
+      const tick = () => {
+        current = Math.min(current + step, target);
+        span.textContent = current.toLocaleString('es');
+        if (current < target) requestAnimationFrame(tick);
+      };
+      tick();
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); io.unobserve(e.target); } });
+    }, { threshold: .4 });
+    counters.forEach(c => io.observe(c));
+
+    // Mobile drawer
+    const toggle  = document.getElementById('navToggle');
+    const drawer  = document.getElementById('navDrawer');
+    const close   = document.getElementById('navClose');
+
+    toggle.addEventListener('click', () => drawer.classList.add('open'));
+    close.addEventListener('click',  () => drawer.classList.remove('open'));
+
+    drawer.querySelectorAll('.drawer-link, a').forEach(a => {
+      a.addEventListener('click', () => drawer.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>
