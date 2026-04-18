@@ -820,7 +820,7 @@ section,
 }
 
 
-.hero img {
+.hero picture img {
   position: absolute;
   inset: 0;
   display: block;
@@ -1785,54 +1785,42 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
 
 
 
 
 
 .image-container {
-  display: flex;
-  width: 35%;
-  padding: 8em;
+  width: 100%;
+  padding: 0.5em 0;
+  margin-bottom: 1.5rem;
 }
 
 .image-container img {
-  max-width: 40%;
-  height: 50%;
-  transform: translate(70%, 0%);
+  display: block;
+  margin: 0 auto;
+  max-width: 520px;
+  width: 48%;
+  height: auto;
 }
 
-
-
+@media (max-width: 992px) {
+  .image-container img {
+    width: 30%;
+  }
+}
 
 @media (max-width: 768px) {
-  .image-container {
-    display: flex;
-    width: 100%;
-    padding: 11em;
-  }
-  
   .image-container img {
-    max-width: 90%;
-    height: 50%;
-    transform: translate(0%, -10%);
+    width: 38%;
+    max-width: 210px;
   }
 }
 
 @media (max-width: 480px) {
-  .image-container {
-    display: flex;
-    width: 100%;
-    padding: 11em;
-  }
-  
   .image-container img {
-    max-width: auto;
-    height: 40%;
-    transform: translate(0%, -10%);
+    width: 50%;
+    max-width: 170px;
   }
 }
 
