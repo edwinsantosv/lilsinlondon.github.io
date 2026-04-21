@@ -567,6 +567,111 @@
       .svc { border-right: none !important; }
     }
 
+    /* ── Press ───────────────────────────────── */
+    .press-section {
+      background: var(--black);
+      padding: 6rem 2rem;
+    }
+
+    .press-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .press-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .press-img-wrap img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+
+    .press-img-wrap:hover img { transform: scale(1.03); }
+
+    .press-label {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      background: var(--gold);
+      color: var(--black);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: .4rem .9rem;
+    }
+
+    .press-content .eyebrow { color: var(--gold); }
+
+    .press-content .section-title {
+      color: var(--cream);
+      max-width: 18ch;
+    }
+
+    .press-content .gold-rule { margin: 1.4rem 0; }
+
+    .press-content p {
+      color: rgba(247,244,239,.6);
+      font-size: .95rem;
+      font-weight: 300;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .press-highlights {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .press-highlights li {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .85rem;
+      color: rgba(247,244,239,.75);
+      font-weight: 400;
+      margin-bottom: .7rem;
+    }
+
+    .press-highlights li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .btn-press {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .9rem 2.2rem;
+      background: var(--gold);
+      color: var(--black);
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: background .2s, transform .2s;
+    }
+
+    .btn-press:hover { background: var(--gold-light); transform: translateY(-2px); color: var(--black); }
+
+    @media (max-width: 900px) {
+      .press-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .press-img-wrap img { height: 280px; }
+    }
+
     /* ── Team ────────────────────────────────── */
     .team-section { background: var(--cream-dark); }
 
@@ -838,6 +943,33 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- Press -->
+  <section class="press-section">
+    <div class="press-inner">
+
+      <div class="press-img-wrap">
+        <img src="assets/img/Lils-in-London-news-main-image.jpg" alt="The Admissions Lab en Loughborough University">
+        <span class="press-label">Noticia destacada</span>
+      </div>
+
+      <div class="press-content">
+        <p class="eyebrow">Prensa</p>
+        <h2 class="section-title">Reconocimiento internacional</h2>
+        <div class="gold-rule"></div>
+        <p>Loughborough University, mi alma mater en el Reino Unido, compartió la historia detrás del inicio de este proyecto, destacando nuestro compromiso con la excelencia académica.</p>
+        <ul class="press-highlights">
+          <li>Reconocimiento oficial de la universidad</li>
+          <li>Validación de nuestros servicios de asesoría</li>
+          <li>Compromiso con la excelencia académica</li>
+        </ul>
+        <a class="btn-press" href="https://www.lboro.ac.uk/alumni/news/2025/july/lils-in-london/" target="_blank">
+          Leer artículo completo →
+        </a>
+      </div>
+
     </div>
   </section>
 
