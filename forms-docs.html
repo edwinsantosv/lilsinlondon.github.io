@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario – Documentos de Postulación 📄</title>
+
+    <link rel="icon" href="assets/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/forms.css">
+</head>
+<body>
+    <!-- Dark Mode Toggle (hidden, kept for JS compatibility) -->
+    <button class="dark-mode-toggle" id="darkModeToggle" title="Cambiar modo">
+        <span class="icon">🌙</span>
+        <span class="text">Modo Noche</span>
+    </button>
+
+    <div class="form-container">
+        <h1>Asesoría en Documentos de Postulación 📄</h1>
+        <p>Cuéntanos sobre tu postulación y te ayudamos a crear documentos que realmente destaquen.</p>
+
+        <form id="applicationForm" action="https://edwinsantos.app.n8n.cloud/webhook/forms-docs-postulacion" method="POST" enctype="multipart/form-data">
+
+            <input type="hidden" id="asesorField" name="asesor_asignado" value="">
+            <input type="hidden" name="form_type" value="documentos_postulacion">
+
+            <!-- ── 1. Tipo de programa ─────────────────── -->
+            <div class="form-group">
+                <label for="programType">📚 ¿A qué tipo de programa aplicas?</label>
+                <select id="programType" name="programType" required>
+                    <option value="" disabled selected>-- Elige una opción --</option>
+                    <option value="Maestría">Posgrado (Maestría, Doctorado)</option>
+                    <option value="Pregrado">Pregrado (Licenciatura, Grado)</option>
+                </select>
+            </div>
+            <hr>
+
+            <!-- ── 2. Información Personal ────────────── -->
+            <div id="commonFields" style="display: none;">
+                <h3>👤 Información Personal</h3>
+                <div class="form-group">
+                    <label for="fullName">Nombre y apellido completo <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Ej: María García López" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">🎂 Edad <span class="required">*</span></label>
+                    <input type="number" id="age" name="age" placeholder="Ej: 25" min="16" max="100" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">📧 Correo electrónico <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="Ej: maria.garcia@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">📱 Teléfono / WhatsApp <span class="required">*</span></label>
+                    <div style="display: flex; gap: 10px;">
+                        <div class="country-code-container" style="width: 120px; flex-shrink: 0;">
+                            <select id="countryCode" name="countryCode" style="width: 100%; padding: 12px; border-radius:8px;" required>
+                                <option value="" disabled selected>-- Código --</option>
+                                <option value="+1">🇺🇸 +1 Estados Unidos</option>
+                                <option value="+52">🇲🇽 +52 México</option>
+                                <option value="+57">🇨🇴 +57 Colombia</option>
+                                <option value="+51">🇵🇪 +51 Perú</option>
+                                <option value="+56">🇨🇱 +56 Chile</option>
+                                <option value="+54">🇦🇷 +54 Argentina</option>
+                                <option value="+34">🇪🇸 +34 España</option>
+                                <option value="+44">🇬🇧 +44 Reino Unido</option>
+                                <option value="+49">🇩🇪 +49 Alemania</option>
+                                <option value="+33">🇫🇷 +33 Francia</option>
+                                <option value="+39">🇮🇹 +39 Italia</option>
+                                <option value="+31">🇳🇱 +31 Países Bajos</option>
+                                <option value="+46">🇸🇪 +46 Suecia</option>
+                                <option value="+47">🇳🇴 +47 Noruega</option>
+                                <option value="+45">🇩🇰 +45 Dinamarca</option>
+                                <option value="+41">🇨🇭 +41 Suiza</option>
+                                <option value="+43">🇦🇹 +43 Austria</option>
+                                <option value="+32">🇧🇪 +32 Bélgica</option>
+                                <option value="+351">🇵🇹 +351 Portugal</option>
+                                <option value="+353">🇮🇪 +353 Irlanda</option>
+                                <option value="+358">🇫🇮 +358 Finlandia</option>
+                                <option value="+7">🇷🇺 +7 Rusia</option>
+                                <option value="+86">🇨🇳 +86 China</option>
+                                <option value="+81">🇯🇵 +81 Japón</option>
+                                <option value="+82">🇰🇷 +82 Corea del Sur</option>
+                                <option value="+91">🇮🇳 +91 India</option>
+                                <option value="+61">🇦🇺 +61 Australia</option>
+                                <option value="+64">🇳🇿 +64 Nueva Zelanda</option>
+                                <option value="+55">🇧🇷 +55 Brasil</option>
+                                <option value="+58">🇻🇪 +58 Venezuela</option>
+                                <option value="+593">🇪🇨 +593 Ecuador</option>
+                                <option value="+595">🇵🇾 +595 Paraguay</option>
+                                <option value="+598">🇺🇾 +598 Uruguay</option>
+                                <option value="+591">🇧🇴 +591 Bolivia</option>
+                                <option value="+1-809">🇩🇴 +1-809 República Dominicana</option>
+                                <option value="+502">🇬🇹 +502 Guatemala</option>
+                                <option value="+503">🇸🇻 +503 El Salvador</option>
+                                <option value="+504">🇭🇳 +504 Honduras</option>
+                                <option value="+505">🇳🇮 +505 Nicaragua</option>
+                                <option value="+506">🇨🇷 +506 Costa Rica</option>
+                                <option value="+507">🇵🇦 +507 Panamá</option>
+                                <option value="+53">🇨🇺 +53 Cuba</option>
+                            </select>
+                        </div>
+                        <input type="tel" id="phone" name="phone" placeholder="Número de teléfono" style="flex: 1;" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nationality">🌎 Nacionalidad <span class="required">*</span></label>
+                    <input type="text" id="nationality" name="nationality" placeholder="Ej: Peruana, Colombiana, Mexicana" required>
+                </div>
+            </div>
+
+            <!-- ── 3a. Preguntas Posgrado ──────────────── -->
+            <div id="postgraduateQuestions" class="specific-questions">
+                <h3>🧑‍🏫 Perfil Académico – Posgrado</h3>
+                <div class="form-group">
+                    <label for="undergradMajor">Carrera de pregrado <span class="required">*</span></label>
+                    <input type="text" id="undergradMajor" name="undergradMajor" placeholder="Ej: Ingeniería Industrial, Derecho, Psicología" required>
+                </div>
+                <div class="form-group">
+                    <label for="undergradGpa">📊 Nota promedio de pregrado (GPA) <span class="required">*</span></label>
+                    <input type="text" id="undergradGpa" name="undergradGpa" placeholder="Ej: 17.5/20 o 3.8/4.0" required>
+                </div>
+                <div class="form-group">
+                    <label for="targetProgram">Programa / especialidad a la que aplicas <span class="required">*</span></label>
+                    <input type="text" id="targetProgram" name="targetProgram" placeholder="Ej: MSc Data Science, MBA, Maestría en Arquitectura" required>
+                </div>
+                <div class="form-group">
+                    <label for="workExperience">💼 Experiencia laboral relevante <span class="optional">(Opcional)</span></label>
+                    <textarea id="workExperience" name="workExperience" rows="4" placeholder="Ej: Analista de datos 2 años en empresa X, Coordinadora de proyectos sociales..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="distinctions">🏆 Distinciones académicas o reconocimientos <span class="optional">(Opcional)</span></label>
+                    <textarea id="distinctions" name="distinctions" rows="3" placeholder="Ej: Premio al mejor egresado, beca de excelencia, publicación académica..."></textarea>
+                </div>
+            </div>
+
+            <!-- ── 3b. Preguntas Pregrado ──────────────── -->
+            <div id="undergraduateQuestions" class="specific-questions">
+                <h3>🧑‍🎓 Perfil Académico – Pregrado</h3>
+                <div class="form-group">
+                    <label for="highSchool">Colegio de procedencia <span class="required">*</span></label>
+                    <input type="text" id="highSchool" name="highSchool" placeholder="Ej: Colegio San Agustín, Instituto Nacional" required>
+                </div>
+                <div class="form-group">
+                    <label for="highSchoolGpa">📊 Nota promedio de secundaria <span class="required">*</span></label>
+                    <input type="text" id="highSchoolGpa" name="highSchoolGpa" placeholder="Ej: 18/20 o 90/100" required>
+                </div>
+                <div class="form-group">
+                    <label>¿Tienes Bachillerato Internacional (IB)? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="hasIB" value="si" required> Sí</label>
+                        <label><input type="radio" name="hasIB" value="no"> No</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="intendedMajor">Carrera a la que deseas aplicar <span class="required">*</span></label>
+                    <input type="text" id="intendedMajor" name="intendedMajor" placeholder="Ej: Medicina, Ingeniería Civil, Arquitectura" required>
+                </div>
+                <div class="form-group">
+                    <label for="extracurricular">🎨 Actividades extracurriculares <span class="optional">(Opcional)</span></label>
+                    <textarea id="extracurricular" name="extracurricular" rows="3" placeholder="Ej: Deportes, voluntariado, música, clubes académicos..."></textarea>
+                </div>
+            </div>
+
+            <!-- ── 4. Documentos y Postulación ──────────── -->
+            <div id="finalFields" style="display: none;">
+                <h3>📝 Documentos que necesitas</h3>
+                <div class="form-group">
+                    <label>¿Qué documentos necesitas trabajar? <span class="required">*</span></label>
+                    <p style="font-size: 0.85rem; color: var(--text-quaternary); margin-bottom: 8px;">Puedes seleccionar más de uno.</p>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="docsNeeded[]" value="Carta de motivación / Personal Statement"> Carta de motivación / Personal Statement</label>
+                        <label><input type="checkbox" name="docsNeeded[]" value="Statement of Purpose (SoP)"> Statement of Purpose (SoP)</label>
+                        <label><input type="checkbox" name="docsNeeded[]" value="CV / Currículum Vitae"> CV / Currículum Vitae</label>
+                        <label><input type="checkbox" name="docsNeeded[]" value="Cartas de recomendación"> Cartas de recomendación</label>
+                        <label><input type="checkbox" name="docsNeeded[]" value="Research Proposal"> Research Proposal</label>
+                        <label><input type="checkbox" name="docsNeeded[]" value="Ensayo universitario (Common App / ucas)"> Ensayo universitario (Common App / UCAS)</label>
+                    </div>
+                </div>
+
+                <h3>🎯 Detalles de tu Postulación</h3>
+                <div class="form-group">
+                    <label for="targetUnis">Universidades objetivo (máx. 3) <span class="optional">(Opcional)</span></label>
+                    <textarea id="targetUnis" name="targetUnis" rows="3" placeholder="Ej: University of Manchester, Sciences Po, TU Berlín"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="targetCountries">Países de destino <span class="optional">(Opcional)</span></label>
+                    <input type="text" id="targetCountries" name="targetCountries" placeholder="Ej: Reino Unido, Francia, Alemania, Países Bajos">
+                </div>
+                <div class="form-group">
+                    <label for="applicationDeadline">📅 Fecha límite de postulación <span class="required">*</span></label>
+                    <input type="text" id="applicationDeadline" name="applicationDeadline" placeholder="Ej: Enero 2026, 15 de febrero 2026" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicationCount">¿A cuántos programas/universidades estás postulando? <span class="required">*</span></label>
+                    <input type="number" id="applicationCount" name="applicationCount" placeholder="Ej: 3" min="1" max="20" required>
+                </div>
+                <div class="form-group">
+                    <label>¿Ya tienes algún borrador de los documentos? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="hasDraft" value="si" required> Sí, tengo borradores</label>
+                        <label><input type="radio" name="hasDraft" value="parcialmente"> Tengo algo pero está incompleto</label>
+                        <label><input type="radio" name="hasDraft" value="no"> No, empezamos desde cero</label>
+                    </div>
+                </div>
+
+                <h3>✍️ Tu Historia</h3>
+                <div class="form-group">
+                    <label for="motivation">¿Por qué quieres estudiar este programa? <span class="optional">(Opcional)</span></label>
+                    <textarea id="motivation" name="motivation" rows="5" placeholder="Cuéntanos tu motivación principal. Esto nos ayuda a construir una narrativa auténtica y poderosa para tus documentos..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="uniquePoints">¿Qué te hace único como candidato? <span class="optional">(Opcional)</span></label>
+                    <textarea id="uniquePoints" name="uniquePoints" rows="5" placeholder="Experiencias, proyectos, habilidades o perspectivas que te diferencian de otros candidatos..."></textarea>
+                </div>
+
+                <h3>🗣️ Idiomas</h3>
+                <div class="form-group">
+                    <label for="englishLevel">Nivel de inglés <span class="required">*</span></label>
+                    <input type="text" id="englishLevel" name="englishLevel" placeholder="Ej: Básico, B2 Intermedio-Alto, C1 Avanzado, Nativo" required>
+                </div>
+                <div class="form-group">
+                    <label for="englishTest">Prueba de inglés (si tienes) <span class="optional">(Opcional)</span></label>
+                    <input type="text" id="englishTest" name="englishTest" placeholder="Ej: IELTS 7.0, TOEFL 105, Cambridge C1">
+                </div>
+
+                <h3>📎 Documentos existentes</h3>
+                <div class="form-group">
+                    <label for="files">Sube tus borradores o CV actual <span class="optional">(Opcional)</span></label>
+                    <p class="file-instructions">Máximo 5 archivos. Tamaño máximo por archivo: 10MB. Formatos: PDF, DOC, DOCX, TXT.</p>
+                    <input type="file" id="files" name="files[]" multiple accept=".pdf,.doc,.docx,.txt" maxlength="5">
+                    <div id="fileListContainer">
+                        <ul id="fileList" class="selected-files"></ul>
+                    </div>
+                </div>
+
+                <h3>❓ Consultas adicionales</h3>
+                <div class="form-group">
+                    <label for="otherQuery">¿Alguna otra duda o comentario? <span class="optional">(Opcional)</span></label>
+                    <textarea id="otherQuery" name="otherQuery" rows="4" placeholder="Escribe aquí cualquier duda adicional o contexto que quieras compartir..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-button">Enviar mi Solicitud 🚀</button>
+                <div id="form-message"></div>
+            </div>
+        </form>
+
+        <div class="logo-container footer-logo">
+            <img src="assets/img/nuevo_logo.png" alt="The Admissions Lab – By Lils in London" class="logo">
+        </div>
+    </div>
+
+    <div id="loadingModal" class="loading-overlay" role="status" aria-hidden="true" style="display: none;">
+        <div class="loading-card">
+            <div class="spinner" aria-hidden="true"></div>
+            <div class="loading-text">Enviando tu solicitud... Por favor espera.</div>
+        </div>
+    </div>
+
+    <script src="assets/js/forms-docs.js"></script>
+</body>
+</html>
