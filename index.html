@@ -450,6 +450,27 @@
     }
     .quote-toggle:hover { color: var(--black); }
 
+    .cases-grid.collapsed .case-card:nth-child(n+7) { display: none; }
+
+    .cases-more-wrap {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .cases-more-btn {
+      display: none;
+      padding: .75rem 2.2rem;
+      background: none;
+      border: 1.5px solid var(--black);
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .cases-more-btn:hover { background: var(--black); color: var(--cream); }
+
     /* ── Contact ─────────────────────────────── */
     .contact-section {
       background: var(--black);
@@ -961,6 +982,10 @@
         </div>
 
       </div>
+
+      <div class="cases-more-wrap">
+        <button class="cases-more-btn" id="casesMoreBtn">Ver más casos →</button>
+      </div>
     </div>
   </section>
 
@@ -1116,6 +1141,23 @@
     drawer.querySelectorAll('.drawer-link, a').forEach(a => {
       a.addEventListener('click', () => drawer.classList.remove('open'));
     });
+
+    // Cases grid "Ver más" — only shows button when there are more than 6 cards
+    const casesGrid = document.querySelector('.cases-grid');
+    const casesMoreBtn = document.getElementById('casesMoreBtn');
+    if (casesGrid && casesMoreBtn) {
+      const totalCards = casesGrid.querySelectorAll('.case-card').length;
+      if (totalCards > 6) {
+        casesGrid.classList.add('collapsed');
+        casesMoreBtn.style.display = 'inline-block';
+        let expanded = false;
+        casesMoreBtn.addEventListener('click', () => {
+          expanded = !expanded;
+          casesGrid.classList.toggle('collapsed', !expanded);
+          casesMoreBtn.textContent = expanded ? '← Ver menos' : 'Ver más casos →';
+        });
+      }
+    }
 
     // Quote expand toggle — only shows button when text is actually clamped
     document.querySelectorAll('.case-quote').forEach(quote => {
