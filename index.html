@@ -688,9 +688,74 @@
 
     .btn-press:hover { background: var(--gold-light); transform: translateY(-2px); color: var(--black); }
 
+    /* Carousel */
+    .press-carousel {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .press-track {
+      display: flex;
+      transition: transform .9s cubic-bezier(.65,.05,.36,1);
+      will-change: transform;
+    }
+    .press-slide {
+      flex: 0 0 100%;
+      min-width: 0;
+    }
+    .press-slide .press-inner {
+      max-width: none;
+      margin: 0;
+    }
+    .press-dots {
+      display: flex;
+      justify-content: center;
+      gap: .8rem;
+      margin-top: 3rem;
+    }
+    .press-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: rgba(247,244,239,.22);
+      cursor: pointer;
+      transition: background .3s ease, transform .3s ease, width .3s ease;
+    }
+    .press-dot.active {
+      background: var(--gold);
+      width: 30px;
+      border-radius: 5px;
+    }
+    .press-dot:hover { background: var(--gold-light); }
+    .press-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(28,28,28,.6);
+      border: 1px solid rgba(247,244,239,.15);
+      color: var(--cream);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s ease, border-color .25s ease;
+      z-index: 3;
+    }
+    .press-arrow:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .press-arrow.prev { left: -8px; }
+    .press-arrow.next { right: -8px; }
+
     @media (max-width: 900px) {
       .press-inner { grid-template-columns: 1fr; gap: 3rem; }
       .press-img-wrap img { height: 280px; }
+      .press-arrow { display: none; }
     }
 
     /* ── Team ────────────────────────────────── */
@@ -998,28 +1063,66 @@
     </div>
   </section>
 
-  <!-- Press -->
+  <!-- Press · Carrusel -->
   <section class="press-section">
-    <div class="press-inner">
+    <div class="press-carousel" id="pressCarousel">
 
-      <div class="press-img-wrap">
-        <img src="assets/img/Lils-in-London-news-main-image.jpg" alt="The Admissions Lab en Loughborough University">
-        <span class="press-label">Noticia destacada</span>
+      <button class="press-arrow prev" id="pressPrev" aria-label="Anterior">‹</button>
+      <button class="press-arrow next" id="pressNext" aria-label="Siguiente">›</button>
+
+      <div class="press-track" id="pressTrack">
+
+        <article class="press-slide">
+          <div class="press-inner">
+            <div class="press-img-wrap">
+              <img src="assets/img/PUCP-AEG-alumni-del-mes.png" alt="Liliane Santos — Alumni AEG del mes, PUCP">
+              <span class="press-label">Alumni del mes</span>
+            </div>
+            <div class="press-content">
+              <p class="eyebrow">Prensa</p>
+              <h2 class="section-title">Reconocimiento PUCP</h2>
+              <div class="gold-rule"></div>
+              <p>La Asociación de Egresados y Graduados de la PUCP destacó a Liliane Santos, fundadora y CEO de The Admissions Lab, como Alumni del Mes por su trayectoria y por el impacto en cientos de aspirantes a becas y admisiones internacionales.</p>
+              <ul class="press-highlights">
+                <li>Reconocimiento oficial de la PUCP</li>
+                <li>Equipo mayoritariamente conformado por egresados PUCP</li>
+                <li>Cientos de personas acompañadas en procesos de admisión y becas</li>
+              </ul>
+              <a class="btn-press" href="https://aeg.pucp.edu.pe/alumni-aeg-del-mes/conoce-a-liliane-santos-fundadora-y-ceo-de-the-admissions-lab-by-lils-in-london/" target="_blank">
+                Leer artículo completo →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="press-slide">
+          <div class="press-inner">
+            <div class="press-img-wrap">
+              <img src="assets/img/Lils-in-London-news-main-image.jpg" alt="The Admissions Lab en Loughborough University">
+              <span class="press-label">Noticia destacada</span>
+            </div>
+            <div class="press-content">
+              <p class="eyebrow">Prensa</p>
+              <h2 class="section-title">Reconocimiento internacional</h2>
+              <div class="gold-rule"></div>
+              <p>Loughborough University, mi alma mater en el Reino Unido, compartió la historia detrás del inicio de este proyecto, destacando nuestro compromiso con la excelencia académica.</p>
+              <ul class="press-highlights">
+                <li>Reconocimiento oficial de la universidad</li>
+                <li>Validación de nuestros servicios de asesoría</li>
+                <li>Compromiso con la excelencia académica</li>
+              </ul>
+              <a class="btn-press" href="https://www.lboro.ac.uk/alumni/news/2025/july/lils-in-london/" target="_blank">
+                Leer artículo completo →
+              </a>
+            </div>
+          </div>
+        </article>
+
       </div>
 
-      <div class="press-content">
-        <p class="eyebrow">Prensa</p>
-        <h2 class="section-title">Reconocimiento internacional</h2>
-        <div class="gold-rule"></div>
-        <p>Loughborough University, mi alma mater en el Reino Unido, compartió la historia detrás del inicio de este proyecto, destacando nuestro compromiso con la excelencia académica.</p>
-        <ul class="press-highlights">
-          <li>Reconocimiento oficial de la universidad</li>
-          <li>Validación de nuestros servicios de asesoría</li>
-          <li>Compromiso con la excelencia académica</li>
-        </ul>
-        <a class="btn-press" href="https://www.lboro.ac.uk/alumni/news/2025/july/lils-in-london/" target="_blank">
-          Leer artículo completo →
-        </a>
+      <div class="press-dots" id="pressDots">
+        <button class="press-dot active" data-slide="0" aria-label="Ir a slide 1"></button>
+        <button class="press-dot" data-slide="1" aria-label="Ir a slide 2"></button>
       </div>
 
     </div>
@@ -1167,6 +1270,34 @@
         });
       }
     }
+
+    // Press carousel — autoplay + dots + arrows, pauses on hover
+    (() => {
+      const track = document.getElementById('pressTrack');
+      const dots  = document.querySelectorAll('#pressDots .press-dot');
+      const prev  = document.getElementById('pressPrev');
+      const next  = document.getElementById('pressNext');
+      if (!track || !dots.length) return;
+      const total = dots.length;
+      let idx = 0;
+      let timer;
+      const AUTO_MS = 6000;
+      const goTo = (i) => {
+        idx = (i + total) % total;
+        track.style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, j) => d.classList.toggle('active', j === idx));
+      };
+      const play  = () => { stop(); timer = setInterval(() => goTo(idx + 1), AUTO_MS); };
+      const stop  = () => { if (timer) { clearInterval(timer); timer = null; } };
+      dots.forEach((d, i) => d.addEventListener('click', () => { goTo(i); play(); }));
+      prev && prev.addEventListener('click', () => { goTo(idx - 1); play(); });
+      next && next.addEventListener('click', () => { goTo(idx + 1); play(); });
+      const carousel = document.getElementById('pressCarousel');
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', play);
+      document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
+      play();
+    })();
 
     // Quote expand toggle — only shows button when text is actually clamped
     document.querySelectorAll('.case-quote').forEach(quote => {
