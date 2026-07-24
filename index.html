@@ -752,10 +752,17 @@
     .press-arrow.prev { left: -8px; }
     .press-arrow.next { right: -8px; }
 
+    .press-track { touch-action: pan-y; cursor: grab; }
+    .press-track.dragging { cursor: grabbing; transition: none; }
+
     @media (max-width: 900px) {
       .press-inner { grid-template-columns: 1fr; gap: 3rem; }
       .press-img-wrap img { height: 280px; }
-      .press-arrow { display: none; }
+      .press-arrow { width: 38px; height: 38px; font-size: 1rem; }
+      .press-arrow.prev { left: 4px; }
+      .press-arrow.next { right: 4px; }
+      .press-dot { width: 12px; height: 12px; }
+      .press-dot.active { width: 34px; }
     }
 
     /* ── Team ────────────────────────────────── */
@@ -1296,6 +1303,40 @@
       carousel.addEventListener('mouseenter', stop);
       carousel.addEventListener('mouseleave', play);
       document.addEventListener('visibilitychange', () => document.hidden ? stop() : play());
+
+      // Swipe / drag support (touch + mouse)
+      let startX = 0, deltaX = 0, dragging = false, width = 0;
+      const onDown = (x) => {
+        dragging = true;
+        startX = x;
+        deltaX = 0;
+        width = track.clientWidth || 1;
+        track.classList.add('dragging');
+        stop();
+      };
+      const onMove = (x) => {
+        if (!dragging) return;
+        deltaX = x - startX;
+        track.style.transform = `translateX(calc(-${idx * 100}% + ${deltaX}px))`;
+      };
+      const onUp = () => {
+        if (!dragging) return;
+        dragging = false;
+        track.classList.remove('dragging');
+        const threshold = Math.min(120, width * 0.15);
+        if (deltaX < -threshold)      goTo(idx + 1);
+        else if (deltaX >  threshold) goTo(idx - 1);
+        else                          goTo(idx);
+        play();
+      };
+      track.addEventListener('touchstart', (e) => onDown(e.touches[0].clientX), { passive: true });
+      track.addEventListener('touchmove',  (e) => onMove(e.touches[0].clientX), { passive: true });
+      track.addEventListener('touchend',   onUp);
+      track.addEventListener('touchcancel',onUp);
+      track.addEventListener('mousedown',  (e) => { onDown(e.clientX); e.preventDefault(); });
+      window.addEventListener('mousemove', (e) => onMove(e.clientX));
+      window.addEventListener('mouseup',   onUp);
+
       play();
     })();
 
