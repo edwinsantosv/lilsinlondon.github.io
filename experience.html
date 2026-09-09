@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Admissions Lab Experience — By Lils in London</title>
+  <meta name="description" content="The Admissions Lab Experience: una experiencia práctica y estratégica para estudiar en el extranjero con claridad, estructura y una mejor comprensión de tus posibilidades reales.">
+
+  <link rel="icon" href="assets/img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F7F4EF;
+      --cream-dark: #EDE8DF;
+      --black:      #1C1C1C;
+      --gold:       #C9A84C;
+      --gold-light: #E8D5A3;
+      --border:     #DDD8CF;
+      --white:      #FFFFFF;
+      --gray:       #6B6B6B;
+      --serif:      'Playfair Display', Georgia, serif;
+      --sans:       'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* ── Navigation ──────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 1.6rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .3s, padding .3s, box-shadow .3s;
+    }
+    .nav.scrolled {
+      background: var(--cream);
+      padding: 1rem 3rem;
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .nav-brand span { color: var(--gold); }
+    .nav-back {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      transition: color .2s;
+    }
+    .nav-back:hover { color: var(--gold); }
+    .nav-cta {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .6rem 1.5rem;
+      border: 1.5px solid var(--black);
+      transition: background .2s, color .2s;
+    }
+    .nav-cta:hover { background: var(--black); color: var(--cream); }
+
+    /* ── Hero ────────────────────────────────── */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 6rem;
+      position: relative;
+      background: var(--cream);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+    .hero-eyebrow {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 1.6rem;
+      max-width: 18ch;
+    }
+    .hero-subtitle {
+      font-size: clamp(.95rem, 1.4vw, 1.1rem);
+      color: var(--gray);
+      font-weight: 300;
+      max-width: 52ch;
+      margin: 0 auto 1.4rem;
+      line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.4rem;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      padding: .9rem 2.4rem;
+      background: var(--black);
+      color: var(--cream);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: background .25s, transform .25s;
+    }
+    .btn-dark:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+
+    .btn-text {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--black);
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .btn-text:hover { color: var(--gold); }
+
+    /* ── Shared ──────────────────────────────── */
+    .section { padding: 7rem 2rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .9rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 1.2rem;
+    }
+    .gold-rule {
+      width: 44px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.4rem 0;
+    }
+    .lead {
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 56ch;
+    }
+
+    /* ── Who is it for ───────────────────────── */
+    .for-section { background: var(--white); }
+    .checklist {
+      list-style: none;
+      margin-top: 2.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2.5rem;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      font-size: .98rem;
+      color: var(--black);
+      line-height: 1.6;
+    }
+    .checklist li::before {
+      content: '✔';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Differentiators ─────────────────────── */
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-left: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      margin-top: 2.4rem;
+    }
+    .diff-card {
+      padding: 2.4rem 2.2rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .diff-card .num {
+      font-family: var(--serif);
+      font-size: .85rem;
+      color: var(--gold);
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .diff-card h3 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: .7rem;
+    }
+    .diff-card p {
+      font-size: .92rem;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    /* ── How it works ────────────────────────── */
+    .how-section { background: var(--black); color: var(--cream); }
+    .how-section .section-title { color: var(--white); }
+    .how-section .lead { color: rgba(247,244,239,.6); }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.8rem;
+    }
+    .how-step { position: relative; }
+    .how-step .step-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .how-step h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--white);
+      margin-bottom: .7rem;
+    }
+    .how-step p {
+      font-size: .9rem;
+      color: rgba(247,244,239,.55);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    /* ── Takeaways ───────────────────────────── */
+    .take-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem 2.5rem;
+      margin-top: 2.2rem;
+    }
+    .take-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+    .take-item .mark {
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .take-item p {
+      font-size: .95rem;
+      line-height: 1.55;
+    }
+
+    /* ── Authors ─────────────────────────────── */
+    .authors-section { background: var(--white); }
+    .authors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2.6rem;
+    }
+    .author-card { text-align: center; }
+    .author-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top center;
+      margin-bottom: 1.2rem;
+    }
+    .author-card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: .3rem;
+    }
+    .author-card span {
+      font-size: .8rem;
+      color: var(--gray);
+      letter-spacing: .04em;
+    }
+
+    /* ── Final CTA ───────────────────────────── */
+    .final-cta {
+      background: var(--black);
+      color: var(--cream);
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+    .final-cta .section-title { color: var(--white); max-width: 20ch; margin: 0 auto 1.2rem; }
+    .final-cta .lead { color: rgba(247,244,239,.6); margin: 0 auto 2.4rem; }
+    .price-badge {
+      display: inline-block;
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+      padding: .5rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Footer ──────────────────────────────── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 1.8rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: .82rem;
+      color: rgba(247,244,239,.4);
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-links { display: flex; gap: 1.8rem; }
+    .footer-links a {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(247,244,239,.35);
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── Responsive ──────────────────────────── */
+    @media (max-width: 768px) {
+      .nav { padding: 1.2rem 1.5rem; }
+      .nav.scrolled { padding: .9rem 1.5rem; }
+      .nav-back { display: none; }
+      .checklist, .diff-grid, .take-grid, .authors-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+      .section { padding: 5rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">The Admissions <span>Lab</span></div>
+    <a class="nav-back" href="index.html">← Volver al inicio</a>
+    <a class="nav-cta" href="forms-experience.html">Reservar mi cupo</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <p class="hero-eyebrow">The Admissions Lab Experience</p>
+    <h1 class="hero-title">Mucho más que una postulación.</h1>
+    <p class="hero-subtitle">Una experiencia práctica y estratégica para quienes quieren estudiar en el extranjero con claridad, estructura y una mejor comprensión de sus posibilidades reales.</p>
+    <p class="hero-subtitle" style="margin-top:-.6rem;">No se trata solo de aplicar. Se trata de entender qué oportunidades hacen sentido para tu perfil, qué tan competitivo eres realmente y cómo construir una estrategia alineada a tus objetivos.</p>
+    <div class="hero-actions">
+      <a class="btn-dark" href="forms-experience.html">Quiero unirme a la próxima edición</a>
+      <a class="btn-text" href="#que-es">Conocer la experiencia →</a>
+    </div>
+  </section>
+
+  <!-- ¿Para quién es? -->
+  <section class="section for-section" id="para-quien">
+    <div class="container">
+      <p class="eyebrow">¿Para quién es?</p>
+      <h2 class="section-title">¿Esta experiencia es para ti?</h2>
+      <div class="gold-rule"></div>
+      <p class="lead">Diseñada para personas que quieren estudiar en el extranjero, pero sienten que necesitan más claridad, dirección y estrategia antes de dar el siguiente paso.</p>
+      <ul class="checklist">
+        <li>Quieres estudiar una maestría o programa internacional</li>
+        <li>Estás explorando becas, pero no sabes cuáles realmente encajan contigo</li>
+        <li>No sabes qué tan competitivo es tu perfil</li>
+        <li>Sientes que hay demasiada información y no sabes por dónde empezar</li>
+        <li>Quieres tomar decisiones estratégicas y evitar errores comunes en el proceso</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Qué la hace diferente -->
+  <section class="section" id="que-es">
+    <div class="container">
+      <p class="eyebrow">¿Qué hace diferente esta experiencia?</p>
+      <h2 class="section-title">No es un workshop tradicional</h2>
+      <div class="gold-rule"></div>
+      <p class="lead">No creemos en sesiones donde solo recibes información. Creemos en experiencias donde aprendes de forma inmersiva, construyes, analizas y tomas decisiones con claridad.</p>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <span class="num">01</span>
+          <h3>Estrategia</h3>
+          <p>Comprende cómo funciona realmente el ecosistema de becas y admisiones internacionales.</p>
+        </div>
+        <div class="diff-card">
+          <span class="num">02</span>
+          <h3>Exploración activa</h3>
+          <p>Identifica oportunidades alineadas a tu perfil de manera práctica y guiada.</p>
+        </div>
+        <div class="diff-card">
+          <span class="num">03</span>
+          <h3>Data &amp; visión realista</h3>
+          <p>Entiende patrones, tendencias y criterios que suelen influir en los procesos de selección.</p>
+        </div>
+        <div class="diff-card">
+          <span class="num">04</span>
+          <h3>Roadmapping</h3>
+          <p>Una hoja de ruta clara para definir y concretar tus próximos pasos hacia los programas de tu elección.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="section how-section" id="como-funciona">
+    <div class="container">
+      <p class="eyebrow">Tu experiencia dentro del Lab</p>
+      <h2 class="section-title">¿Cómo funciona?</h2>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <h3>Admissions Profile Assessment</h3>
+          <p>Antes del encuentro, completarás un assessment estratégico para evaluar tu perfil, comprender tus objetivos y definir la etapa de postulación en la que te encuentras.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <h3>The Admissions Lab Experience</h3>
+          <p>Una sesión inmersiva donde trabajarás activamente en identificar oportunidades, entender el panorama de becas y construir mayor claridad sobre tu proceso.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <h3>Personalized Admissions Kit</h3>
+          <p>Al finalizar, recibirás recursos diseñados para ayudarte a organizar tu estrategia y próximos pasos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué te llevas -->
+  <section class="section" id="que-te-llevas">
+    <div class="container">
+      <p class="eyebrow">¿Qué te llevas?</p>
+      <h2 class="section-title">Al terminar esta experiencia tendrás</h2>
+      <div class="gold-rule"></div>
+      <div class="take-grid">
+        <div class="take-item"><span class="mark">✔</span><p>Mayor claridad sobre tus posibilidades reales</p></div>
+        <div class="take-item"><span class="mark">✔</span><p>Una visión más estratégica sobre becas y oportunidades internacionales</p></div>
+        <div class="take-item"><span class="mark">✔</span><p>Un mejor entendimiento de tu perfil competitivo</p></div>
+        <div class="take-item"><span class="mark">✔</span><p>Un roadmap inicial para tu proceso de postulación</p></div>
+        <div class="take-item" style="grid-column: 1 / -1;"><span class="mark">✔</span><p>Herramientas exclusivas de The Admissions Lab</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Autores -->
+  <section class="section authors-section" id="autores">
+    <div class="container">
+      <p class="eyebrow">Diferencial</p>
+      <h2 class="section-title">Creado por quienes también vivieron el proceso</h2>
+      <div class="gold-rule"></div>
+      <p class="lead">Diseñada por dos profesionales egresadas de programas de máster en London, UK, que han vivido el proceso de postulación internacional y acompañado a perfiles diversos en su camino hacia estudios en el extranjero. Porque sabemos que estudiar afuera no solo requiere motivación: requiere estrategia.</p>
+      <div class="authors-grid">
+        <div class="author-card">
+          <img src="assets/img/team/liliane.jpeg" alt="Liliane Santos">
+          <h3>Liliane Santos</h3>
+          <span>Founder &amp; CEO</span>
+        </div>
+        <div class="author-card">
+          <img src="assets/img/team/estefania.jpeg" alt="Estefanía Anticona">
+          <h3>Estefanía Anticona</h3>
+          <span>Admissions Documentation Specialist</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="reservar">
+    <div class="container">
+      <span class="price-badge">Early Bird · S/210</span>
+      <h2 class="section-title">Tu próxima oportunidad puede empezar con claridad.</h2>
+      <p class="lead">Únete a la primera edición de The Admissions Lab Experience.</p>
+      <a class="btn-dark" href="forms-experience.html">Reservar mi cupo</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lils.29/profilecard" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@lils.299" target="_blank">TikTok</a>
+      <a href="https://www.linkedin.com/in/lilianesantosvidal" target="_blank">LinkedIn</a>
+      <a href="index.html">Inicio</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+  </script>
+</body>
+</html>
