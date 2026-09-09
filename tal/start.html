@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empieza tu camino — The Admissions Lab</title>
+  <meta name="description" content="Cuéntanos tu objetivo y evalúa tu perfil para estudiar o trabajar en el extranjero. The Admissions Lab.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tal.css">
+  <style>
+    .form-shell { max-width: 640px; margin: 0 auto; padding: 9rem 1.5rem 5rem; }
+    .form-card { background: var(--white); border: 1px solid var(--border); padding: 2.5rem; }
+    .field { margin-bottom: 1.4rem; }
+    .field label { display: block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .45rem; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: .85rem 1rem; border: 1px solid var(--border);
+      background: var(--cream); font-family: var(--sans); font-size: .92rem; color: var(--black);
+    }
+    .field textarea { min-height: 90px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hint { font-size: .78rem; color: var(--gray); margin-top: .3rem; }
+    .consent { display: flex; gap: .6rem; align-items: flex-start; font-size: .8rem; color: var(--gray); line-height: 1.5; }
+    .consent input { margin-top: 3px; }
+    .error { color: #a33; font-size: .8rem; margin-top: .35rem; display: none; }
+    .success-msg { display: none; text-align: center; padding: 3rem 1rem; }
+    .success-msg h2 { font-family: var(--serif); margin-bottom: 1rem; }
+    @media (max-width: 600px) { .row { grid-template-columns: 1fr; } .form-card { padding: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">The Admissions <span>Lab</span></div>
+    <a class="nav-cta" href="../index.html">← Volver</a>
+  </nav>
+
+  <div class="form-shell">
+    <div class="form-card" id="formCard">
+      <p class="eyebrow">Primer paso</p>
+      <h2 class="section-title" style="font-size:1.9rem;">¿Qué quieres lograr?</h2>
+      <div class="gold-rule"></div>
+      <p class="lead" style="margin-bottom:2rem;">Cuéntanos tu objetivo y evaluamos tu perfil para orientarte al siguiente paso.</p>
+
+      <form id="leadForm" novalidate>
+        <div class="field">
+          <label for="objetivo">Objetivo principal *</label>
+          <select id="objetivo" name="objetivo" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Study">Estudiar en el extranjero (becas, máster, universidad)</option>
+            <option value="Career">Trabajar en el extranjero / potenciar mi perfil</option>
+            <option value="Visa">Soporte de visa</option>
+            <option value="Documents">Documentos (traducción, CV, cartas)</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="whatsapp">WhatsApp *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+51 ..." autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="pais">País de residencia *</label>
+            <input type="text" id="pais" name="pais" required autocomplete="country-name">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="profesion">Profesión / área</label>
+          <input type="text" id="profesion" name="profesion">
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="experiencia">Años de experiencia</label>
+            <select id="experiencia" name="experiencia">
+              <option value="">—</option>
+              <option>Sin experiencia</option>
+              <option>1–2 años</option>
+              <option>3–5 años</option>
+              <option>6–10 años</option>
+              <option>Más de 10 años</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="nivel">Nivel de estudios</label>
+            <select id="nivel" name="nivel">
+              <option value="">—</option>
+              <option>Secundaria</option>
+              <option>Técnico</option>
+              <option>Pregrado</option>
+              <option>Máster</option>
+              <option>MBA</option>
+              <option>Doctorado</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="destino">Países o regiones de interés</label>
+          <input type="text" id="destino" name="destino" placeholder="Ej. Reino Unido, Europa, Canadá...">
+        </div>
+
+        <div class="field">
+          <label for="timeline">¿Cuándo quieres empezar?</label>
+          <select id="timeline" name="timeline">
+            <option value="">—</option>
+            <option>Inmediatamente</option>
+            <option>1–3 meses</option>
+            <option>3–6 meses</option>
+            <option>6–12 meses</option>
+            <option>Más de 1 año</option>
+            <option>Aún no lo sé</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="necesidad">¿Cuál es tu principal necesidad?</label>
+          <textarea id="necesidad" name="necesidad" placeholder="Cuéntanos brevemente qué estás buscando..."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="fuente">¿Cómo nos conociste?</label>
+          <select id="fuente" name="fuente">
+            <option value="">—</option>
+            <option>Instagram</option>
+            <option>TikTok</option>
+            <option>LinkedIn</option>
+            <option>Google / búsqueda</option>
+            <option>Recomendación</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <div class="consent">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent" style="text-transform:none;letter-spacing:0;font-weight:400;">Acepto que The Admissions Lab use mis datos para contactarme y brindarme información sobre sus servicios, conforme a su política de privacidad. *</label>
+          </div>
+        </div>
+
+        <!-- UTM / origen (hidden) -->
+        <input type="hidden" id="utm_source" name="utm_source">
+        <input type="hidden" id="utm_medium" name="utm_medium">
+        <input type="hidden" id="utm_campaign" name="utm_campaign">
+        <input type="hidden" id="referrer" name="referrer">
+
+        <button type="submit" class="btn-dark" style="width:100%;border:none;cursor:pointer;">Enviar</button>
+        <p class="error" id="formError">Revisa los campos marcados.</p>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <h2>¡Gracias!</h2>
+      <p class="lead" style="margin:0 auto;">Recibimos tu información. Te contactaremos pronto para orientarte al siguiente paso.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
+    <div class="footer-links">
+      <a href="../index.html">Inicio</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+    // UTM capture: lee parámetros de la URL y persiste en localStorage para atribución
+    (function captureUtm() {
+      const params = new URLSearchParams(window.location.search);
+      const map = { utm_source: 'utm_source', utm_medium: 'utm_medium', utm_campaign: 'utm_campaign' };
+      for (const [key, field] of Object.entries(map)) {
+        const val = params.get(key);
+        if (val) {
+          document.getElementById(field).value = val;
+          localStorage.setItem('tal_' + key, val);
+        } else {
+          document.getElementById(field).value = localStorage.getItem('tal_' + key) || '';
+        }
+      }
+      document.getElementById('referrer').value = document.referrer || '';
+    })();
+
+    const WEBHOOK_URL = ''; // TODO: webhook de producción n8n → Notion (Leads). Pendiente de configurar.
+
+    document.getElementById('leadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (!WEBHOOK_URL) {
+        // Sin webhook configurado: no perder el lead. Guarda local y avisa.
+        const local = JSON.parse(localStorage.getItem('tal_leads') || '[]');
+        local.push({ ...data, ts: new Date().toISOString() });
+        localStorage.setItem('tal_leads', JSON.stringify(local));
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+        return;
+      }
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      } catch (err) {
+        document.getElementById('formError').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

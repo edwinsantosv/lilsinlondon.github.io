@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorar una alianza — TAL Partners</title>
+  <meta name="description" content="Formulario institucional para universidades, escuelas, embajadas y organizaciones interesadas en alianzas con The Admissions Lab.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tal.css">
+  <style>
+    .form-shell { max-width: 640px; margin: 0 auto; padding: 9rem 1.5rem 5rem; }
+    .form-card { background: var(--white); border: 1px solid var(--border); padding: 2.5rem; }
+    .field { margin-bottom: 1.4rem; }
+    .field label { display: block; font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .45rem; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: .85rem 1rem; border: 1px solid var(--border);
+      background: var(--cream); font-family: var(--sans); font-size: .92rem; color: var(--black);
+    }
+    .field textarea { min-height: 90px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .consent { display: flex; gap: .6rem; align-items: flex-start; font-size: .8rem; color: var(--gray); line-height: 1.5; }
+    .consent input { margin-top: 3px; }
+    .success-msg { display: none; text-align: center; padding: 3rem 1rem; }
+    .success-msg h2 { font-family: var(--serif); margin-bottom: 1rem; }
+    .error { color: #a33; font-size: .8rem; margin-top: .35rem; display: none; }
+    @media (max-width: 600px) { .row { grid-template-columns: 1fr; } .form-card { padding: 1.6rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">TAL <span>Partners</span></div>
+    <a class="nav-cta" href="partners.html">← Volver</a>
+  </nav>
+
+  <div class="form-shell">
+    <div class="form-card" id="formCard">
+      <p class="eyebrow">B2B</p>
+      <h2 class="section-title" style="font-size:1.9rem;">Exploremos una alianza.</h2>
+      <div class="gold-rule"></div>
+      <p class="lead" style="margin-bottom:2rem;">Déjanos tus datos institucionales y te contactamos para una primera conversación.</p>
+
+      <form id="partnerForm" novalidate>
+        <div class="field">
+          <label for="organizacion">Organización / institución *</label>
+          <input type="text" id="organizacion" name="organizacion" required>
+        </div>
+        <div class="field">
+          <label for="tipo">Tipo de organización *</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Selecciona</option>
+            <option>Universidad</option>
+            <option>Escuela / colegio</option>
+            <option>Embajada / consulado</option>
+            <option>Institución educativa</option>
+            <option>Organización / ONG</option>
+            <option>Empresa</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="contacto">Persona de contacto *</label>
+            <input type="text" id="contacto" name="contacto" required>
+          </div>
+          <div class="field">
+            <label for="cargo">Cargo</label>
+            <input type="text" id="cargo" name="cargo">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="email">Email institucional *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="pais">País</label>
+            <input type="text" id="pais" name="pais">
+          </div>
+        </div>
+        <div class="field">
+          <label for="interes">Tipo de colaboración de interés</label>
+          <select id="interes" name="interes">
+            <option value="">—</option>
+            <option>Webinars</option>
+            <option>Contenido localizado</option>
+            <option>Captación de estudiantes</option>
+            <option>Eventos</option>
+            <option>Market insights</option>
+            <option>Ambassadors</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos brevemente qué tienes en mente..."></textarea>
+        </div>
+        <div class="field">
+          <div class="consent">
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent" style="text-transform:none;letter-spacing:0;font-weight:400;">Acepto que The Admissions Lab use estos datos para gestionar la solicitud de alianza. *</label>
+          </div>
+        </div>
+        <input type="hidden" name="lead_type" value="B2B">
+        <button type="submit" class="btn-dark" style="width:100%;border:none;cursor:pointer;">Enviar</button>
+        <p class="error" id="formError">Revisa los campos marcados.</p>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <h2>¡Gracias!</h2>
+      <p class="lead" style="margin:0 auto;">Recibimos tu solicitud. Te contactaremos para coordinar la primera conversación.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
+    <div class="footer-links">
+      <a href="../index.html">Inicio</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+
+    const WEBHOOK_URL = ''; // TODO: webhook n8n → Notion (Leads B2B diferenciados). Pendiente.
+
+    document.getElementById('partnerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (!WEBHOOK_URL) {
+        const local = JSON.parse(localStorage.getItem('tal_partner_leads') || '[]');
+        local.push({ ...data, ts: new Date().toISOString() });
+        localStorage.setItem('tal_partner_leads', JSON.stringify(local));
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+        return;
+      }
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        document.getElementById('formCard').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      } catch (err) {
+        document.getElementById('formError').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

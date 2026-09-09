@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAL Community — The Abroad Club</title>
+  <meta name="description" content="TAL Community: oportunidades, Q&A, masterclasses, Application Labs, alumni y guías para impulsar tu camino internacional. Únete a la lista de espera.">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tal.css">
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">TAL <span>Community</span></div>
+    <ul class="nav-links">
+      <li><a href="#valor">Valor</a></li>
+      <li><a href="#waitlist">Waitlist</a></li>
+    </ul>
+    <a class="nav-cta" href="#waitlist">Unirme</a>
+  </nav>
+
+  <section class="hero" id="hero">
+    <p class="hero-eyebrow">TAL Community · The Abroad Club</p>
+    <h1 class="hero-title">Tu comunidad para llegar más lejos.</h1>
+    <p class="hero-subtitle">Oportunidades, Q&A, masterclasses y Application Labs con personas que están en el mismo camino que tú.</p>
+    <div class="hero-actions">
+      <a class="btn-dark" href="#waitlist">Unirme a la lista de espera</a>
+    </div>
+  </section>
+
+  <section class="section" id="valor">
+    <div class="container">
+      <p class="eyebrow">Qué incluye</p>
+      <h2 class="section-title">Lo que encontrarás</h2>
+      <div class="gold-rule"></div>
+      <div class="two-col">
+        <div class="card"><h3>Oportunidades</h3><p>Becas, programas y ofertas internacionales curadas.</p></div>
+        <div class="card"><h3>Q&amp;A y masterclasses</h3><p>Sesiones en vivo con expertos y alumni.</p></div>
+        <div class="card"><h3>Application Labs</h3><p>Espacios prácticos para avanzar tu postulación.</p></div>
+        <div class="card"><h3>Alumni y accountability</h3><p>Red de apoyo y seguimiento entre pares.</p></div>
+        <div class="card"><h3>Guías</h3><p>Recursos evergreen para cada etapa del proceso.</p></div>
+        <div class="card"><h3>Membresía</h3><p>Acceso continuo y beneficios de la comunidad.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="waitlist">
+    <div class="container" style="text-align:center;">
+      <p class="eyebrow">Lanzamiento próximo</p>
+      <h2 class="section-title" style="margin:0 auto 1.4rem;">Sé de los primeros.</h2>
+      <p class="lead" style="margin:0 auto 2rem;">The Abroad Club abre pronto. Déjanos tu correo y te avisamos antes que a nadie.</p>
+      <form id="waitlistForm" style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+        <input type="email" id="wlEmail" required placeholder="tu@correo.com"
+          style="padding:.9rem 1.2rem;border:1px solid var(--border);background:var(--cream);font-family:var(--sans);font-size:.9rem;min-width:260px;">
+        <button type="submit" class="btn-dark" style="border:none;cursor:pointer;">Unirme</button>
+      </form>
+      <p id="wlMsg" style="margin-top:1rem;font-size:.85rem;color:var(--gold-light);display:none;">¡Listo! Te avisaremos pronto.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
+    <div class="footer-links">
+      <a href="../index.html">Inicio</a>
+      <a href="study.html">Study</a>
+      <a href="career.html">Career</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+    document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // TODO: conectar a webhook n8n → Notion (lead identificado como "Community")
+      document.getElementById('wlMsg').style.display = 'block';
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
