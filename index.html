@@ -10,23 +10,23 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* ── Reset ───────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #F7F4EF;
-      --cream-dark: #EDE8DF;
-      --black:      #1C1C1C;
-      --gold:       #C9A84C;
-      --gold-light: #E8D5A3;
-      --border:     #DDD8CF;
+      --cream:      #F3F2EE;
+      --cream-dark: #F0ECE1;
+      --black:      #4E382B;
+      --gold:       #7B5E47;
+      --gold-light: #C4A88F;
+      --border:     #E0D9CB;
       --white:      #FFFFFF;
-      --gray:       #6B6B6B;
-      --serif:      'Playfair Display', Georgia, serif;
-      --sans:       'Inter', system-ui, sans-serif;
+      --gray:       #383D39;
+      --serif:      'Libre Baskerville', Georgia, serif;
+      --sans:       'Plus Jakarta Sans', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -34,7 +34,7 @@
     body {
       font-family: var(--sans);
       background: var(--cream);
-      color: var(--black);
+      color: var(--gray);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -482,7 +482,7 @@
     .contact-section .eyebrow { color: var(--gold); }
     .contact-section .section-title { color: var(--cream); }
     .contact-section .gold-rule { margin: 1.4rem auto; }
-    .contact-section .lead { color: rgba(247,244,239,.6); margin: 0 auto 3.5rem; }
+    .contact-section .lead { color: rgba(243,242,238,.6); margin: 0 auto 3.5rem; }
 
     .contact-btns {
       display: flex;
@@ -511,7 +511,7 @@
       align-items: center;
       gap: .6rem;
       padding: 1rem 2.5rem;
-      border: 1.5px solid rgba(247,244,239,.25);
+      border: 1.5px solid rgba(243,242,238,.25);
       color: var(--cream);
       font-size: .76rem;
       font-weight: 400;
@@ -519,7 +519,7 @@
       text-transform: uppercase;
       transition: border-color .2s, background .2s;
     }
-    .btn-mail:hover { border-color: var(--gold); background: rgba(201,168,76,.1); color: var(--cream); }
+    .btn-mail:hover { border-color: var(--gold); background: rgba(123,94,71,.1); color: var(--cream); }
 
     /* ── Footer ──────────────────────────────── */
     footer {
@@ -536,7 +536,7 @@
     .footer-brand {
       font-family: var(--serif);
       font-size: .82rem;
-      color: rgba(247,244,239,.4);
+      color: rgba(243,242,238,.4);
     }
     .footer-brand span { color: var(--gold); }
 
@@ -548,7 +548,7 @@
       font-size: .7rem;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: rgba(247,244,239,.35);
+      color: rgba(243,242,238,.35);
       transition: color .2s;
     }
     .footer-links a:hover { color: var(--gold); }
@@ -641,7 +641,7 @@
     .press-content .gold-rule { margin: 1.4rem 0; }
 
     .press-content p {
-      color: rgba(247,244,239,.6);
+      color: rgba(243,242,238,.6);
       font-size: .95rem;
       font-weight: 300;
       line-height: 1.85;
@@ -658,7 +658,7 @@
       align-items: center;
       gap: .75rem;
       font-size: .85rem;
-      color: rgba(247,244,239,.75);
+      color: rgba(243,242,238,.75);
       font-weight: 400;
       margin-bottom: .7rem;
     }
@@ -720,7 +720,7 @@
       padding: 0;
       border: none;
       border-radius: 50%;
-      background: rgba(247,244,239,.22);
+      background: rgba(243,242,238,.22);
       cursor: pointer;
       transition: background .3s ease, transform .3s ease, width .3s ease;
     }
@@ -734,8 +734,8 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(28,28,28,.6);
-      border: 1px solid rgba(247,244,239,.15);
+      background: rgba(78,56,43,.6);
+      border: 1px solid rgba(243,242,238,.15);
       color: var(--cream);
       width: 44px;
       height: 44px;
@@ -897,7 +897,7 @@
 
   <!-- Hero -->
   <section class="hero" id="hero">
-    <img class="hero-logo" src="assets/img/nuevo_logo.png" alt="The Admissions Lab">
+    <img class="hero-logo" src="assets/img/brand/tal-logo-light-transparent.png" alt="The Admissions Lab">
     <h1 class="hero-title">Estudia en el extranjero.</h1>
     <p class="hero-subtitle">Asesorías personalizadas para estudiar en Europa, Asia, Australia, Estados Unidos y Canadá.</p>
     <div class="hero-actions">
