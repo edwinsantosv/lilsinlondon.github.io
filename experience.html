@@ -10,30 +10,27 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #F7F4EF;
-      --cream-dark: #EDE8DF;
-      --black:      #1C1C1C;
-      --gold:       #C9A84C;
-      --gold-light: #E8D5A3;
-      --border:     #DDD8CF;
+      --cream:      #F3F2EE;
+      --cream-dark: #F0ECE1;
+      --black:      #4E382B;
+      --gold:       #7B5E47;
+      --gold-light: #C4A88F;
+      --border:     #E0D9CB;
       --white:      #FFFFFF;
-      --gray:       #6B6B6B;
-      --serif:      'Playfair Display', Georgia, serif;
-      --sans:       'Inter', system-ui, sans-serif;
+      --gray:       #383D39;
+      --serif:      'Libre Baskerville', Georgia, serif;
+      --sans:       'Plus Jakarta Sans', system-ui, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
 
-    body {
-      font-family: var(--sans);
-      background: var(--cream);
-      color: var(--black);
+    1color: var(--gray);
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -262,7 +259,7 @@
     /* ── How it works ────────────────────────── */
     .how-section { background: var(--black); color: var(--cream); }
     .how-section .section-title { color: var(--white); }
-    .how-section .lead { color: rgba(247,244,239,.6); }
+    .how-section .lead { color: rgba(243,242,238,.6); }
     .how-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -287,7 +284,7 @@
     }
     .how-step p {
       font-size: .9rem;
-      color: rgba(247,244,239,.55);
+      color: rgba(243,242,238,.55);
       font-weight: 300;
       line-height: 1.75;
     }
@@ -354,7 +351,7 @@
       padding: 7rem 2rem;
     }
     .final-cta .section-title { color: var(--white); max-width: 20ch; margin: 0 auto 1.2rem; }
-    .final-cta .lead { color: rgba(247,244,239,.6); margin: 0 auto 2.4rem; }
+    .final-cta .lead { color: rgba(243,242,238,.6); margin: 0 auto 2.4rem; }
     .price-badge {
       display: inline-block;
       font-size: .72rem;
@@ -380,7 +377,7 @@
     .footer-brand {
       font-family: var(--serif);
       font-size: .82rem;
-      color: rgba(247,244,239,.4);
+      color: rgba(243,242,238,.4);
     }
     .footer-brand span { color: var(--gold); }
     .footer-links { display: flex; gap: 1.8rem; }
@@ -388,7 +385,7 @@
       font-size: .7rem;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: rgba(247,244,239,.35);
+      color: rgba(243,242,238,.35);
       transition: color .2s;
     }
     .footer-links a:hover { color: var(--gold); }

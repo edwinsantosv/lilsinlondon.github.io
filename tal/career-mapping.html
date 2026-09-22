@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Mapping — The Admissions Lab</title>
+  <meta name="description" content="Diagnóstico estratégico de empleabilidad internacional. Cuéntanos tu perfil y construimos tu ruta hacia oportunidades globales.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F3F2EE; --cream-dark: #F0ECE1;
+      --black: #4E382B; --gold: #7B5E47; --gold-light: #C4A88F;
+      --border: #E0D9CB; --white: #FFFFFF; --gray: #383D39;
+      --serif: 'Libre Baskerville', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--gray); line-height: 1.6; overflow-x: hidden; }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; background: var(--cream); box-shadow: 0 1px 0 var(--border); }
+    .nav-brand { font-family: var(--serif); font-size: .95rem; font-weight: 600; letter-spacing: .04em; color: var(--black); }
+    .nav-brand span { color: var(--gold); }
+    .nav-cta { font-size: .7rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: .6rem 1.4rem; border: 1.5px solid var(--black); color: var(--black); transition: background .2s, color .2s; }
+    .nav-cta:hover { background: var(--black); color: var(--cream); }
+
+    .shell { max-width: 760px; margin: 0 auto; padding: 8rem 1.5rem 5rem; }
+    .head { text-align: center; margin-bottom: 2.5rem; }
+    .eyebrow { font-size: .68rem; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+    .head h1 { font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700; color: var(--black); line-height: 1.15; margin-bottom: 1rem; }
+    .head p { font-size: .95rem; color: var(--gray); font-weight: 300; max-width: 52ch; margin: 0 auto; }
+
+    /* Progress */
+    .progress { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.6rem; }
+    .p-step { flex: 1; text-align: center; position: relative; }
+    .p-dot { width: 30px; height: 30px; margin: 0 auto .4rem; border-radius: 50%; background: var(--border); color: var(--gray); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 600; transition: background .3s; }
+    .p-step.active .p-dot { background: var(--black); color: var(--cream); }
+    .p-step.done .p-dot { background: var(--gold); color: var(--white); }
+    .p-label { font-size: .62rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--gray); }
+    .p-bar { position: absolute; top: 15px; left: 50%; width: 100%; height: 2px; background: var(--border); z-index: -1; }
+    .p-step:first-child .p-bar { display: none; }
+
+    .card { background: var(--white); border: 1px solid var(--border); padding: 2.2rem; }
+    .step { display: none; }
+    .step.active { display: block; animation: fade .3s ease; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .step-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--black); margin-bottom: 1.6rem; }
+
+    .field { margin-bottom: 1.25rem; }
+    .field label { display: block; font-size: .72rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--black); margin-bottom: .45rem; }
+    .field .req { color: #a33; }
+    .field input[type=text], .field input[type=email], .field input[type=tel], .field input[type=number], .field input[type=url], .field select, .field textarea {
+      width: 100%; padding: .8rem 1rem; border: 1px solid var(--border); background: var(--cream);
+      font-family: var(--sans); font-size: .92rem; color: var(--black);
+    }
+    .field textarea { min-height: 90px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); }
+    .hint { font-size: .76rem; color: var(--gray); margin-top: .3rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .cond { display: none; }
+    .cond.show { display: block; }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .chip { border: 1px solid var(--border); background: var(--cream); padding: .45rem .8rem; font-size: .8rem; cursor: pointer; border-radius: 999px; color: var(--gray); user-select: none; transition: all .15s; }
+    .chip.on { background: var(--black); border-color: var(--black); color: var(--cream); }
+    .chip.capped { opacity: .45; cursor: not-allowed; }
+    .file-wrap { border: 1.5px dashed var(--border); padding: 1.4rem; text-align: center; background: var(--cream); }
+    .file-wrap input { font-size: .85rem; }
+    .lang-row { display: grid; grid-template-columns: 1.2fr 1fr 1fr auto; gap: .6rem; align-items: center; margin-bottom: .6rem; }
+    .lang-row .rm { background: none; border: none; color: #a33; font-size: 1.1rem; cursor: pointer; padding: .2rem .5rem; }
+    .add-lang { background: none; border: 1.5px solid var(--gold); color: var(--gold); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: .55rem 1.1rem; cursor: pointer; }
+    .consent { display: flex; gap: .6rem; align-items: flex-start; font-size: .8rem; color: var(--gray); line-height: 1.5; }
+    .consent input { margin-top: 3px; }
+    .nav-btns { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.8rem; }
+    .btn { display: inline-block; padding: .9rem 2rem; font-size: .72rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; cursor: pointer; border: none; }
+    .btn-back { background: transparent; border: 1.5px solid var(--border); color: var(--gray); }
+    .btn-back:hover { border-color: var(--black); color: var(--black); }
+    .btn-next { background: var(--black); color: var(--cream); transition: background .2s, transform .2s; }
+    .btn-next:hover { background: var(--gold); transform: translateY(-1px); }
+    .err { color: #a33; font-size: .8rem; margin-top: .8rem; display: none; }
+    .success { display: none; text-align: center; padding: 4rem 1.5rem; }
+    .success h2 { font-family: var(--serif); font-size: 2rem; color: var(--black); margin-bottom: 1rem; }
+    .success p { max-width: 56ch; margin: 0 auto; color: var(--gray); }
+    footer { background: var(--black); padding: 1.6rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { font-family: var(--serif); font-size: .8rem; color: rgba(243,242,238,.5); }
+    .footer-brand span { color: var(--gold); }
+    .footer-links a { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(243,242,238,.45); }
+    @media (max-width: 640px) { .row, .lang-row { grid-template-columns: 1fr; } .card { padding: 1.5rem; } .nav { padding: 1rem 1.2rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-brand">The Admissions <span>Lab</span></div>
+    <a class="nav-cta" href="../index.html">← Volver</a>
+  </nav>
+
+  <div class="shell">
+    <div class="head">
+      <p class="eyebrow">Career Mapping · Fase 1</p>
+      <h1>Diagnostiquemos tu perfil internacional</h1>
+      <p>Responde estas preguntas y nuestro equipo analizará tu perfil, identificará mercados compatibles y construirá tu ruta internacional personalizada.</p>
+    </div>
+
+    <div class="progress" id="progressBar"></div>
+
+    <div class="card" id="formCard">
+      <form id="cmForm" novalidate>
+
+        <!-- STEP 1: Sobre ti -->
+        <section class="step active" data-step="1">
+          <h2 class="step-title">Sobre ti</h2>
+          <div class="field"><label for="fullName">Nombre completo <span class="req">*</span></label><input type="text" id="fullName" name="fullName" required autocomplete="name"></div>
+          <div class="row">
+            <div class="field"><label for="age">Edad <span class="req">*</span></label><input type="number" id="age" name="age" min="16" max="100" required></div>
+            <div class="field"><label for="nationality">Nacionalidad <span class="req">*</span></label><select id="nationality" name="nationality" class="country-select" required></select></div>
+          </div>
+          <div class="field"><label for="secondNat">¿Tienes una segunda nacionalidad? <span class="req">*</span></label>
+            <select id="secondNat" name="second_nationality" required onchange="toggleCond('secondNatDetail', this.value==='Sí')">
+              <option value="">Selecciona</option><option>Sí</option><option>No</option>
+            </select>
+          </div>
+          <div class="field cond" id="secondNatDetail"><label for="secondNatCountry">Segunda nacionalidad</label><select id="secondNatCountry" name="second_nationality_country" class="country-select"></select></div>
+          <div class="row">
+            <div class="field"><label for="resCountry">País de residencia actual <span class="req">*</span></label><select id="resCountry" name="residence_country" class="country-select" required></select></div>
+            <div class="field"><label for="resCity">Ciudad <span class="req">*</span></label><input type="text" id="resCity" name="residence_city" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="whatsapp">WhatsApp <span class="req">*</span></label><input type="tel" id="whatsapp" name="whatsapp" placeholder="+51 ..." required autocomplete="tel"></div>
+            <div class="field"><label for="email">Correo electrónico <span class="req">*</span></label><input type="email" id="email" name="email" required autocomplete="email"></div>
+          </div>
+        </section>
+
+        <!-- STEP 2: Tu objetivo -->
+        <section class="step" data-step="2">
+          <h2 class="step-title">Tu objetivo</h2>
+          <div class="field"><label for="careerGoal">Objetivo profesional internacional <span class="req">*</span></label>
+            <select id="careerGoal" name="career_goal" required>
+              <option value="">Selecciona</option>
+              <option>Trabajar en otro país</option>
+              <option>Trabajo remoto internacional</option>
+              <option>Cambiar de área</option>
+              <option>Continuar en mi área actual</option>
+              <option>Explorar opciones</option>
+              <option>No estoy seguro/a</option>
+            </select>
+          </div>
+          <div class="field"><label for="targetRole">Área o puesto de interés <span class="req">*</span></label><input type="text" id="targetRole" name="target_role" placeholder="Ej. Marketing Digital, Project Management, Data Analytics" required></div>
+          <div class="field"><label for="stayArea">¿Quieres continuar en un área relacionada con tu experiencia actual? <span class="req">*</span></label>
+            <select id="stayArea" name="stay_area" required>
+              <option value="">Selecciona</option><option>Sí</option><option>No</option><option>Abierto a explorar otras áreas</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="field"><label for="seniority">Seniority objetivo</label>
+              <select id="seniority" name="seniority">
+                <option value="">Selecciona</option>
+                <option>Internship</option><option>Junior</option><option>Analyst</option>
+                <option>Specialist</option><option>Mid-level</option><option>Senior</option>
+                <option>Manager</option><option>Head/Lead</option><option>Director</option>
+                <option>No estoy seguro/a</option>
+              </select>
+            </div>
+            <div class="field"><label for="modality">Modalidad preferida</label>
+              <div class="chips" data-multi="modality" data-name="modality">
+                <span class="chip" data-val="Presencial">Presencial</span>
+                <span class="chip" data-val="Híbrida">Híbrida</span>
+                <span class="chip" data-val="Remota">Remota</span>
+                <span class="chip" data-val="Sin preferencia">Sin preferencia</span>
+              </div>
+            </div>
+          </div>
+          <div class="field"><label for="countries">Países donde te gustaría trabajar <span class="req">*</span> <span class="hint">(máximo 3)</span></label>
+            <div class="chips" id="countryChips" data-multi="countries" data-name="countries" data-max="3"></div>
+          </div>
+          <div class="field"><label for="openOther">¿Considerarías otros países si identificamos mejores oportunidades? <span class="req">*</span></label>
+            <select id="openOther" name="open_other_countries" required><option value="">Selecciona</option><option>Sí</option><option>No</option></select>
+          </div>
+          <div class="row">
+            <div class="field"><label for="timing">¿Cuándo deseas iniciar tu búsqueda? <span class="req">*</span></label>
+              <select id="timing" name="timing" required>
+                <option value="">Selecciona</option><option>Inmediatamente</option><option>En 3 meses</option>
+                <option>3–6 meses</option><option>6–12 meses</option><option>+1 año</option><option>Solo explorando</option>
+              </select>
+            </div>
+            <div class="field"><label for="moveTiming">¿Cuándo estarías dispuesto/a a mudarte?</label>
+              <select id="moveTiming" name="move_timing">
+                <option value="">Selecciona</option><option>Inmediatamente</option><option>1–3 meses</option>
+                <option>3–6 meses</option><option>6–12 meses</option><option>+12 meses</option><option>Solo remoto</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- STEP 3: Tu experiencia -->
+        <section class="step" data-step="3">
+          <h2 class="step-title">Tu experiencia</h2>
+          <div class="field"><label for="eduLevel">Nivel máximo de estudios <span class="req">*</span></label>
+            <select id="eduLevel" name="education_level" required>
+              <option value="">Selecciona</option><option>Secundaria</option><option>Técnico</option>
+              <option>Bachiller</option><option>Título</option><option>Maestría</option>
+              <option>Doctorado</option><option>Otro</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="field"><label for="degree">Carrera / especialidad <span class="req">*</span></label><input type="text" id="degree" name="degree" required></div>
+            <div class="field"><label for="university">Universidad / institución <span class="req">*</span></label><input type="text" id="university" name="university" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="eduCountry">País donde estudiaste <span class="req">*</span></label><select id="eduCountry" name="education_country" class="country-select" required></select></div>
+            <div class="field"><label for="eduYear">Año de finalización <span class="req">*</span></label><input type="number" id="eduYear" name="education_year" min="1950" max="2035" placeholder="Ej. 2020" required></div>
+          </div>
+          <div class="field"><label for="otherEdu">Otros estudios o certificaciones relevantes</label><textarea id="otherEdu" name="other_education" placeholder="Diplomados, especializaciones, cursos técnicos o acreditaciones."></textarea></div>
+
+          <div class="row">
+            <div class="field"><label for="expYears">Años de experiencia laboral total <span class="req">*</span></label>
+              <select id="expYears" name="experience_years" required>
+                <option value="">Selecciona</option><option>&lt;1</option><option>1–2</option>
+                <option>3–5</option><option>6–10</option><option>+10</option>
+              </select>
+            </div>
+            <div class="field"><label for="expAreaYears">Años en el área objetivo <span class="req">*</span></label>
+              <select id="expAreaYears" name="experience_area_years" required>
+                <option value="">Selecciona</option><option>Ninguna</option><option>&lt;1</option>
+                <option>1–2</option><option>3–5</option><option>6–10</option><option>+10</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="currentRole">Cargo actual o último <span class="req">*</span></label><input type="text" id="currentRole" name="current_role" required></div>
+            <div class="field"><label for="currentArea">Área principal de experiencia <span class="req">*</span></label><input type="text" id="currentArea" name="current_area" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="currentCompany">Empresa actual o última <span class="req">*</span></label><input type="text" id="currentCompany" name="current_company" required></div>
+            <div class="field"><label for="workingNow">¿Actualmente trabajas? <span class="req">*</span></label>
+              <select id="workingNow" name="working_now" required><option value="">Selecciona</option><option>Sí</option><option>No</option></select>
+            </div>
+          </div>
+          <div class="field"><label for="functions">Principales funciones y experiencia <span class="req">*</span></label><textarea id="functions" name="functions" placeholder="Responsabilidades, proyectos y alcance." required></textarea></div>
+          <div class="field"><label for="skills">Principales habilidades profesionales <span class="req">*</span></label><textarea id="skills" name="skills" placeholder="Ej. Project Management, ventas B2B, análisis de datos, gestión de clientes." required></textarea></div>
+          <div class="field"><label for="tools">Herramientas o softwares que manejas <span class="req">*</span></label><textarea id="tools" name="tools" placeholder="Ej. Excel, Power BI, Salesforce, HubSpot, SAP, SQL, Python, Figma." required></textarea></div>
+          <div class="field"><label for="hasCerts">¿Cuentas con certificaciones técnicas o profesionales?</label>
+            <select id="hasCerts" name="has_certifications" onchange="toggleCond('certsDetail', this.value==='Sí')">
+              <option value="">Selecciona</option><option>Sí</option><option>No</option>
+            </select>
+          </div>
+          <div class="field cond" id="certsDetail"><label for="certsText">Detalle de certificaciones</label><textarea id="certsText" name="certifications_detail"></textarea></div>
+        </section>
+
+        <!-- STEP 4: Idiomas y movilidad -->
+        <section class="step" data-step="4">
+          <h2 class="step-title">Idiomas y movilidad</h2>
+          <div class="field">
+            <label>Idiomas <span class="req">*</span></label>
+            <div id="langList"></div>
+            <button type="button" class="add-lang" onclick="addLang()">+ Agregar idioma</button>
+          </div>
+          <div class="field"><label for="workPermit">¿Tienes permiso legal para trabajar en otro país? <span class="req">*</span></label>
+            <select id="workPermit" name="work_permit" required onchange="toggleCond('workPermitDetail', this.value==='Sí')">
+              <option value="">Selecciona</option><option>Sí</option><option>No</option><option>No sé</option>
+            </select>
+          </div>
+          <div class="cond" id="workPermitDetail">
+            <div class="field"><label for="permitCountries">País(es) donde tienes autorización</label><div class="chips" data-multi="permit_countries" data-name="permit_countries"></div></div>
+            <div class="field"><label for="permitType">Tipo de permiso</label><input type="text" id="permitType" name="permit_type" placeholder="Ciudadanía, residencia, visa de trabajo, permiso de estudiante..."></div>
+          </div>
+          <div class="field"><label for="passport">¿Cuentas con pasaporte vigente? <span class="req">*</span></label>
+            <select id="passport" name="passport" required><option value="">Selecciona</option><option>Sí</option><option>No</option><option>En trámite</option></select>
+          </div>
+          <div class="field"><label for="hasVisa">¿Has tenido visa de trabajo, residencia o estudios?</label>
+            <select id="hasVisa" name="has_visa" onchange="toggleCond('visaDetail', this.value==='Sí')">
+              <option value="">Selecciona</option><option>Sí</option><option>No</option>
+            </select>
+          </div>
+          <div class="field cond" id="visaDetail"><label for="visaText">País y tipo de visa anterior</label><input type="text" id="visaText" name="previous_visa"></div>
+          <div class="field"><label for="visaReject">¿Has tenido algún rechazo de visa relevante?</label>
+            <select id="visaReject" name="visa_rejection" onchange="toggleCond('rejectDetail', this.value==='Sí')">
+              <option value="">Selecciona</option><option>Sí</option><option>No</option>
+            </select>
+          </div>
+          <div class="field cond" id="rejectDetail"><label for="rejectText">Detalle del rechazo</label><textarea id="rejectText" name="visa_rejection_detail"></textarea></div>
+        </section>
+
+        <!-- STEP 5: Tu perfil profesional -->
+        <section class="step" data-step="5">
+          <h2 class="step-title">Tu perfil profesional</h2>
+          <div class="field"><label for="linkedin">URL de LinkedIn</label><input type="url" id="linkedin" name="linkedin_url" placeholder="https://linkedin.com/in/..."></div>
+          <div class="field"><label for="linkedinStatus">¿Tienes LinkedIn actualizado?</label>
+            <select id="linkedinStatus" name="linkedin_status">
+              <option value="">Selecciona</option><option>Sí</option><option>Parcialmente</option><option>No</option><option>No tengo LinkedIn</option>
+            </select>
+          </div>
+          <div class="field"><label for="cvEnglish">¿Tienes un CV en inglés?</label>
+            <select id="cvEnglish" name="cv_in_english">
+              <option value="">Selecciona</option><option>Sí</option><option>No</option><option>Tengo uno, pero necesita actualizarlo</option>
+            </select>
+          </div>
+          <div class="field"><label for="cvFile">Adjuntar CV actual <span class="req">*</span></label>
+            <div class="file-wrap"><input type="file" id="cvFile" name="cv_file" accept=".pdf,.doc,.docx" required><div class="hint">PDF, DOC o DOCX</div></div>
+          </div>
+        </section>
+
+        <!-- STEP 6: Finalizar -->
+        <section class="step" data-step="6">
+          <h2 class="step-title">Finalizar</h2>
+          <div class="field"><label for="salary">Expectativa salarial aproximada</label><input type="text" id="salary" name="salary_expectation" placeholder="Rango mensual o anual + moneda"></div>
+          <div class="field"><label for="factors">Factores importantes al elegir una oportunidad</label>
+            <div class="chips" data-multi="factors" data-name="factors">
+              <span class="chip" data-val="Salario">Salario</span>
+              <span class="chip" data-val="Visa sponsorship">Visa sponsorship</span>
+              <span class="chip" data-val="Remoto">Remoto</span>
+              <span class="chip" data-val="Crecimiento">Crecimiento</span>
+              <span class="chip" data-val="Empresa internacional">Empresa internacional</span>
+              <span class="chip" data-val="Balance">Balance</span>
+              <span class="chip" data-val="Migración">Migración</span>
+              <span class="chip" data-val="Estabilidad">Estabilidad</span>
+              <span class="chip" data-val="Sector">Sector</span>
+              <span class="chip" data-val="Otro">Otro</span>
+            </div>
+          </div>
+          <div class="field"><label for="extra">Información adicional relevante</label><textarea id="extra" name="additional_info" placeholder="Cualquier situación que deba considerarse en el análisis."></textarea></div>
+          <div class="field">
+            <div class="consent">
+              <input type="checkbox" id="consent" name="consent" required>
+              <label for="consent" style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--gray);">Autorizo a The Admissions Lab a utilizar mi información exclusivamente para el Career Mapping y el servicio contratado, conforme a su política de privacidad. <span class="req">*</span></label>
+            </div>
+          </div>
+        </section>
+
+        <input type="hidden" id="utm_source" name="utm_source">
+        <input type="hidden" id="utm_medium" name="utm_medium">
+        <input type="hidden" id="utm_campaign" name="utm_campaign">
+        <input type="hidden" id="referrer" name="referrer">
+        <input type="hidden" name="form_type" value="career_mapping">
+
+        <p class="err" id="formError">Revisa los campos marcados en este paso.</p>
+        <div class="nav-btns">
+          <button type="button" class="btn btn-back" id="backBtn" onclick="goStep(-1)" style="visibility:hidden;">← Atrás</button>
+          <button type="button" class="btn btn-next" id="nextBtn" onclick="goStep(1)">Siguiente →</button>
+          <button type="submit" class="btn btn-next" id="submitBtn" style="display:none;">Enviar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="success" id="successMsg">
+      <h2>¡Listo! Ya recibimos tu información.</h2>
+      <p>Nuestro equipo utilizará tus respuestas y tu CV para analizar tu perfil, identificar mercados laborales compatibles y construir tu Career Mapping de manera personalizada.</p>
+      <p style="margin-top:1rem;">Recuerda que el análisis no se realiza de manera genérica: evaluaremos tu experiencia, formación, idiomas, objetivos profesionales y situación particular para construir una ruta internacional alineada contigo.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
+    <div class="footer-links"><a href="../index.html">Inicio</a></div>
+  </footer>
+
+  <script>
+    // ---------- Country list ----------
+    var COUNTRIES = ["Afganistán","Albania","Alemania","Andorra","Angola","Argentina","Armenia","Australia","Austria","Azerbaiyán","Bélgica","Bolivia","Bosnia y Herzegovina","Brasil","Bulgaria","Canadá","Chile","China","Colombia","Corea del Sur","Costa Rica","Croacia","Cuba","Dinamarca","Ecuador","Egipto","El Salvador","Emiratos Árabes Unidos","Eslovaquia","Eslovenia","España","Estados Unidos","Estonia","Filipinas","Finlandia","Francia","Georgia","Grecia","Guatemala","Honduras","Hungría","India","Indonesia","Irlanda","Islandia","Israel","Italia","Japón","Letonia","Lituania","Luxemburgo","Malasia","Malta","Marruecos","México","Nicaragua","Nigeria","Noruega","Nueva Zelanda","Países Bajos","Panamá","Paraguay","Perú","Polonia","Portugal","Puerto Rico","Qatar","Reino Unido","República Checa","República Dominicana","Rumania","Rusia","Singapur","Sudáfrica","Suecia","Suiza","Tailandia","Turquía","Ucrania","Uruguay","Venezuela","Vietnam"];
+    function fillCountries() {
+      var selects = document.querySelectorAll(".country-select");
+      selects.forEach(function(sel){
+        sel.innerHTML = '<option value="">Selecciona un país</option>' +
+          COUNTRIES.map(function(c){ return '<option value="' + c + '">' + c + '</option>'; }).join('');
+      });
+      // country chips for the max-3 selector
+      var wrap = document.getElementById("countryChips");
+      if (wrap) {
+        wrap.innerHTML = COUNTRIES.map(function(c){ return '<span class="chip" data-val="' + c + '">' + c + '</span>'; }).join('');
+      }
+    }
+
+    // ---------- Conditional ----------
+    function toggleCond(id, show) {
+      var el = document.getElementById(id);
+      if (el) el.classList.toggle("show", !!show);
+    }
+
+    // ---------- Chips (multi-select, with max) ----------
+    function initChips() {
+      document.querySelectorAll(".chips[data-multi]").forEach(function(group){
+        group.addEventListener("click", function(e){
+          var chip = e.target.closest(".chip");
+          if (!chip) return;
+          var max = parseInt(group.dataset.max || "99", 10);
+          var on = group.querySelectorAll(".chip.on");
+          if (chip.classList.contains("on")) { chip.classList.remove("on"); }
+          else if (on.length < max) { chip.classList.add("on"); }
+          else { chip.classList.add("capped"); setTimeout(function(){ chip.classList.remove("capped"); }, 350); }
+        });
+      });
+    }
+
+    // ---------- Language repeater ----------
+    function langRow() {
+      var div = document.createElement("div");
+      div.className = "lang-row";
+      div.innerHTML = '<select class="lang-name" style="padding:.7rem .8rem;border:1px solid var(--border);background:var(--cream);font-family:var(--sans);font-size:.88rem;color:var(--black);">' +
+        '<option value="">Idioma</option>' + ["Español","Inglés","Francés","Alemán","Portugués","Italiano","Chino Mandarín","Japonés","Árabe","Otro"].map(function(l){ return '<option>' + l + '</option>'; }).join('') + '</select>' +
+        '<select class="lang-level" style="padding:.7rem .8rem;border:1px solid var(--border);background:var(--cream);font-family:var(--sans);font-size:.88rem;color:var(--black);">' +
+        '<option value="">Nivel</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option><option>Nativo</option><option>No conozco mi nivel</option></select>' +
+        '<select class="lang-cert" style="padding:.7rem .8rem;border:1px solid var(--border);background:var(--cream);font-family:var(--sans);font-size:.88rem;color:var(--black);">' +
+        '<option value="">¿Certificación?</option><option>Sin certificación</option><option>IELTS</option><option>TOEFL</option><option>Cambridge</option><option>DELF</option><option>Goethe</option><option>Otro</option></select>' +
+        '<button type="button" class="rm" onclick="this.parentNode.remove()" title="Quitar">×</button>';
+      return div;
+    }
+    function addLang() {
+      var list = document.getElementById("langList");
+      if (list.children.length >= 5) return;
+      list.appendChild(langRow());
+    }
+
+    // ---------- Steps ----------
+    var STEP_TITLES = ["Sobre ti","Tu objetivo","Tu experiencia","Idiomas y movilidad","Tu perfil profesional","Finalizar"];
+    var current = 1;
+    var TOTAL = 6;
+
+    function buildProgress() {
+      var bar = document.getElementById("progressBar");
+      bar.innerHTML = STEP_TITLES.map(function(t, i){
+        var n = i + 1;
+        var cls = n < current ? "done" : (n === current ? "active" : "");
+        return '<div class="p-step ' + cls + '"><div class="p-bar"></div><div class="p-dot">' + n + '</div><div class="p-label">' + t + '</div></div>';
+      }).join('');
+    }
+
+    function showStep() {
+      document.querySelectorAll(".step").forEach(function(s){
+        s.classList.toggle("active", parseInt(s.dataset.step, 10) === current);
+      });
+      document.getElementById("backBtn").style.visibility = current === 1 ? "hidden" : "visible";
+      document.getElementById("nextBtn").style.display = current === TOTAL ? "none" : "inline-block";
+      document.getElementById("submitBtn").style.display = current === TOTAL ? "inline-block" : "none";
+      document.getElementById("formError").style.display = "none";
+      buildProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function goStep(delta) {
+      var stepEl = document.querySelector('.step[data-step="' + current + '"]');
+      // validate required fields in current step
+      var invalid = stepEl.querySelectorAll("[required]");
+      var ok = true;
+      invalid.forEach(function(f){
+        if (f.type === "checkbox" && !f.checked) { ok = false; }
+        else if (f.type === "file" && !f.files.length) { ok = false; }
+        else if (f.tagName === "SELECT" && !f.value) { ok = false; }
+        else if ((f.tagName === "INPUT" || f.tagName === "TEXTAREA") && !f.value.trim()) { ok = false; }
+      });
+      // country chips: must have at least 1 selected
+      var cchips = stepEl.querySelectorAll("#countryChips .chip.on");
+      if (stepEl.querySelector("#countryChips") && cchips.length === 0) { ok = false; }
+      if (!ok) { document.getElementById("formError").style.display = "block"; return; }
+      current = Math.min(TOTAL, Math.max(1, current + delta));
+      showStep();
+    }
+
+    // ---------- UTM ----------
+    (function captureUtm() {
+      var params = new URLSearchParams(window.location.search);
+      var map = { utm_source: "utm_source", utm_medium: "utm_medium", utm_campaign: "utm_campaign" };
+      Object.keys(map).forEach(function(k){
+        var v = params.get(k);
+        var el = document.getElementById(map[k]);
+        if (v) { el.value = v; localStorage.setItem("tal_" + k, v); }
+        else { el.value = localStorage.getItem("tal_" + k) || ""; }
+      });
+      document.getElementById("referrer").value = document.referrer || "";
+    })();
+
+    // ---------- Submit ----------
+    var WEBHOOK_URL = ""; // TODO: webhook n8n de producción → Notion (Career Mapping leads)
+    document.getElementById("cmForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      var form = e.target;
+      // final validation (consent + CV)
+      if (!document.getElementById("consent").checked || !document.getElementById("cvFile").files.length) {
+        document.getElementById("formError").style.display = "block";
+        return;
+      }
+      // gather chip selections + languages
+      var data = {};
+      new FormData(form).forEach(function(v, k){ data[k] = v; });
+      document.querySelectorAll(".chips[data-multi]").forEach(function(g){
+        var name = g.dataset.name;
+        data[name] = Array.from(g.querySelectorAll(".chip.on")).map(function(c){ return c.dataset.val; });
+      });
+      var langs = [];
+      document.querySelectorAll("#langList .lang-row").forEach(function(r){
+        langs.push({ idioma: r.querySelector(".lang-name").value, nivel: r.querySelector(".lang-level").value, certificacion: r.querySelector(".lang-cert").value });
+      });
+      data.languages = langs;
+      // CV file name (can't serialize file to JSON)
+      data.cv_filename = (document.getElementById("cvFile").files[0] || {}).name || "";
+
+      if (!WEBHOOK_URL) {
+        var local = JSON.parse(localStorage.getItem("tal_career_mapping") || "[]");
+        local.push({ ...data, ts: new Date().toISOString() });
+        localStorage.setItem("tal_career_mapping", JSON.stringify(local));
+        document.getElementById("formCard").style.display = "none";
+        document.getElementById("successMsg").style.display = "block";
+        return;
+      }
+      fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+        .then(function(res){ if(!res.ok) throw new Error("HTTP " + res.status); })
+        .then(function(){
+          document.getElementById("formCard").style.display = "none";
+          document.getElementById("successMsg").style.display = "block";
+        })
+        .catch(function(){ document.getElementById("formError").style.display = "block"; });
+    });
+
+    // ---------- Init ----------
+    fillCountries();
+    initChips();
+    addLang();
+    buildProgress();
+  </script>
+</body>
+</html>
