@@ -125,7 +125,7 @@
       background: var(--border);
     }
 
-    .hero-logo { width: clamp(180px, 24vw, 320px); margin: 0 auto 1.4rem; }
+    .hero-logo { width: clamp(160px, 22vw, 300px); margin: 0 auto 1.2rem; }
 
     .hero-title {
       font-family: var(--serif);
@@ -133,7 +133,7 @@
       font-weight: 700;
       line-height: 1.1;
       color: var(--black);
-      margin-bottom: 2rem;
+      margin-bottom: 1.6rem;
       max-width: 18ch;
     }
 
@@ -141,9 +141,9 @@
       font-size: clamp(.95rem, 1.4vw, 1.08rem);
       color: var(--gray);
       font-weight: 300;
-      line-height: 2;
+      line-height: 1.85;
       max-width: 44ch;
-      margin: 0 auto 1.6rem;
+      margin: 0 auto 1rem;
     }
     .hero-lines em {
       font-style: normal;
@@ -155,9 +155,14 @@
       font-size: clamp(.95rem, 1.4vw, 1.05rem);
       color: var(--gray);
       font-weight: 300;
-      line-height: 1.9;
-      max-width: 52ch;
-      margin: 0 auto 2.2rem;
+      line-height: 1.7;
+      max-width: 42ch;
+      margin: 0 auto 1.8rem;
+    }
+    .hero-closing em {
+      font-style: normal;
+      color: var(--black);
+      font-weight: 500;
     }
 
     .pillars {
@@ -166,7 +171,7 @@
       letter-spacing: .24em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 2.4rem;
+      margin-bottom: 2rem;
     }
 
     .btn-dark {
@@ -985,7 +990,12 @@
     }
 
     @media (max-width: 480px) {
-      .hero { padding: 7.5rem 1.4rem 5rem; }
+      .hero { padding: 6.5rem 1.4rem 4.5rem; }
+      .hero-logo { margin-bottom: .9rem; }
+      .hero-title { margin-bottom: 1.2rem; }
+      .hero-lines { line-height: 1.7; margin-bottom: .9rem; }
+      .hero-closing { margin-bottom: 1.5rem; }
+      .pillars { font-size: .64rem; letter-spacing: .18em; margin-bottom: 1.6rem; }
       .story-img { height: 200px; }
     }
   </style>
@@ -1034,9 +1044,7 @@
     </p>
 
     <p class="hero-closing">
-      O quizá todavía no tienes clarísimo qué sigue. Para eso estamos.<br><br>
-      En The Admissions Lab estamos construyendo un espacio para ayudarte a descubrir
-      oportunidades, prepararte para ellas y darle una mirada mucho más internacional a tu perfil.
+      O quizá todavía no tienes clarísimo qué sigue. <em>Para eso estamos.</em>
     </p>
 
     <p class="pillars">Study · Career · Skills · Community</p>
@@ -1076,8 +1084,9 @@
             Las dudas de <strong>“¿y ahora qué hago?”</strong>.
           </p>
           <div class="ecosystem-closing">
-            Así nació nuestro nuevo ecosistema: un espacio para acompañarte en
-            diferentes momentos de tu camino internacional.
+            Así nació nuestro nuevo ecosistema: un espacio para ayudarte a descubrir
+            oportunidades, prepararte para ellas y darle una mirada mucho más
+            internacional a tu perfil.
           </div>
         </div>
       </div>
