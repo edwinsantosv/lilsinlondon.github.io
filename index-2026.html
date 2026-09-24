@@ -151,20 +151,6 @@
       font-weight: 500;
     }
 
-    .hero-closing {
-      font-size: clamp(.95rem, 1.4vw, 1.05rem);
-      color: var(--gray);
-      font-weight: 300;
-      line-height: 1.7;
-      max-width: 42ch;
-      margin: 0 auto 1.8rem;
-    }
-    .hero-closing em {
-      font-style: normal;
-      color: var(--black);
-      font-weight: 500;
-    }
-
     .pillars {
       font-size: .72rem;
       font-weight: 600;
@@ -990,12 +976,11 @@
     }
 
     @media (max-width: 480px) {
-      .hero { padding: 6.5rem 1.4rem 4.5rem; }
-      .hero-logo { margin-bottom: .9rem; }
-      .hero-title { margin-bottom: 1.2rem; }
-      .hero-lines { line-height: 1.7; margin-bottom: .9rem; }
-      .hero-closing { margin-bottom: 1.5rem; }
-      .pillars { font-size: .64rem; letter-spacing: .18em; margin-bottom: 1.6rem; }
+      .hero { padding: 6rem 1.2rem 4rem; }
+      .hero-logo { width: 150px; margin-bottom: .8rem; }
+      .hero-title { font-size: 2.05rem; line-height: 1.12; margin-bottom: 1.1rem; }
+      .hero-lines { font-size: .88rem; line-height: 1.55; margin-bottom: 1.4rem; }
+      .pillars { font-size: .62rem; letter-spacing: .16em; margin-bottom: 1.5rem; }
       .story-img { height: 200px; }
     }
   </style>
@@ -1041,10 +1026,6 @@
       Quizá quieres <em>estudiar fuera</em>.<br>
       Quizá conseguir una <em>oportunidad laboral internacional</em>.<br>
       Quizá sientes que todavía necesitas <em>fortalecer algunas skills</em>.
-    </p>
-
-    <p class="hero-closing">
-      O quizá todavía no tienes clarísimo qué sigue. <em>Para eso estamos.</em>
     </p>
 
     <p class="pillars">Study · Career · Skills · Community</p>
@@ -1099,7 +1080,10 @@
       <div class="selector-intro reveal">
         <p class="eyebrow">¿Qué estás buscando?</p>
         <h2 class="section-title">No tienes que entrar sabiendo<br>exactamente qué servicio necesitas</h2>
-        <p class="lead">Cuéntanos qué quieres lograr 👇</p>
+        <p class="lead">
+          O quizá todavía no tienes clarísimo qué sigue. <strong>Para eso estamos.</strong><br>
+          Cuéntanos qué quieres lograr 👇
+        </p>
       </div>
 
       <div class="goal-grid">
