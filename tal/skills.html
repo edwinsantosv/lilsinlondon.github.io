@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAL Labs — Skills que puedas llevar contigo</title>
+  <meta name="description" content="TAL Labs: experiencias cortas, prácticas y cero relleno para desarrollar skills en IA, Data, Digital, Leadership y Future of Work. Únete a la lista de espera.">
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tal.css">
+</head>
+<body>
+
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">TAL <span>Labs</span></div>
+    <ul class="nav-links">
+      <li><a href="#temas">Temas</a></li>
+      <li><a href="#como">Cómo funciona</a></li>
+      <li><a href="#waitlist">Waitlist</a></li>
+    </ul>
+    <a class="nav-cta" href="#waitlist">Avísenme</a>
+  </nav>
+
+  <section class="hero" id="hero">
+    <p class="hero-eyebrow">TAL Labs · Skills</p>
+    <h1 class="hero-title">Skills que puedas llevar contigo.</h1>
+    <p class="hero-subtitle">Cambiará el país. Cambiará la empresa. Probablemente también cambiará la tecnología. Pero hay algo que sí puedes llevar contigo: lo que sabes hacer.</p>
+    <div class="hero-actions">
+      <a class="btn-dark" href="#waitlist">Avísenme del próximo Lab</a>
+    </div>
+  </section>
+
+  <section class="section" id="temas">
+    <div class="container">
+      <p class="eyebrow">Qué vamos a trabajar</p>
+      <h2 class="section-title">Cinco frentes</h2>
+      <div class="gold-rule"></div>
+      <p class="lead">Experiencias cortas, prácticas y cero relleno para desarrollar habilidades que puedan hacer tu perfil más competitivo internacionalmente.</p>
+      <div class="two-col">
+        <div class="card"><span class="num">01</span><h3>IA</h3><p>Usar herramientas de inteligencia artificial en el trabajo real, no en demos.</p></div>
+        <div class="card"><span class="num">02</span><h3>Data</h3><p>Leer, ordenar y contar historias con datos para tomar mejores decisiones.</p></div>
+        <div class="card"><span class="num">03</span><h3>Digital</h3><p>Las herramientas y formatos que hoy se dan por sentados en equipos internacionales.</p></div>
+        <div class="card"><span class="num">04</span><h3>Leadership</h3><p>Trabajar y comunicar en equipos distribuidos y multiculturales.</p></div>
+        <div class="card"><span class="num">05</span><h3>Future of Work</h3><p>Cómo está cambiando el trabajo y qué significa eso para tu perfil.</p></div>
+        <div class="card"><h3>Y lo que venga</h3><p>Los Labs se arman según lo que están pidiendo empresas y organizaciones alrededor del mundo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="como" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2 class="section-title">Aprender → practicar → aplicarlo</h2>
+      <div class="gold-rule"></div>
+      <div class="two-col">
+        <div class="card"><span class="num">01</span><h3>Aprender</h3><p>Una sesión corta y concreta. Lo que necesitas saber, sin relleno.</p></div>
+        <div class="card"><span class="num">02</span><h3>Practicar</h3><p>Un ejercicio real durante el Lab, no tarea para después.</p></div>
+        <div class="card"><span class="num">03</span><h3>Aplicarlo</h3><p>Sales con algo hecho que puedes sumar a tu perfil o a tu trabajo.</p></div>
+        <div class="card"><h3>Y queda contigo</h3><p>Materiales y grabación para volver cuando lo necesites.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="waitlist">
+    <div class="container" style="text-align:center;">
+      <p class="eyebrow">Lanzamiento próximo</p>
+      <h2 class="section-title" style="margin:0 auto 1.4rem;">Estamos armando los primeros Labs.</h2>
+      <p class="lead" style="margin:0 auto 2rem;">Déjanos tu correo y te avisamos en cuanto abran las inscripciones.</p>
+      <form id="waitlistForm" style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+        <input type="email" id="wlEmail" required placeholder="tu@correo.com"
+          style="padding:.9rem 1.2rem;border:1px solid var(--border);background:var(--cream);font-family:var(--sans);font-size:.9rem;min-width:260px;">
+        <button type="submit" class="btn-dark" style="border:none;cursor:pointer;">Avísenme</button>
+      </form>
+      <p id="wlMsg" style="margin-top:1rem;font-size:.85rem;color:var(--gold-light);display:none;">¡Listo! Te avisaremos pronto.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
+    <div class="footer-links">
+      <a href="../index.html">Inicio</a>
+      <a href="study.html">Study</a>
+      <a href="career.html">Career</a>
+      <a href="community.html">Community</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
+    document.getElementById('waitlistForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // TODO: conectar a webhook n8n → Notion (lead identificado como "Skills / TAL Labs")
+      document.getElementById('wlMsg').style.display = 'block';
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>The Admissions Lab – Study · Career · Skills · Community</title>
+  <meta name="description" content="Un espacio para descubrir oportunidades internacionales, prepararte para ellas y darle una mirada mucho más internacional a tu perfil.">
+
+  <link rel="icon" href="assets/img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Reset ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F3F2EE;
+      --cream-dark: #F0ECE1;
+      --black:      #4E382B;
+      --gold:       #7B5E47;
+      --gold-light: #C4A88F;
+      --border:     #E0D9CB;
+      --white:      #FFFFFF;
+      --gray:       #383D39;
+      --serif:      'Libre Baskerville', Georgia, serif;
+      --sans:       'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--gray);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { text-decoration: none; color: inherit; }
+
+    /* ── Navigation ──────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 1.6rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .3s, padding .3s, box-shadow .3s;
+    }
+    .nav.scrolled {
+      background: var(--cream);
+      padding: 1rem 3rem;
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+    .nav-brand span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .6rem 1.5rem;
+      border: 1.5px solid var(--black);
+      transition: background .2s, color .2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--black); color: var(--cream); }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--black);
+      transition: all .3s;
+    }
+
+    /* ── Hero ────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 6rem;
+      position: relative;
+      background: var(--cream);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .hero-logo { width: clamp(180px, 24vw, 320px); margin: 0 auto 1.4rem; }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.4vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 2rem;
+      max-width: 18ch;
+    }
+
+    .hero-lines {
+      font-size: clamp(.95rem, 1.4vw, 1.08rem);
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 2;
+      max-width: 44ch;
+      margin: 0 auto 1.6rem;
+    }
+    .hero-lines em {
+      font-style: normal;
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    .hero-closing {
+      font-size: clamp(.95rem, 1.4vw, 1.05rem);
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.9;
+      max-width: 52ch;
+      margin: 0 auto 2.2rem;
+    }
+
+    .pillars {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.4rem;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      padding: .9rem 2.4rem;
+      background: var(--black);
+      color: var(--cream);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: background .25s, transform .25s;
+      border: none;
+      cursor: pointer;
+      font-family: var(--sans);
+    }
+    .btn-dark:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+
+    .btn-text {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--black);
+      border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .btn-text:hover { color: var(--gold); }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+    .scroll-hint span {
+      font-size: .6rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .scroll-hint-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.4;transform:scaleY(.6)} }
+
+    /* ── Shared ──────────────────────────────── */
+    .section { padding: 7rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .9rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.6vw, 3.1rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--black);
+      margin-bottom: 1.2rem;
+    }
+
+    .gold-rule { width: 44px; height: 2px; background: var(--gold); margin: 1.4rem 0; }
+
+    .lead {
+      font-size: 1rem;
+      color: var(--gray);
+      font-weight: 300;
+      line-height: 1.85;
+      max-width: 50ch;
+    }
+
+    /* Editorial "stacked lines" paragraph used across the doc's copy */
+    .stack {
+      font-size: 1.02rem;
+      font-weight: 300;
+      line-height: 2.05;
+      color: var(--gray);
+      max-width: 54ch;
+    }
+    .stack strong { font-weight: 500; color: var(--black); }
+
+    /* ── 02 Ecosistema ───────────────────────── */
+    .ecosystem {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .ecosystem-closing {
+      margin-top: 2.2rem;
+      padding-top: 2.2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--black);
+    }
+
+    /* ── 03 Selector ─────────────────────────── */
+    .selector { background: var(--cream-dark); }
+    .selector-intro { text-align: center; margin-bottom: 3.5rem; }
+    .selector-intro .lead { margin: 0 auto; }
+
+    .goal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .goal {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2.6rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+    }
+    .goal:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.07);
+      border-color: var(--gold-light);
+    }
+    .goal-icon { font-size: 1.9rem; line-height: 1; margin-bottom: 1.2rem; }
+    .goal-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: .9rem;
+    }
+    .goal-text {
+      font-size: .93rem;
+      font-weight: 300;
+      line-height: 1.75;
+      flex: 1;
+      margin-bottom: 1.6rem;
+    }
+    .goal-link {
+      font-size: .73rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+    }
+    .goal:hover .goal-link .arr { transform: translateX(5px); }
+    .goal-link .arr { transition: transform .2s; display: inline-block; }
+
+    /* ── 04-07 Verticales ────────────────────── */
+    .vertical { border-bottom: 1px solid var(--border); }
+    .vertical:nth-of-type(odd)  { background: var(--white); }
+    .vertical:nth-of-type(even) { background: var(--cream); }
+
+    .vertical-inner {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+    .vertical-num {
+      font-family: var(--serif);
+      font-size: .72rem;
+      letter-spacing: .24em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .vertical-tags {
+      margin: 1.8rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .vertical-tags span {
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: .42rem .9rem;
+      background: var(--cream);
+    }
+    .vertical:nth-of-type(even) .vertical-tags span { background: var(--white); }
+
+    .quote-shift {
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: var(--black);
+      border-left: 2px solid var(--gold);
+      padding: .3rem 0 .3rem 1.4rem;
+      margin: 1.6rem 0;
+    }
+    .quote-shift .to { color: var(--gold); display: block; margin-top: .7rem; }
+
+    /* ── 08 Metodología ──────────────────────── */
+    .method { background: var(--black); color: var(--cream); }
+    .method .eyebrow { color: var(--gold-light); }
+    .method .section-title { color: var(--cream); }
+    .method .lead { color: rgba(243,242,238,.62); }
+    .method-intro { margin-bottom: 3.5rem; }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-left: 1px solid rgba(255,255,255,.12);
+    }
+    .method-step {
+      padding: 2.2rem 1.6rem;
+      border-right: 1px solid rgba(255,255,255,.12);
+    }
+    .method-step .n {
+      font-family: var(--serif);
+      font-size: 1.9rem;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .method-step h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: .7rem;
+      line-height: 1.35;
+    }
+    .method-step p {
+      font-size: .85rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(243,242,238,.55);
+    }
+
+    /* ── 09 Impacto ──────────────────────────── */
+    .impact { background: var(--cream-dark); }
+    .impact-intro { text-align: center; margin-bottom: 3.5rem; }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .impact-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2.8rem 2rem;
+      text-align: center;
+    }
+    .impact-number {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: .9rem;
+    }
+    .impact-label {
+      font-size: .84rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: .4rem;
+    }
+    .impact-sub { font-size: .8rem; font-weight: 300; line-height: 1.6; }
+
+    .impact-note {
+      text-align: center;
+      max-width: 44ch;
+      margin: 0 auto;
+    }
+    .impact-note p { font-size: .95rem; font-weight: 300; margin-bottom: .6rem; }
+    .impact-note strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* ── 10 Equipo ───────────────────────────── */
+    .team-section { background: var(--white); border-top: 1px solid var(--border); }
+    .team-intro { margin-bottom: 3.5rem; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .member {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .member:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,.07); }
+
+    .member-top { padding: 2rem 1.8rem 1.4rem; }
+    .member img {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid var(--border);
+      filter: grayscale(20%);
+      transition: filter .3s;
+      margin-bottom: 1.1rem;
+    }
+    .member:hover img { filter: grayscale(0%); }
+
+    .member h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: .25rem;
+    }
+    .member-role {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--gold);
+      margin-bottom: .35rem;
+    }
+    .member-loc { font-size: .76rem; font-weight: 300; color: var(--gray); margin-bottom: .9rem; }
+    .member-bio { font-size: .88rem; font-weight: 300; line-height: 1.7; }
+
+    .member-reveal {
+      border-top: 1px solid var(--border);
+      padding: 0 1.8rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .4s ease;
+    }
+    .member.open .member-reveal { max-height: 460px; padding: 1.4rem 1.8rem 1.6rem; }
+    @media (hover: hover) {
+      .member:hover .member-reveal { max-height: 460px; padding: 1.4rem 1.8rem 1.6rem; }
+    }
+
+    .member-fact { margin-bottom: 1rem; }
+    .member-fact:last-child { margin-bottom: 0; }
+    .member-fact dt {
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .3rem;
+    }
+    .member-fact dd { font-size: .87rem; font-weight: 300; line-height: 1.65; }
+
+    .member-toggle {
+      display: none;
+      width: 100%;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--border);
+      padding: .9rem;
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    /* Campos que Lili todavía no llenó */
+    .pending {
+      display: inline-block;
+      font-style: italic;
+      color: #A8998C;
+      background: rgba(196,168,143,.16);
+      border: 1px dashed var(--gold-light);
+      padding: .1rem .5rem;
+      font-size: .8rem;
+    }
+
+    .partnerships-label {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .75rem;
+    }
+    .team-grid--partners { grid-template-columns: repeat(3, 1fr); }
+
+    /* ── 13 Historias ────────────────────────── */
+    .stories { background: var(--cream); }
+    .stories-intro { margin-bottom: 3.5rem; }
+
+    .stories-featured {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .story-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      cursor: pointer;
+      font-family: var(--sans);
+      padding: 0;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .story-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,.07); }
+    .story-img { width: 100%; height: 230px; object-fit: cover; object-position: top; }
+    .story-body { padding: 1.7rem; display: flex; flex-direction: column; flex: 1; }
+    .story-badge {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .7rem;
+      line-height: 1.5;
+    }
+    .story-name {
+      font-family: var(--serif);
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: .3rem;
+    }
+    .story-route {
+      font-size: .76rem;
+      font-weight: 500;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+    .story-quote {
+      font-size: .9rem;
+      font-weight: 300;
+      line-height: 1.75;
+      font-style: italic;
+      flex: 1;
+      margin-bottom: 1.3rem;
+    }
+    .story-cta {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .story-card:hover .story-cta { color: var(--black); }
+
+    .stories-more-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: .75rem;
+      margin-bottom: 2rem;
+    }
+    .stories-rest {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .story-mini {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.1rem;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: border-color .25s, transform .25s;
+    }
+    .story-mini:hover { border-color: var(--gold-light); transform: translateY(-3px); }
+    .story-mini img {
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+    .story-mini h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: .2rem;
+    }
+    .story-mini p {
+      font-size: .74rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--gray);
+    }
+
+    .stories-closing {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .stories-closing .big {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+      max-width: 28ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .stories-closing .lead { margin: 0 auto 2rem; }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(30,20,14,.6);
+      z-index: 400;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+      backdrop-filter: blur(3px);
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal {
+      background: var(--cream);
+      max-width: 660px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+    .modal-head {
+      padding: 2.4rem 2.4rem 1.6rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+    }
+    .modal-head img {
+      width: 84px; height: 84px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+    }
+    #modalBadge {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+      line-height: 1.5;
+    }
+    #modalName {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: .2rem;
+    }
+    #modalRoute { font-size: .8rem; font-weight: 500; color: var(--gray); }
+
+    .modal-body { padding: 2rem 2.4rem 2.6rem; }
+    .modal-block { margin-bottom: 1.8rem; }
+    .modal-block h4 {
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .55rem;
+    }
+    .modal-block p { font-size: .95rem; font-weight: 300; line-height: 1.8; }
+    .modal-block.testimonial p {
+      font-style: italic;
+      border-left: 2px solid var(--gold);
+      padding-left: 1.2rem;
+      color: var(--black);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--black);
+      z-index: 2;
+    }
+
+    /* ── 14 CTA final ────────────────────────── */
+    .final-cta {
+      background: var(--black);
+      color: var(--cream);
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+    .final-cta .eyebrow { color: var(--gold-light); }
+    .final-cta .section-title { color: var(--cream); }
+    .final-cta .gold-rule { margin: 1.4rem auto 2.6rem; }
+
+    .path-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      justify-content: center;
+      max-width: 760px;
+      margin: 0 auto 2.6rem;
+    }
+    .path-opt {
+      background: none;
+      border: 1.5px solid rgba(243,242,238,.22);
+      color: var(--cream);
+      padding: .85rem 1.6rem;
+      font-family: var(--sans);
+      font-size: .78rem;
+      font-weight: 400;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+    }
+    .path-opt:hover { border-color: var(--gold-light); background: rgba(196,168,143,.12); transform: translateY(-2px); }
+    .path-opt.selected { border-color: var(--gold-light); background: var(--gold); color: var(--cream); }
+
+    .btn-light {
+      display: inline-block;
+      padding: 1rem 2.6rem;
+      background: var(--cream);
+      color: var(--black);
+      font-size: .76rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: background .25s, transform .25s;
+    }
+    .btn-light:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .final-note {
+      margin-top: 1.8rem;
+      font-size: .88rem;
+      font-weight: 300;
+      color: rgba(243,242,238,.55);
+      min-height: 1.4rem;
+    }
+
+    /* ── 15 Footer ───────────────────────────── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,.07);
+      padding: 3rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: .6rem;
+    }
+    .footer-brand span { color: var(--gold-light); }
+    .footer-tagline {
+      font-size: .84rem;
+      font-weight: 300;
+      color: rgba(243,242,238,.45);
+      max-width: 34ch;
+      line-height: 1.7;
+      margin-bottom: .8rem;
+    }
+    .footer-pillars {
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .footer-links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(243,242,238,.35);
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ── Mobile nav drawer ───────────────────── */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 300;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.8rem;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: .02em;
+    }
+    .nav-drawer a:hover { color: var(--gold); }
+    .nav-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    /* ── Reveal on scroll ────────────────────── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ── Responsive ──────────────────────────── */
+    @media (max-width: 1024px) {
+      .method-grid { grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.12); }
+      .method-step { border-bottom: 1px solid rgba(255,255,255,.12); }
+      .team-grid, .stories-featured, .stories-rest { grid-template-columns: repeat(2, 1fr); }
+      .team-grid--partners { grid-template-columns: repeat(2, 1fr); }
+      .vertical-inner { gap: 3rem; }
+    }
+
+    @media (max-width: 900px) {
+      .ecosystem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .vertical-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 1.2rem 1.5rem; }
+      .nav.scrolled { padding: .9rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+
+      .section { padding: 5rem 1.5rem; }
+      .goal-grid { grid-template-columns: 1fr; }
+      .method-grid { grid-template-columns: 1fr; border-left: none; }
+      .method-step { border-right: none; }
+      .team-grid, .stories-featured, .stories-rest, .team-grid--partners { grid-template-columns: 1fr; }
+
+      .member-toggle { display: block; }
+      .member-reveal { max-height: 0; }
+
+      .modal-head { flex-direction: column; text-align: center; padding: 2.4rem 1.5rem 1.4rem; }
+      .modal-body { padding: 1.6rem 1.5rem 2rem; }
+
+      footer { padding: 2.5rem 1.5rem; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 7.5rem 1.4rem 5rem; }
+      .story-img { height: 200px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-brand">The Admissions <span>Lab</span></div>
+    <ul class="nav-links">
+      <li><a href="#study">Study</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#team">Equipo</a></li>
+      <li><a href="#stories">Historias</a></li>
+    </ul>
+    <a class="nav-cta" href="#ruta">Encontrar mi ruta</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <button class="nav-close" id="navClose" aria-label="Cerrar">✕</button>
+    <a href="#study" class="drawer-link">Study</a>
+    <a href="#career" class="drawer-link">Career</a>
+    <a href="#skills" class="drawer-link">Skills</a>
+    <a href="#community" class="drawer-link">Community</a>
+    <a href="#team" class="drawer-link">Equipo</a>
+    <a href="#stories" class="drawer-link">Historias</a>
+    <a href="#ruta" class="drawer-link" style="color:var(--gold);">Encontrar mi ruta →</a>
+  </div>
+
+  <!-- ══ 01 · HERO ══════════════════════════ -->
+  <section class="hero" id="hero">
+    <img class="hero-logo" src="assets/img/brand/tal-logo-light-transparent.png" alt="The Admissions Lab">
+    <h1 class="hero-title">Tu perfil puede llevarte a muchos lugares 🌎</h1>
+
+    <p class="hero-lines">
+      Quizá quieres <em>estudiar fuera</em>.<br>
+      Quizá conseguir una <em>oportunidad laboral internacional</em>.<br>
+      Quizá sientes que todavía necesitas <em>fortalecer algunas skills</em>.
+    </p>
+
+    <p class="hero-closing">
+      O quizá todavía no tienes clarísimo qué sigue. Para eso estamos.<br><br>
+      En The Admissions Lab estamos construyendo un espacio para ayudarte a descubrir
+      oportunidades, prepararte para ellas y darle una mirada mucho más internacional a tu perfil.
+    </p>
+
+    <p class="pillars">Study · Career · Skills · Community</p>
+
+    <div class="hero-actions">
+      <a class="btn-dark" href="#ruta">→ Quiero descubrir mi ruta</a>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-hint-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ══ 02 · EL NUEVO ECOSISTEMA ═══════════ -->
+  <section class="section ecosystem" id="ecosistema">
+    <div class="container">
+      <div class="ecosystem-grid">
+        <div class="reveal">
+          <p class="eyebrow">El nuevo ecosistema</p>
+          <h2 class="section-title">Esto ya no es solo sobre estudiar fuera</h2>
+          <div class="gold-rule"></div>
+          <p class="lead">
+            Empezamos ayudando a personas a encontrar becas y universidades.
+            Pero después de acompañar a cientos de personas nos dimos cuenta de algo:
+            estudiar fuera es solo una parte del camino.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <p class="stack">
+            También están las prácticas.<br>
+            Los trabajos.<br>
+            Las skills que te faltan.<br>
+            El idioma.<br>
+            Las conexiones.<br>
+            Las dudas de <strong>“¿y ahora qué hago?”</strong>.
+          </p>
+          <div class="ecosystem-closing">
+            Así nació nuestro nuevo ecosistema: un espacio para acompañarte en
+            diferentes momentos de tu camino internacional.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 03 · ¿QUÉ ESTÁS BUSCANDO? ══════════ -->
+  <section class="section selector" id="ruta">
+    <div class="container">
+      <div class="selector-intro reveal">
+        <p class="eyebrow">¿Qué estás buscando?</p>
+        <h2 class="section-title">No tienes que entrar sabiendo<br>exactamente qué servicio necesitas</h2>
+        <p class="lead">Cuéntanos qué quieres lograr 👇</p>
+      </div>
+
+      <div class="goal-grid">
+        <a class="goal reveal" href="#study">
+          <div class="goal-icon">🎓</div>
+          <h3 class="goal-title">Quiero estudiar fuera</h3>
+          <p class="goal-text">Perfecto. Empecemos por entender tu perfil y qué oportunidades tienen sentido para ti.</p>
+          <span class="goal-link">Entra a Study <span class="arr">→</span></span>
+        </a>
+
+        <a class="goal reveal" href="#career">
+          <div class="goal-icon">💼</div>
+          <h3 class="goal-title">Quiero trabajar fuera</h3>
+          <p class="goal-text">Veamos dónde puede competir tu perfil, qué mercados explorar y qué necesitas mejorar antes de empezar a aplicar.</p>
+          <span class="goal-link">Entra a Career <span class="arr">→</span></span>
+        </a>
+
+        <a class="goal reveal" href="#skills">
+          <div class="goal-icon">🚀</div>
+          <h3 class="goal-title">Quiero mejorar mi perfil</h3>
+          <p class="goal-text">Aquí entran nuestros Labs: espacios prácticos para aprender skills que hoy están pidiendo empresas y organizaciones alrededor del mundo.</p>
+          <span class="goal-link">Entra a Skills <span class="arr">→</span></span>
+        </a>
+
+        <a class="goal reveal" href="#community">
+          <div class="goal-icon">🌎</div>
+          <h3 class="goal-title">Quiero encontrar oportunidades</h3>
+          <p class="goal-text">Becas, programas, eventos, recursos, experiencias y otras personas que también están intentando construir una ruta internacional.</p>
+          <span class="goal-link">Entra a Community <span class="arr">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 04 · STUDY ═════════════════════════ -->
+  <section class="section vertical" id="study">
+    <div class="container">
+      <div class="vertical-inner">
+        <div class="reveal">
+          <p class="vertical-num">04 · Study 🎓</p>
+          <h2 class="section-title">¿Tu próxima universidad podría estar a miles de kilómetros?</h2>
+          <div class="gold-rule"></div>
+          <p class="lead">Puede ser. Pero antes de llenar aplicaciones, hay que encontrar las oportunidades correctas.</p>
+        </div>
+
+        <div class="reveal">
+          <p class="stack">En Study te ayudamos a pasar de:</p>
+          <div class="quote-shift">
+            “Quiero estudiar afuera, pero no sé por dónde empezar”
+            <span class="to">→ “Estas son mis opciones y este es mi plan.”</span>
+          </div>
+          <div class="vertical-tags">
+            <span>Becas</span><span>Universidades</span><span>Mapeo</span>
+            <span>Documentos</span><span>Visa</span><span>Preparación</span>
+          </div>
+          <a class="btn-text" href="tal/study.html">Explorar Study →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 · CAREER ════════════════════════ -->
+  <section class="section vertical" id="career">
+    <div class="container">
+      <div class="vertical-inner">
+        <div class="reveal">
+          <p class="vertical-num">05 · Career 💼</p>
+          <h2 class="section-title">Tu carrera tampoco tiene que quedarse en un solo país</h2>
+          <div class="gold-rule"></div>
+          <p class="lead">
+            Buscar trabajo internacionalmente no es simplemente traducir tu CV
+            al inglés y empezar a mandar aplicaciones.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <p class="stack">
+            Hay <strong>mercados</strong> diferentes.<br>
+            <strong>Skills</strong> diferentes.<br>
+            <strong>Formatos</strong> diferentes.<br>
+            Y formas diferentes de vender tu experiencia.
+          </p>
+          <div class="ecosystem-closing" style="font-size:1rem;">
+            En Career te ayudamos a entender dónde estás, dónde podrías competir
+            y qué necesitas para llegar ahí.
+          </div>
+          <div style="margin-top:1.8rem;">
+            <a class="btn-text" href="tal/career.html">Explorar Career →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 06 · SKILLS ════════════════════════ -->
+  <section class="section vertical" id="skills">
+    <div class="container">
+      <div class="vertical-inner">
+        <div class="reveal">
+          <p class="vertical-num">06 · Skills ⚡</p>
+          <h2 class="section-title">Skills que puedas llevar contigo</h2>
+          <div class="gold-rule"></div>
+          <p class="stack">
+            Cambiará el país.<br>
+            Cambiará la empresa.<br>
+            Probablemente también cambiará la tecnología.<br><br>
+            Pero hay algo que sí puedes llevar contigo:<br>
+            <strong>lo que sabes hacer.</strong>
+          </p>
+        </div>
+
+        <div class="reveal">
+          <p class="lead">
+            Por eso estamos creando <strong>TAL Labs</strong>: experiencias cortas,
+            prácticas y cero relleno para desarrollar habilidades que puedan hacer
+            tu perfil más competitivo internacionalmente.
+          </p>
+          <div class="vertical-tags">
+            <span>IA</span><span>Data</span><span>Digital</span>
+            <span>Leadership</span><span>Future of Work</span>
+          </div>
+          <div class="quote-shift">Aprender → practicar → aplicarlo.</div>
+          <a class="btn-text" href="tal/skills.html">Ver próximos Labs →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 07 · COMMUNITY ═════════════════════ -->
+  <section class="section vertical" id="community">
+    <div class="container">
+      <div class="vertical-inner">
+        <div class="reveal">
+          <p class="vertical-num">07 · Community 🤍</p>
+          <h2 class="section-title">Porque hacer todo esto solo puede ser agotador</h2>
+          <div class="gold-rule"></div>
+          <p class="stack">
+            Buscar oportunidades.<br>
+            Leer convocatorias.<br>
+            Entender requisitos.<br>
+            Preguntarte si estás haciendo las cosas bien.<br><br>
+            <strong>Been there.</strong>
+          </p>
+        </div>
+
+        <div class="reveal">
+          <p class="lead">
+            Por eso queremos que TAL también sea un espacio para encontrarnos.
+            Oportunidades, recursos, Q&amp;A, eventos y personas que están
+            viviendo procesos parecidos al tuyo.
+          </p>
+          <div style="margin-top:2rem;">
+            <a class="btn-dark" href="tal/community.html">Quiero ser parte</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 08 · METODOLOGÍA ═══════════════════ -->
+  <section class="section method" id="metodologia">
+    <div class="container">
+      <div class="method-intro reveal">
+        <p class="eyebrow">Metodología</p>
+        <h2 class="section-title">Y sí, tenemos una metodología…</h2>
+        <div class="gold-rule"></div>
+        <p class="lead">Pero no queremos llenarte la web de flechas y diagramas 😅</p>
+      </div>
+
+      <div class="method-grid reveal">
+        <div class="method-step">
+          <span class="n">01</span>
+          <h3>Te conocemos</h3>
+          <p>Antes de recomendarte algo necesitamos entender quién eres y qué estás buscando.</p>
+        </div>
+        <div class="method-step">
+          <span class="n">02</span>
+          <h3>Investigamos</h3>
+          <p>Porque no todas las oportunidades que aparecen en Google tienen sentido para ti.</p>
+        </div>
+        <div class="method-step">
+          <span class="n">03</span>
+          <h3>Armamos una ruta</h3>
+          <p>Qué hacer, en qué orden y cuáles deberían ser tus siguientes pasos.</p>
+        </div>
+        <div class="method-step">
+          <span class="n">04</span>
+          <h3>Te ayudamos a prepararte</h3>
+          <p>Documentos, perfil, estrategia, skills o lo que necesite tu proceso.</p>
+        </div>
+        <div class="method-step">
+          <span class="n">05</span>
+          <h3>Y seguimos ahí</h3>
+          <p>Porque después de encontrar una oportunidad normalmente aparecen otras veinte preguntas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 09 · IMPACTO ═══════════════════════ -->
+  <section class="section impact" id="impacto">
+    <div class="container">
+      <div class="impact-intro reveal">
+        <p class="eyebrow">Impacto</p>
+        <h2 class="section-title">Algunas cosas han pasado desde que empezamos 👀</h2>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-item reveal" data-target="650">
+          <div class="impact-number">+<span class="impact-count">0</span></div>
+          <div class="impact-label">Personas</div>
+          <div class="impact-sub">han pasado por nuestras asesorías</div>
+        </div>
+        <div class="impact-item reveal" data-target="15">
+          <div class="impact-number">+<span class="impact-count">0</span></div>
+          <div class="impact-label">Países</div>
+          <div class="impact-sub">donde ya está presente nuestra comunidad</div>
+        </div>
+        <div class="impact-item reveal">
+          <div class="impact-number">🌍</div>
+          <div class="impact-label">Europa y más allá</div>
+          <div class="impact-sub">procesos que terminaron en becas y admisiones en universidades internacionales</div>
+        </div>
+      </div>
+
+      <div class="impact-note reveal">
+        <p>Pero nuestro número favorito sigue siendo este:</p>
+        <strong>cada persona tiene una historia completamente diferente.</strong>
+        <a class="btn-text" href="#stories">Conocer sus historias →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 10 · EQUIPO ════════════════════════ -->
+  <section class="section team-section" id="team">
+    <div class="container">
+      <div class="team-intro reveal">
+        <p class="eyebrow">Equipo</p>
+        <h2 class="section-title">Ahora sí… conócenos 👋</h2>
+        <div class="gold-rule"></div>
+        <p class="lead">
+          Somos las personas detrás de TAL. Los que investigamos oportunidades.
+          Los que revisamos ese personal statement una vez más.
+          Los que respondemos: “sí, mándanos tu CV y lo vemos”.
+          Y los que también hemos tenido que descubrir cómo estudiar, trabajar
+          y movernos en contextos internacionales.
+        </p>
+      </div>
+
+      <div class="team-grid">
+
+        <!-- Lili -->
+        <article class="member reveal">
+          <div class="member-top">
+            <img src="assets/img/team/liliane.jpeg" alt="Lili">
+            <h3>Lili 👋</h3>
+            <p class="member-role">Founder &amp; CEO</p>
+            <p class="member-loc">📍 Perú ↔ UK</p>
+            <p class="member-bio">
+              Fundé TAL porque después de vivir mis propios procesos internacionales
+              me di cuenta de que encontrar oportunidades no debería sentirse tan complicado.
+            </p>
+          </div>
+          <dl class="member-reveal">
+            <div class="member-fact"><dt>En TAL me encuentras</dt><dd>Pensando nuevas ideas, creando servicios o preguntando “¿y si hacemos esto diferente?”</dd></div>
+            <div class="member-fact"><dt>Mi superpoder</dt><dd>Convertir ideas y mucha información en algo fácil de entender.</dd></div>
+            <div class="member-fact"><dt>Fuera de TAL</dt><dd>Viajar por el mundo, caminar por nuevas ciudades, conocer más de historia, ver películas y crear contenido.</dd></div>
+            <div class="member-fact"><dt>Algo que siempre digo</dt><dd>“No necesitas tener todo resuelto para empezar.”</dd></div>
+          </dl>
+          <button class="member-toggle">Conocer más +</button>
+        </article>
+
+        <!-- Gabriela -->
+        <article class="member reveal">
+          <div class="member-top">
+            <img src="assets/img/team/gabrielavidal.jpeg" alt="Gabriela">
+            <h3>Gabriela 👋</h3>
+            <p class="member-role">International Education Consultant</p>
+            <p class="member-loc">📍 Perú ↔ España</p>
+            <p class="member-bio">Analiza perfiles y busca las oportunidades que de verdad encajan.</p>
+          </div>
+          <dl class="member-reveal">
+            <div class="member-fact"><dt>En TAL me encuentras</dt><dd>Analizando perfiles y buscando oportunidades.</dd></div>
+            <div class="member-fact"><dt>Mi superpoder</dt><dd>Dar la precisión que se requiere.</dd></div>
+            <div class="member-fact"><dt>Fuera de TAL</dt><dd>Viajar por el mundo, ver casos de crímenes, comer cosas ricas e imitar a mi familia.</dd></div>
+            <div class="member-fact"><dt>Algo que siempre digo</dt><dd>“Opciones siempre hay, solo hay que buscar la que mejor se ajusta a ti.”</dd></div>
+          </dl>
+          <button class="member-toggle">Conocer más +</button>
+        </article>
+
+        <!-- Nati -->
+        <article class="member reveal">
+          <div class="member-top">
+            <img src="assets/img/team/natali_v.jpg" alt="Nati">
+            <h3>Nati 👋</h3>
+            <p class="member-role">Translation &amp; Language Specialist</p>
+            <p class="member-bio">
+              Si alguna vez te preguntaste cómo hacer que tu historia siga sonando
+              como tú después de traducirla al inglés, probablemente Nati tenga algo que ver.
+            </p>
+          </div>
+          <dl class="member-reveal">
+            <div class="member-fact"><dt>En TAL me encuentras</dt><dd>Entre documentos, traducciones y aplicaciones.</dd></div>
+            <div class="member-fact"><dt>Mi superpoder</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+            <div class="member-fact"><dt>Fuera de TAL</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+            <div class="member-fact"><dt>Algo que siempre digo</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+          </dl>
+          <button class="member-toggle">Conocer más +</button>
+        </article>
+
+        <!-- Edwin -->
+        <article class="member reveal">
+          <div class="member-top">
+            <img src="assets/img/team/edwinsantos.jpeg" alt="Edwin">
+            <h3>Edwin 👋</h3>
+            <p class="member-role">Data &amp; Analytics Specialist</p>
+            <p class="member-loc">📍 Canadá</p>
+            <p class="member-bio">El que probablemente convierta cualquier conversación en un dashboard 😅</p>
+          </div>
+          <dl class="member-reveal">
+            <div class="member-fact"><dt>En TAL me encuentras</dt><dd>Pensando cómo usar datos para tomar mejores decisiones.</dd></div>
+            <div class="member-fact"><dt>Mi superpoder</dt><dd><span class="pending">Pendiente — por completar</span></dd></div>
+            <div class="member-fact"><dt>Fuera de TAL</dt><dd><span class="pending">Pendiente — por completar</span></dd></div>
+            <div class="member-fact"><dt>Algo que siempre digo</dt><dd><span class="pending">Pendiente — por completar</span></dd></div>
+          </dl>
+          <button class="member-toggle">Conocer más +</button>
+        </article>
+
+        <!-- Leda -->
+        <article class="member reveal">
+          <div class="member-top">
+            <img src="assets/img/team/Leda.jpg" alt="Leda">
+            <h3>Leda 👋</h3>
+            <p class="member-role">International Education Consultant</p>
+            <p class="member-loc">Political Science · Research · Global Opportunities</p>
+            <p class="member-bio">Investiga convocatorias y oportunidades que no siempre aparecen en la primera búsqueda.</p>
+          </div>
+          <dl class="member-reveal">
+            <div class="member-fact"><dt>En TAL me encuentras</dt><dd>Investigando convocatorias y oportunidades.</dd></div>
+            <div class="member-fact"><dt>Mi superpoder</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+            <div class="member-fact"><dt>Fuera de TAL</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+            <div class="member-fact"><dt>Algo que siempre digo</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+          </dl>
+          <button class="member-toggle">Conocer más +</button>
+        </article>
+
+        <!-- Mayra -->
+        <article class="member reveal">
+          <div class="member-top">
+            <img src="assets/img/team/mayra.jpeg" alt="Mayra">
+            <h3>Mayra 👋</h3>
+            <p class="member-role">International Education Consultant</p>
+            <p class="member-bio">
+              La persona que queremos que haga que nuestra comunidad se sienta cada vez
+              menos como “un grupo” y más como un lugar al que realmente quieras volver.
+            </p>
+          </div>
+          <dl class="member-reveal">
+            <div class="member-fact"><dt>En TAL me encuentras</dt><dd>Entre contenido, comunidad y nuevas ideas.</dd></div>
+            <div class="member-fact"><dt>Mi superpoder</dt><dd>Encontrar la forma de hacer que las cosas pasen, incluso cuando al inicio no tengo idea de cómo hacerlo.</dd></div>
+            <div class="member-fact"><dt>Fuera de TAL</dt><dd>Leer, tomar fotos, escribir, encontrar pequeños nuevos intereses en los que obsesionarme… y jugar con mi gatita.</dd></div>
+            <div class="member-fact"><dt>Algo que siempre digo</dt><dd>“Un ganador es simplemente alguien que perdió, pero decidió intentarlo una vez más.”</dd></div>
+          </dl>
+          <button class="member-toggle">Conocer más +</button>
+        </article>
+
+      </div>
+
+      <div class="partnerships-label">Partnership</div>
+      <div class="team-grid team-grid--partners">
+        <article class="member reveal">
+          <div class="member-top">
+            <img src="assets/img/team/estefania.jpeg" alt="Estefanía">
+            <h3>Estefanía 👋</h3>
+            <p class="member-role">Documentation Specialist</p>
+            <p class="member-bio">
+              La persona que cuida cada detalle de tu postulación para que tus
+              documentos realmente cuenten tu historia.
+            </p>
+          </div>
+          <dl class="member-reveal">
+            <div class="member-fact"><dt>En TAL me encuentras</dt><dd>Revisando ensayos, personal statements, CVs y cartas para que cada parte de tu aplicación tenga sentido y esté alineada con el programa al que quieres postular.</dd></div>
+            <div class="member-fact"><dt>Mi superpoder</dt><dd>Detectar esos pequeños detalles que pueden hacer que un documento pase de “está bien” a realmente representar tu perfil.</dd></div>
+            <div class="member-fact"><dt>Fuera de TAL</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+            <div class="member-fact"><dt>Algo que siempre digo</dt><dd><span class="pending">Pendiente — Lili por completar</span></dd></div>
+          </dl>
+          <button class="member-toggle">Conocer más +</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 13 · HISTORIAS ═════════════════════ -->
+  <section class="section stories" id="stories">
+    <div class="container">
+      <div class="stories-intro reveal">
+        <p class="eyebrow">Historias</p>
+        <h2 class="section-title">Historias que ya cruzaron fronteras 🌎</h2>
+        <div class="gold-rule"></div>
+        <p class="lead">
+          Ellos también empezaron con una pregunta: “¿por dónde comienzo?”
+          Hoy estudian en universidades de Europa, han ganado becas internacionales
+          y están construyendo nuevas etapas de sus carreras fuera de sus países.
+        </p>
+      </div>
+
+      <div class="stories-featured">
+
+        <div class="story-card reveal" role="button" tabindex="0"
+          data-img="assets/img/news section/Lucia.jpeg"
+          data-name="Lucía Armas 🇪🇺"
+          data-badge="Erasmus Mundus AquaH · Erasmus Mundus Scholar"
+          data-route="Perú → Europa"
+          data-start="Quería acceder a un programa académico internacional de alto nivel, pero los procesos más competitivos de Europa se sentían fuera de alcance."
+          data-work="Mapeo de oportunidades, estrategia de postulación y acompañamiento documento por documento."
+          data-result="Admitida al Erasmus Mundus AquaH, una de las becas internacionales más competitivas de Europa y una experiencia académica que conecta universidades de distintos países."
+          data-quote="Lograr entrar a un programa tan exigente como el Erasmus Mundus AquaH es una meta que no podría haber alcanzado sin su ayuda. La guía constante y personalizada me hizo sentir segura en cada paso.">
+          <img class="story-img" src="assets/img/news section/Lucia.jpeg" alt="Lucía Armas">
+          <div class="story-body">
+            <p class="story-badge">Erasmus Mundus AquaH</p>
+            <h3 class="story-name">Lucía Armas 🇪🇺</h3>
+            <p class="story-route">Perú → Europa</p>
+            <p class="story-quote">“La guía constante y personalizada me hizo sentir segura en cada paso.”</p>
+            <span class="story-cta">Conocer su historia →</span>
+          </div>
+        </div>
+
+        <div class="story-card reveal" role="button" tabindex="0"
+          data-img="assets/img/Gabriela Sanchez.jpeg"
+          data-name="Gabriela Sánchez 🇫🇷"
+          data-badge="ISTAT Scholarship 2026 · ENAC France"
+          data-route="Perú → Francia"
+          data-start="Tenía un perfil fuerte pero le costaba traducirlo en una historia clara y competitiva para un comité de beca internacional."
+          data-work="Construcción de la narrativa del perfil, documentos de postulación y preparación de la aplicación a la beca."
+          data-result="Seleccionada como beneficiaria de la beca ISTAT para estudiar en la École Nationale de l'Aviation Civile, una de las instituciones especializadas en aviación más reconocidas de Francia."
+          data-quote="Más que una asesoría, fue un proceso en el que realmente sentí que alguien creía en mi potencial y sabía cómo ayudarme a mostrarlo. Gracias a su dedicación, paciencia y experiencia, pude transformar mis ideas en una historia auténtica, clara y significativa.">
+          <img class="story-img" src="assets/img/Gabriela Sanchez.jpeg" alt="Gabriela Sánchez">
+          <div class="story-body">
+            <p class="story-badge">ISTAT Scholarship 2026 · ENAC France</p>
+            <h3 class="story-name">Gabriela Sánchez 🇫🇷</h3>
+            <p class="story-route">Perú → Francia</p>
+            <p class="story-quote">“Sentí que alguien creía en mi potencial y sabía cómo ayudarme a mostrarlo.”</p>
+            <span class="story-cta">Conocer su historia →</span>
+          </div>
+        </div>
+
+        <div class="story-card reveal" role="button" tabindex="0"
+          data-img="assets/img/Brenda Vergara.jpg"
+          data-name="Brenda Vergara 🇬🇧"
+          data-badge="Dean's Scholarship · Bayes Business School"
+          data-route="Perú → Londres"
+          data-start="Navegar el mundo de las maestrías se sentía agotador e intimidante, sin claridad sobre qué programas encajaban con su perfil."
+          data-work="Búsqueda de programas y becas alineados a su perfil, redacción de ensayos personales y cartas de motivación."
+          data-result="Seleccionada para el Dean's Scholarship de Bayes Business School, City St George's, University of London."
+          data-quote="No podría estar más agradecida con todo el soporte brindado por The Admissions Lab. Navegar el mundo de las maestrías puede resultar agotador e intimidante, y tener un equipo profesional respaldándote hace la diferencia. Gracias a ellos descubrí programas y becas que encajaban con mi perfil.">
+          <img class="story-img" src="assets/img/Brenda Vergara.jpg" alt="Brenda Vergara">
+          <div class="story-body">
+            <p class="story-badge">Dean's Scholarship · Bayes Business School</p>
+            <h3 class="story-name">Brenda Vergara 🇬🇧</h3>
+            <p class="story-route">Perú → Londres</p>
+            <p class="story-quote">“Tener un equipo profesional respaldándote hace la diferencia.”</p>
+            <span class="story-cta">Conocer su historia →</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="stories-more-label reveal">Y hay muchas más historias ✨</p>
+
+      <div class="stories-rest">
+
+        <div class="story-mini reveal" role="button" tabindex="0"
+          data-img="assets/img/Ana Espino.jpeg"
+          data-name="Ana Espino 🇪🇸"
+          data-badge="Fundación Carolina · Universidad Carlos III de Madrid"
+          data-route="Perú → Madrid"
+          data-start="Quería postular a una de las becas más conocidas de España sin tener claro cómo estructurar el proceso."
+          data-work="Acompañamiento etapa por etapa de la postulación a la beca de Fundación Carolina."
+          data-result="Seleccionada para cursar la Maestría en Economía Circular en la Universidad Carlos III de Madrid con el apoyo de Fundación Carolina."
+          data-quote="Desde el inicio, me guiaron en cada etapa del proceso, resolviendo mis dudas y brindándome orientación constante. Destaco especialmente su profesionalismo, compromiso y cercanía.">
+          <img src="assets/img/Ana Espino.jpeg" alt="Ana Espino">
+          <div>
+            <h4>Ana Espino 🇪🇸</h4>
+            <p>Fundación Carolina · UC3M</p>
+          </div>
+        </div>
+
+        <div class="story-mini reveal" role="button" tabindex="0"
+          data-img="assets/img/news section/Joselyn.jpeg"
+          data-name="Joselyn Berrocal 🇬🇧"
+          data-badge="LUMS MBA · Lancaster University"
+          data-route="Perú → Reino Unido"
+          data-start="Un MBA en Inglaterra se sentía como un logro lejano, sobre todo por el financiamiento."
+          data-work="Estrategia de postulación y búsqueda de financiamiento para el MBA."
+          data-result="Beca del 50% para cursar su MBA en Lancaster University Management School."
+          data-quote="Gracias a su guía constante pude avanzar con confianza en cada etapa y alcanzar un logro que parecía lejano.">
+          <img src="assets/img/news section/Joselyn.jpeg" alt="Joselyn Berrocal">
+          <div>
+            <h4>Joselyn Berrocal 🇬🇧</h4>
+            <p>50% Scholarship · Lancaster</p>
+          </div>
+        </div>
+
+        <div class="story-mini reveal" role="button" tabindex="0"
+          data-img="assets/img/news section/Guillermo Medina.jpg"
+          data-name="Guillermo Medina 🇬🇧"
+          data-badge="University of Leeds · Scholarship Recipient"
+          data-route="Perú → Leeds"
+          data-start="Buscaba continuar sus estudios en Reino Unido y necesitaba apoyo tanto en la búsqueda de becas como en la postulación."
+          data-work="Búsqueda de becas, proceso de postulación y revisión detallada de documentos."
+          data-result="Beca para continuar sus estudios en University of Leeds."
+          data-quote="Recomiendo mucho la asesoría, tanto en la búsqueda de becas como en el proceso de postulación. El acompañamiento es permanente y la revisión de documentos muy detallada y útil.">
+          <img src="assets/img/news section/Guillermo Medina.jpg" alt="Guillermo Medina">
+          <div>
+            <h4>Guillermo Medina 🇬🇧</h4>
+            <p>University of Leeds</p>
+          </div>
+        </div>
+
+        <div class="story-mini reveal" role="button" tabindex="0"
+          data-img="assets/img/news section/Diana Quiroga.jpg"
+          data-name="Diana Quiroga 🇬🇧"
+          data-badge="University of Warwick · Admitted Student"
+          data-route="Perú → Reino Unido"
+          data-start="Su rubro es bastante competitivo, especialmente en universidades del Reino Unido."
+          data-work="Estrategia de postulación y acompañamiento durante todo el proceso competitivo."
+          data-result="Admisión en University of Warwick."
+          data-quote="Su apoyo ha sido clave. Mi rubro es bastante competitivo, especialmente en universidades del Reino Unido, pero me siento inmensamente feliz de haber logrado este sueño.">
+          <img src="assets/img/news section/Diana Quiroga.jpg" alt="Diana Quiroga">
+          <div>
+            <h4>Diana Quiroga 🇬🇧</h4>
+            <p>University of Warwick</p>
+          </div>
+        </div>
+
+        <div class="story-mini reveal" role="button" tabindex="0"
+          data-img="assets/img/Guillermo Pilares.jpeg"
+          data-name="Guillermo Joaquín Pilares 🇩🇪"
+          data-badge="Technische Universität Berlin · Admitted Student"
+          data-route="Perú → Berlín"
+          data-start="Llegó a TAL sin tener claro por dónde empezar y bastante confundido con el proceso."
+          data-work="Búsqueda de oportunidades, preparación y revisión de documentos, CV Europass y traducción certificada."
+          data-result="Admisión en Technische Universität Berlin."
+          data-quote="Antes de iniciar el proceso estaba bastante confundido y no sabía por dónde empezar, pero su acompañamiento hizo toda la diferencia. Siempre destacaron por su claridad, organización y disposición para resolver cualquier duda.">
+          <img src="assets/img/Guillermo Pilares.jpeg" alt="Guillermo Pilares">
+          <div>
+            <h4>Guillermo Pilares 🇩🇪</h4>
+            <p>TU Berlin</p>
+          </div>
+        </div>
+
+        <div class="story-mini reveal" role="button" tabindex="0"
+          data-img="assets/img/news section/Fabiana Mariscal.jpg"
+          data-name="Fabiana Mariscal 🇬🇧"
+          data-badge="University of Birmingham · Admitted Student"
+          data-route="Perú → Birmingham"
+          data-start="Estudiar fuera era uno de sus grandes objetivos, pero faltaba aterrizarlo en opciones concretas."
+          data-work="Universidades, oportunidades de beca y estrategia para su personal statement."
+          data-result="Admisión en University of Birmingham."
+          data-quote="Uno de mis más grandes sueños fue estudiar en el extranjero, y lo logré gracias a The Admissions Lab. Me guiaron en todo: universidades, becas y la redacción del personal statement.">
+          <img src="assets/img/news section/Fabiana Mariscal.jpg" alt="Fabiana Mariscal">
+          <div>
+            <h4>Fabiana Mariscal 🇬🇧</h4>
+            <p>University of Birmingham</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="stories-closing reveal">
+        <p class="big">Diferentes perfiles. Diferentes destinos. Diferentes historias.</p>
+        <p class="lead">Pero todas empezaron tomando una decisión: intentarlo.</p>
+        <p class="lead" style="margin-bottom:2rem;">¿Quieres descubrir qué oportunidades podrían tener sentido para tu perfil?</p>
+        <a class="btn-dark" href="#ruta">Quiero encontrar mi ruta →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal historias -->
+  <div class="modal-backdrop" id="storyModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+      <div class="modal-head">
+        <img id="modalImg" src="" alt="">
+        <div>
+          <p id="modalBadge"></p>
+          <h3 id="modalName"></h3>
+          <p id="modalRoute"></p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-block"><h4>Su punto de partida</h4><p id="modalStart"></p></div>
+        <div class="modal-block"><h4>Lo que trabajamos</h4><p id="modalWork"></p></div>
+        <div class="modal-block"><h4>El resultado</h4><p id="modalResult"></p></div>
+        <div class="modal-block testimonial"><h4>Su experiencia</h4><p id="modalQuote"></p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 14 · CTA FINAL ═════════════════════ -->
+  <section class="final-cta" id="contact">
+    <div class="container">
+      <p class="eyebrow">Antes de que te vayas…</p>
+      <h2 class="section-title">¿Qué quieres que pase después?</h2>
+      <div class="gold-rule"></div>
+
+      <div class="path-grid" id="pathGrid">
+        <button class="path-opt" data-note="">🎓 Estudiar fuera</button>
+        <button class="path-opt" data-note="">💼 Trabajar internacionalmente</button>
+        <button class="path-opt" data-note="">⚡ Aprender nuevas skills</button>
+        <button class="path-opt" data-note="">🌎 Encontrar oportunidades</button>
+        <button class="path-opt" data-note="Tranqui, también podemos empezar por ahí. 🤍">🤷‍♀️ Todavía no sé</button>
+      </div>
+
+      <a class="btn-light" id="pathCta" href="https://wa.me/51953572328?text=Hola!%20Quiero%20encontrar%20mi%20ruta%20con%20The%20Admissions%20Lab." target="_blank">Encontrar mi ruta →</a>
+      <p class="final-note" id="pathNote"></p>
+    </div>
+  </section>
+
+  <!-- ══ 15 · FOOTER ════════════════════════ -->
+  <footer>
+    <div>
+      <div class="footer-brand">The Admissions <span>Lab</span></div>
+      <p class="footer-tagline">Un espacio para construir un perfil que pueda moverse por el mundo.</p>
+      <p class="footer-pillars">Study · Career · Skills · Community</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.tiktok.com/@lils.299" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/lils.29/profilecard" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/lilianesantosvidal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://wa.me/51953572328" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#hero">Inicio</a>
+    </div>
+  </footer>
+
+  <script>
+    // ── Navbar scroll ──────────────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ── Mobile drawer ──────────────────────
+    const drawer = document.getElementById('navDrawer');
+    document.getElementById('navToggle').addEventListener('click', () => drawer.classList.add('open'));
+    document.getElementById('navClose').addEventListener('click', () => drawer.classList.remove('open'));
+    drawer.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => drawer.classList.remove('open'))
+    );
+
+    // ── Reveal on scroll ───────────────────
+    const revealIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+    // ── Animated counters (Impacto) ────────
+    const countUp = (el) => {
+      const target = +el.dataset.target;
+      const span   = el.querySelector('.impact-count');
+      if (!span) return;
+      const step = Math.max(1, Math.ceil(target / 60));
+      let current = 0;
+      const tick = () => {
+        current = Math.min(current + step, target);
+        span.textContent = current.toLocaleString('es');
+        if (current < target) requestAnimationFrame(tick);
+      };
+      tick();
+    };
+    const countIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { countUp(e.target); countIO.unobserve(e.target); }
+      });
+    }, { threshold: .4 });
+    document.querySelectorAll('.impact-item[data-target]').forEach(el => countIO.observe(el));
+
+    // ── Team cards: tap to expand on touch ─
+    document.querySelectorAll('.member-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.member');
+        const open = card.classList.toggle('open');
+        btn.textContent = open ? 'Cerrar −' : 'Conocer más +';
+      });
+    });
+
+    // ── Historias: modal ───────────────────
+    (() => {
+      const modal = document.getElementById('storyModal');
+      const fields = {
+        img:    document.getElementById('modalImg'),
+        badge:  document.getElementById('modalBadge'),
+        name:   document.getElementById('modalName'),
+        route:  document.getElementById('modalRoute'),
+        start:  document.getElementById('modalStart'),
+        work:   document.getElementById('modalWork'),
+        result: document.getElementById('modalResult'),
+        quote:  document.getElementById('modalQuote')
+      };
+      let lastFocus = null;
+
+      const open = (el) => {
+        const d = el.dataset;
+        fields.img.src      = d.img;
+        fields.img.alt      = d.name;
+        fields.badge.textContent  = d.badge;
+        fields.name.textContent   = d.name;
+        fields.route.textContent  = d.route;
+        fields.start.textContent  = d.start;
+        fields.work.textContent   = d.work;
+        fields.result.textContent = d.result;
+        fields.quote.textContent  = '“' + d.quote + '”';
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        lastFocus = el;
+        document.getElementById('modalClose').focus();
+      };
+      const close = () => {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        if (lastFocus) lastFocus.focus();
+      };
+
+      document.querySelectorAll('.story-card, .story-mini').forEach(card => {
+        card.addEventListener('click', () => open(card));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+        });
+      });
+      document.getElementById('modalClose').addEventListener('click', close);
+      modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) close();
+      });
+    })();
+
+    // ── CTA final: selector de ruta ────────
+    (() => {
+      const grid = document.getElementById('pathGrid');
+      const cta  = document.getElementById('pathCta');
+      const note = document.getElementById('pathNote');
+      const base = 'https://wa.me/51953572328?text=';
+
+      grid.addEventListener('click', (e) => {
+        const btn = e.target.closest('.path-opt');
+        if (!btn) return;
+        grid.querySelectorAll('.path-opt').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+
+        const label = btn.textContent.trim();
+        cta.href = base + encodeURIComponent('Hola! Quiero encontrar mi ruta con The Admissions Lab. Mi objetivo: ' + label);
+        note.textContent = btn.dataset.note || '';
+      });
+    })();
+  </script>
+
+</body>
+</html>
