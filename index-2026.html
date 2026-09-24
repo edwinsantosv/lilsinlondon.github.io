@@ -121,16 +121,17 @@
       height: 1px;
       background: var(--border);
     }
-    /* mancha beige suave detrás de la columna de texto */
+    /* mancha beige suave detrás del hero */
     .hero::before {
       content: '';
       position: absolute;
-      top: 14%; left: -6%;
-      width: 42vw; height: 42vw;
-      max-width: 620px; max-height: 620px;
+      top: 12%; left: 50%;
+      transform: translateX(-50%);
+      width: 46vw; height: 46vw;
+      max-width: 660px; max-height: 660px;
       border-radius: 50%;
       background: var(--cream-dark);
-      opacity: .55;
+      opacity: .45;
       pointer-events: none;
     }
 
@@ -138,26 +139,36 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 1180px;
+      max-width: 780px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 4rem;
+    }
+
+    .hero-copy {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
       align-items: center;
     }
 
-    .hero-copy { text-align: left; }
+    .hero-logo { width: clamp(150px, 13vw, 190px); margin: 0 auto 1.7rem; display: block; }
 
-    .hero-logo { width: clamp(150px, 14vw, 200px); margin: 0 0 1.9rem; display: block; }
+    .hero-script {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.35rem, 2vw, 1.75rem);
+      line-height: 1;
+      color: var(--gold);
+      margin: 0 0 .9rem;
+      transform: rotate(-2deg);
+    }
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(2.2rem, 4.1vw, 3.7rem);
+      font-size: clamp(2.2rem, 4.4vw, 3.8rem);
       font-weight: 700;
-      line-height: 1.13;
+      line-height: 1.12;
       color: var(--black);
       margin-bottom: 1.2rem;
-      max-width: 13ch;
+      max-width: 18ch;
     }
     .hero-title em { font-style: normal; color: var(--gold); }
 
@@ -166,17 +177,18 @@
       color: var(--gray);
       font-weight: 300;
       line-height: 1.7;
-      max-width: 40ch;
-      margin: 0 0 2.2rem;
+      max-width: 46ch;
+      margin: 0 0 2.4rem;
     }
 
     /* fila de pilares con íconos */
     .hero-pillars {
       list-style: none;
       display: flex;
-      margin: 0 0 2.4rem;
+      margin: 0 0 2.6rem;
       padding: 0;
-      max-width: 420px;
+      width: 100%;
+      max-width: 460px;
     }
     .hero-pillars li {
       flex: 1;
@@ -208,62 +220,6 @@
     .hero-cta { display: inline-flex; align-items: center; gap: .6rem; }
     .hero-cta span { transition: transform .25s; }
     .hero-cta:hover span { transform: translateX(4px); }
-
-    /* columna visual: arco + script + sello */
-    .hero-visual { position: relative; }
-    .hero-arch {
-      position: relative;
-      width: min(100%, 420px);
-      margin-left: auto;
-      aspect-ratio: 3 / 4;
-      max-height: 66svh;
-      border-radius: 999px 999px 14px 14px;
-      overflow: hidden;
-      background: var(--cream-dark);
-    }
-    .hero-arch img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: 62% 22%;
-      display: block;
-    }
-    .hero-script {
-      position: absolute;
-      left: 0; bottom: 1.4rem;
-      font-family: 'Caveat', cursive;
-      font-size: clamp(1.5rem, 2.3vw, 2.1rem);
-      line-height: 1;
-      color: var(--black);
-      background: var(--cream);
-      padding: .35rem .8rem .15rem;
-      transform: rotate(-3.5deg);
-      box-shadow: 0 6px 24px rgba(78,56,43,.10);
-    }
-    .hero-badge {
-      position: absolute;
-      top: -1.2rem; right: -1rem;
-      width: 104px; height: 104px;
-      display: grid;
-      place-items: center;
-    }
-    .hero-badge-ring {
-      position: absolute; inset: 0;
-      animation: badge-spin 24s linear infinite;
-    }
-    .hero-badge-ring text {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 1.8px;
-      fill: var(--gold);
-    }
-    .hero-badge svg.badge-plane {
-      width: 22px; height: 22px;
-      fill: none; stroke: var(--black);
-      stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round;
-    }
-    @keyframes badge-spin { to { transform: rotate(360deg); } }
-    @media (prefers-reduced-motion: reduce) { .hero-badge-ring { animation: none; } }
 
     .btn-dark {
       display: inline-block;
@@ -1058,18 +1014,13 @@
       .vertical-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .impact-grid { grid-template-columns: 1fr; }
 
-      /* Hero apilado: texto arriba, arco debajo */
+      /* Hero en tablet/móvil */
       .hero { min-height: auto; padding: 7.5rem 1.5rem 4.5rem; }
-      .hero::before { top: 8%; left: -30%; width: 90vw; height: 90vw; }
-      .hero-grid { grid-template-columns: 1fr; gap: 2.6rem; }
-      .hero-copy { text-align: center; display: flex; flex-direction: column; align-items: center; }
+      .hero::before { top: 6%; width: 105vw; height: 105vw; }
       .hero-logo { margin: 0 auto 1.4rem; }
       .hero-title { max-width: 16ch; margin-bottom: 1rem; }
       .hero-sub { margin-bottom: 1.8rem; }
       .hero-pillars { width: 100%; margin-bottom: 2rem; }
-      .hero-arch { margin: 0 auto; width: min(300px, 76%); aspect-ratio: 4 / 5; max-height: 40svh; }
-      .hero-script { left: 50%; bottom: -.8rem; transform: translateX(-50%) rotate(-3deg); }
-      .hero-badge { display: none; }
       .scroll-hint { display: none; }
     }
 
@@ -1095,17 +1046,15 @@
     }
 
     @media (max-width: 480px) {
-      .hero { padding: 6.5rem 1.2rem 3.5rem; }
-      .hero-grid { gap: 2.1rem; }
-      .hero-logo { width: 132px; margin-bottom: 1.1rem; }
-      .hero-title { font-size: 2rem; line-height: 1.14; margin-bottom: .85rem; }
-      .hero-sub { font-size: .9rem; line-height: 1.6; margin-bottom: 1.5rem; }
-      .hero-pillars { margin-bottom: 1.7rem; }
+      .hero { padding: 7rem 1.2rem 4rem; }
+      .hero-logo { width: 140px; margin-bottom: 1.2rem; }
+      .hero-script { font-size: 1.3rem; margin-bottom: .8rem; }
+      .hero-title { font-size: 2.1rem; line-height: 1.14; margin-bottom: .9rem; }
+      .hero-sub { font-size: .92rem; line-height: 1.65; margin-bottom: 1.9rem; }
+      .hero-pillars { margin-bottom: 2rem; }
       .hero-pillars li { padding: 0 .3rem; gap: .4rem; }
       .hero-pillars svg { width: 21px; height: 21px; }
       .hero-pillars span { font-size: .52rem; letter-spacing: .1em; }
-      .hero-arch { width: 220px; max-height: 34svh; }
-      .hero-script { font-size: 1.3rem; white-space: nowrap; padding: .3rem .7rem .1rem; }
       .story-img { height: 200px; }
     }
   </style>
@@ -1148,6 +1097,7 @@
 
       <div class="hero-copy">
         <img class="hero-logo" src="assets/img/brand/tal-logo-light-transparent.png" alt="The Admissions Lab — by Lili in London">
+        <p class="hero-script">Internacionaliza tu perfil</p>
         <h1 class="hero-title">Tu perfil puede llevarte <em>más lejos</em></h1>
         <p class="hero-sub">
           Te ayudamos a descubrir oportunidades, prepararte y construir
@@ -1174,24 +1124,6 @@
         </ul>
 
         <a class="btn-dark hero-cta" href="#ruta">Descubre tu ruta <span aria-hidden="true">→</span></a>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-arch">
-          <img src="assets/img/fotos-lili/foto_lili_personal_06.png"
-               alt="Lili frente al Big Ben y el Parlamento de Londres al atardecer">
-        </div>
-        <span class="hero-script">Internacionaliza tu perfil</span>
-
-        <div class="hero-badge" aria-hidden="true">
-          <svg class="hero-badge-ring" viewBox="0 0 104 104">
-            <defs>
-              <path id="badgeCircle" d="M52,52 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/>
-            </defs>
-            <text><textPath href="#badgeCircle" startOffset="0">OPORTUNIDADES · EXPERIENCIAS · PERFIL GLOBAL · </textPath></text>
-          </svg>
-          <svg class="badge-plane" viewBox="0 0 24 24"><path d="M21 15.5 3.5 20l4-8-4-8L21 8.5Z"/><path d="M7.5 12H21"/></svg>
-        </div>
       </div>
 
     </div>
