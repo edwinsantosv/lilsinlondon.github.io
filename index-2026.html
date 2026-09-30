@@ -352,7 +352,29 @@
       box-shadow: 0 20px 50px rgba(0,0,0,.07);
       border-color: var(--gold-light);
     }
-    .goal-icon { font-size: 1.9rem; line-height: 1; margin-bottom: 1.2rem; }
+    .goal-icon {
+      width: 54px; height: 54px;
+      margin-bottom: 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+      transition: background .3s, border-color .3s;
+    }
+    .goal-icon svg {
+      width: 25px; height: 25px;
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke .3s;
+    }
+    .goal:hover .goal-icon { background: var(--gold); border-color: var(--gold); }
+    .goal:hover .goal-icon svg { stroke: var(--cream); }
     .goal-title {
       font-family: var(--serif);
       font-size: 1.3rem;
@@ -1171,28 +1193,28 @@
 
       <div class="goal-grid">
         <a class="goal reveal" href="#study">
-          <div class="goal-icon">🎓</div>
+          <div class="goal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M5 11v5.5c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V11"/><path d="M22 9v6"/></svg></div>
           <h3 class="goal-title">Quiero estudiar fuera</h3>
           <p class="goal-text">Perfecto. Empecemos por entender tu perfil y qué oportunidades tienen sentido para ti.</p>
           <span class="goal-link">Entra a Study <span class="arr">→</span></span>
         </a>
 
         <a class="goal reveal" href="#career">
-          <div class="goal-icon">💼</div>
+          <div class="goal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/><path d="M2.5 12.5h19"/></svg></div>
           <h3 class="goal-title">Quiero trabajar fuera</h3>
           <p class="goal-text">Veamos dónde puede competir tu perfil, qué mercados explorar y qué necesitas mejorar antes de empezar a aplicar.</p>
           <span class="goal-link">Entra a Career <span class="arr">→</span></span>
         </a>
 
         <a class="goal reveal" href="#skills">
-          <div class="goal-icon">🚀</div>
+          <div class="goal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20.5h18"/><path d="M6 20.5V13"/><path d="M12 20.5V7"/><path d="M18 20.5v-6"/></svg></div>
           <h3 class="goal-title">Quiero mejorar mi perfil</h3>
           <p class="goal-text">Aquí entran nuestros Labs: espacios prácticos para aprender skills que hoy están pidiendo empresas y organizaciones alrededor del mundo.</p>
           <span class="goal-link">Entra a Skills <span class="arr">→</span></span>
         </a>
 
         <a class="goal reveal" href="#community">
-          <div class="goal-icon">🌎</div>
+          <div class="goal-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M2.8 20c0-3.3 2.8-5.4 6.2-5.4s6.2 2.1 6.2 5.4"/><path d="M16.2 5.6a3.2 3.2 0 0 1 0 5.9"/><path d="M17.8 14.9c2.1.6 3.4 2.3 3.4 5.1"/></svg></div>
           <h3 class="goal-title">Quiero encontrar oportunidades</h3>
           <p class="goal-text">Becas, programas, eventos, recursos, experiencias y otras personas que también están intentando construir una ruta internacional.</p>
           <span class="goal-link">Entra a Community <span class="arr">→</span></span>
