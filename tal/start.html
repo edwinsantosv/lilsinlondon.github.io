@@ -1,17 +1,18 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Empieza tu camino — The Admissions Lab</title>
-  <meta name="description" content="Cuéntanos tu objetivo y evalúa tu perfil para estudiar o trabajar en el extranjero. The Admissions Lab.">
-  <meta name="robots" content="noindex">
-  <link rel="icon" href="../assets/img/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="tal.css">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Empieza tu camino — The Admissions Lab</title>
+<meta content="Cuéntanos tu objetivo y evalúa tu perfil para estudiar o trabajar en el extranjero. The Admissions Lab." name="description"/>
+<meta content="noindex" name="robots"/>
+<link href="../assets/img/favicon.png" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="tal.css" rel="stylesheet"/>
+<style>
     .form-shell { max-width: 640px; margin: 0 auto; padding: 9rem 1.5rem 5rem; }
     .form-card { background: var(--white); border: 1px solid var(--border); padding: 2.5rem; }
     .field { margin-bottom: 1.4rem; }
@@ -31,155 +32,138 @@
     .success-msg h2 { font-family: var(--serif); margin-bottom: 1rem; }
     @media (max-width: 600px) { .row { grid-template-columns: 1fr; } .form-card { padding: 1.6rem; } }
   </style>
-</head>
-<body>
+<link href="tal-web.css?v=home-2026" rel="stylesheet"/></head>
+<body><a class="skip-link" href="#contenido">Saltar al contenido</a>
+<nav aria-label="Navegación principal" class="nav" id="mainNav">
+<a class="nav-brand" href="../index.html"><img alt="The Admissions Lab — Inicio" src="../assets/img/brand/tal-logo-light-transparent.png" width="190"/></a><ul class="nav-links"><li><a href="study.html">Study</a></li><li><a href="career.html">Career</a></li><li><a href="skills.html">Skills</a></li><li><a href="community.html">Community</a></li></ul>
+<a class="nav-cta" href="../index.html">← Volver</a>
+<details class="site-menu"><summary aria-label="Menú de navegación"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></summary><div class="site-menu-panel"><a href="study.html">Study</a><a href="career.html">Career</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a class="nav-cta" href="../index.html">← Volver</a></div></details></nav><main id="contenido"><div class="form-shell">
+<div class="form-card" id="formCard">
+<p class="eyebrow">Primer paso</p>
+<h1 class="section-title" style="font-size:1.9rem;">¿Qué quieres lograr?</h1>
+<div class="gold-rule"></div>
+<p class="lead" style="margin-bottom:2rem;">Cuéntanos tu objetivo y evaluamos tu perfil para orientarte al siguiente paso.</p>
+<noscript><p>Para evaluar tu perfil, <a href="https://wa.me/51953572328">contacta al equipo por WhatsApp</a>.</p><style>#leadForm{display:none}</style></noscript><form id="leadForm" novalidate="">
+<div class="field">
+<label for="objetivo">Objetivo principal *</label>
+<select id="objetivo" name="objetivo" required="">
+<option value="">Selecciona una opción</option>
+<option value="Study">Estudiar en el extranjero (becas, máster, universidad)</option>
+<option value="Career">Trabajar en el extranjero / potenciar mi perfil</option>
+<option value="Visa">Soporte de visa</option>
+<option value="Documents">Documentos (traducción, CV, cartas)</option>
+<option value="Otro">Otro</option>
+</select>
+</div>
+<div class="row">
+<div class="field">
+<label for="nombre">Nombre completo *</label>
+<input autocomplete="name" id="nombre" name="nombre" required="" type="text"/>
+</div>
+<div class="field">
+<label for="email">Email *</label>
+<input autocomplete="email" id="email" name="email" required="" type="email"/>
+</div>
+</div>
+<div class="row">
+<div class="field">
+<label for="whatsapp">WhatsApp *</label>
+<input autocomplete="tel" id="whatsapp" name="whatsapp" placeholder="+51 ..." required="" type="tel"/>
+</div>
+<div class="field">
+<label for="pais">País de residencia *</label>
+<input autocomplete="country-name" id="pais" name="pais" required="" type="text"/>
+</div>
+</div>
+<div class="field">
+<label for="profesion">Profesión / área</label>
+<input id="profesion" name="profesion" type="text"/>
+</div>
+<div class="row">
+<div class="field">
+<label for="experiencia">Años de experiencia</label>
+<select id="experiencia" name="experiencia">
+<option value="">—</option>
+<option>Sin experiencia</option>
+<option>1–2 años</option>
+<option>3–5 años</option>
+<option>6–10 años</option>
+<option>Más de 10 años</option>
+</select>
+</div>
+<div class="field">
+<label for="nivel">Nivel de estudios</label>
+<select id="nivel" name="nivel">
+<option value="">—</option>
+<option>Secundaria</option>
+<option>Técnico</option>
+<option>Pregrado</option>
+<option>Máster</option>
+<option>MBA</option>
+<option>Doctorado</option>
+</select>
+</div>
+</div>
+<div class="field">
+<label for="destino">Países o regiones de interés</label>
+<input id="destino" name="destino" placeholder="Ej. Reino Unido, Europa, Canadá..." type="text"/>
+</div>
+<div class="field">
+<label for="timeline">¿Cuándo quieres empezar?</label>
+<select id="timeline" name="timeline">
+<option value="">—</option>
+<option>Inmediatamente</option>
+<option>1–3 meses</option>
+<option>3–6 meses</option>
+<option>6–12 meses</option>
+<option>Más de 1 año</option>
+<option>Aún no lo sé</option>
+</select>
+</div>
+<div class="field">
+<label for="necesidad">¿Cuál es tu principal necesidad?</label>
+<textarea id="necesidad" name="necesidad" placeholder="Cuéntanos brevemente qué estás buscando..."></textarea>
+</div>
+<div class="field">
+<label for="fuente">¿Cómo nos conociste?</label>
+<select id="fuente" name="fuente">
+<option value="">—</option>
+<option>Instagram</option>
+<option>TikTok</option>
+<option>LinkedIn</option>
+<option>Google / búsqueda</option>
+<option>Recomendación</option>
+<option>Otro</option>
+</select>
+</div>
+<div class="field">
+<div class="consent">
+<input id="consent" name="consent" required="" type="checkbox"/>
+<label for="consent" style="text-transform:none;letter-spacing:0;font-weight:400;">Acepto que The Admissions Lab use mis datos para contactarme y brindarme información sobre sus servicios, conforme a su política de privacidad. *</label>
+</div>
+</div>
+<!-- UTM / origen (hidden) -->
+<input id="utm_source" name="utm_source" type="hidden"/>
+<input id="utm_medium" name="utm_medium" type="hidden"/>
+<input id="utm_campaign" name="utm_campaign" type="hidden"/>
+<input id="referrer" name="referrer" type="hidden"/>
+<button class="btn-dark" style="width:100%;border:none;cursor:pointer;" type="submit">Enviar</button>
+<p class="error" id="formError">Revisa los campos marcados.</p>
+<div class="form-fallback" hidden="" id="formFallback" role="status"><p>Tu información todavía no se ha enviado. Contacta al equipo por WhatsApp para continuar con la evaluación.</p><a class="btn-dark" href="https://wa.me/51953572328?text=Hola%2C%20quiero%20evaluar%20mi%20perfil%20con%20TAL." id="fallbackContact" rel="noopener noreferrer" target="_blank">Continuar por WhatsApp →</a></div></form>
+</div>
+<div class="success-msg" id="successMsg">
+<h2>¡Gracias!</h2>
+<p class="lead" style="margin:0 auto;">Recibimos tu información. Te contactaremos pronto para orientarte al siguiente paso.</p>
+</div>
+</div></main>
 
-  <nav class="nav" id="mainNav">
-    <div class="nav-brand">The Admissions <span>Lab</span></div>
-    <a class="nav-cta" href="../index.html">← Volver</a>
-  </nav>
-
-  <div class="form-shell">
-    <div class="form-card" id="formCard">
-      <p class="eyebrow">Primer paso</p>
-      <h2 class="section-title" style="font-size:1.9rem;">¿Qué quieres lograr?</h2>
-      <div class="gold-rule"></div>
-      <p class="lead" style="margin-bottom:2rem;">Cuéntanos tu objetivo y evaluamos tu perfil para orientarte al siguiente paso.</p>
-
-      <form id="leadForm" novalidate>
-        <div class="field">
-          <label for="objetivo">Objetivo principal *</label>
-          <select id="objetivo" name="objetivo" required>
-            <option value="">Selecciona una opción</option>
-            <option value="Study">Estudiar en el extranjero (becas, máster, universidad)</option>
-            <option value="Career">Trabajar en el extranjero / potenciar mi perfil</option>
-            <option value="Visa">Soporte de visa</option>
-            <option value="Documents">Documentos (traducción, CV, cartas)</option>
-            <option value="Otro">Otro</option>
-          </select>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="nombre">Nombre completo *</label>
-            <input type="text" id="nombre" name="nombre" required autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="whatsapp">WhatsApp *</label>
-            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="+51 ..." autocomplete="tel">
-          </div>
-          <div class="field">
-            <label for="pais">País de residencia *</label>
-            <input type="text" id="pais" name="pais" required autocomplete="country-name">
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="profesion">Profesión / área</label>
-          <input type="text" id="profesion" name="profesion">
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="experiencia">Años de experiencia</label>
-            <select id="experiencia" name="experiencia">
-              <option value="">—</option>
-              <option>Sin experiencia</option>
-              <option>1–2 años</option>
-              <option>3–5 años</option>
-              <option>6–10 años</option>
-              <option>Más de 10 años</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="nivel">Nivel de estudios</label>
-            <select id="nivel" name="nivel">
-              <option value="">—</option>
-              <option>Secundaria</option>
-              <option>Técnico</option>
-              <option>Pregrado</option>
-              <option>Máster</option>
-              <option>MBA</option>
-              <option>Doctorado</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="destino">Países o regiones de interés</label>
-          <input type="text" id="destino" name="destino" placeholder="Ej. Reino Unido, Europa, Canadá...">
-        </div>
-
-        <div class="field">
-          <label for="timeline">¿Cuándo quieres empezar?</label>
-          <select id="timeline" name="timeline">
-            <option value="">—</option>
-            <option>Inmediatamente</option>
-            <option>1–3 meses</option>
-            <option>3–6 meses</option>
-            <option>6–12 meses</option>
-            <option>Más de 1 año</option>
-            <option>Aún no lo sé</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="necesidad">¿Cuál es tu principal necesidad?</label>
-          <textarea id="necesidad" name="necesidad" placeholder="Cuéntanos brevemente qué estás buscando..."></textarea>
-        </div>
-
-        <div class="field">
-          <label for="fuente">¿Cómo nos conociste?</label>
-          <select id="fuente" name="fuente">
-            <option value="">—</option>
-            <option>Instagram</option>
-            <option>TikTok</option>
-            <option>LinkedIn</option>
-            <option>Google / búsqueda</option>
-            <option>Recomendación</option>
-            <option>Otro</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <div class="consent">
-            <input type="checkbox" id="consent" name="consent" required>
-            <label for="consent" style="text-transform:none;letter-spacing:0;font-weight:400;">Acepto que The Admissions Lab use mis datos para contactarme y brindarme información sobre sus servicios, conforme a su política de privacidad. *</label>
-          </div>
-        </div>
-
-        <!-- UTM / origen (hidden) -->
-        <input type="hidden" id="utm_source" name="utm_source">
-        <input type="hidden" id="utm_medium" name="utm_medium">
-        <input type="hidden" id="utm_campaign" name="utm_campaign">
-        <input type="hidden" id="referrer" name="referrer">
-
-        <button type="submit" class="btn-dark" style="width:100%;border:none;cursor:pointer;">Enviar</button>
-        <p class="error" id="formError">Revisa los campos marcados.</p>
-      </form>
-    </div>
-
-    <div class="success-msg" id="successMsg">
-      <h2>¡Gracias!</h2>
-      <p class="lead" style="margin:0 auto;">Recibimos tu información. Te contactaremos pronto para orientarte al siguiente paso.</p>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-brand">The Admissions <span>Lab</span> &nbsp;·&nbsp; By Lils in London</div>
-    <div class="footer-links">
-      <a href="../index.html">Inicio</a>
-    </div>
-  </footer>
-
-  <script>
+<footer>
+<div class="footer-brand">The Admissions <span>Lab</span>  ·  By Lils in London</div>
+<div class="footer-links">
+<a href="../index.html">Inicio</a>
+</div>
+</footer>
+<script>
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
@@ -210,12 +194,8 @@
       }
       const data = Object.fromEntries(new FormData(form).entries());
       if (!WEBHOOK_URL) {
-        // Sin webhook configurado: no perder el lead. Guarda local y avisa.
-        const local = JSON.parse(localStorage.getItem('tal_leads') || '[]');
-        local.push({ ...data, ts: new Date().toISOString() });
-        localStorage.setItem('tal_leads', JSON.stringify(local));
-        document.getElementById('formCard').style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
+        document.getElementById('formFallback').hidden = false;
+        document.getElementById('fallbackContact').focus();
         return;
       }
       try {
@@ -232,5 +212,5 @@
       }
     });
   </script>
-</body>
+<script defer="" src="tal-web.js?v=home-2026"></script></body>
 </html>
