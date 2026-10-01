@@ -28,9 +28,11 @@
       --gray:       #383D39;
       --serif:      'Libre Baskerville', Georgia, serif;
       --sans:       'Plus Jakarta Sans', system-ui, sans-serif;
+      --ease:       cubic-bezier(.22,.9,.25,1);
     }
 
     html { scroll-behavior: smooth; }
+    ::selection { background: var(--gold-light); color: var(--black); }
 
     body {
       font-family: var(--sans);
@@ -55,10 +57,25 @@
       transition: background .3s, padding .3s, box-shadow .3s;
     }
     .nav.scrolled {
-      background: var(--cream);
+      background: rgba(243,242,238,.88);
+      backdrop-filter: saturate(180%) blur(12px);
       padding: 1rem 3rem;
       box-shadow: 0 1px 0 var(--border);
     }
+    /* línea de progreso de lectura */
+    .nav::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px;
+      width: 100%;
+      background: var(--gold);
+      transform: scaleX(var(--progress, 0));
+      transform-origin: left;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .nav.scrolled::after { opacity: 1; }
     .nav-brand {
       font-family: var(--serif);
       font-size: .95rem;
@@ -67,15 +84,27 @@
     }
     .nav-brand span { color: var(--gold); }
 
-    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
+      position: relative;
       font-size: .72rem;
       font-weight: 500;
       letter-spacing: .15em;
       text-transform: uppercase;
       transition: color .2s;
     }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: -5px;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease);
+    }
     .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
 
     .nav-cta {
       font-size: .72rem;
@@ -84,10 +113,14 @@
       text-transform: uppercase;
       padding: .6rem 1.5rem;
       border: 1.5px solid var(--black);
-      transition: background .2s, color .2s;
+      transition: color .3s, background-size .42s var(--ease);
       white-space: nowrap;
+      background-image: linear-gradient(var(--black), var(--black));
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: 100% 0%;
     }
-    .nav-cta:hover { background: var(--black); color: var(--cream); }
+    .nav-cta:hover { color: var(--cream); background-size: 100% 100%; }
 
     .nav-toggle {
       display: none;
@@ -133,6 +166,11 @@
       background: var(--cream-dark);
       opacity: .45;
       pointer-events: none;
+      animation: discIn 1.6s var(--ease) both;
+    }
+    @keyframes discIn {
+      from { opacity: 0; transform: translateX(-50%) scale(.82); }
+      to   { opacity: .45; transform: translateX(-50%) scale(1); }
     }
 
     .hero-grid {
@@ -150,13 +188,54 @@
       align-items: center;
     }
 
-    .hero-logo { width: clamp(150px, 13vw, 190px); margin: 0 auto 1.7rem; display: block; }
+    .hero-logo { width: clamp(150px, 13vw, 190px); margin: 0 auto 1.1rem; display: block; }
+
+    /* entrada escalonada del hero al cargar */
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(20px); filter: blur(7px); }
+      to   { opacity: 1; transform: none;            filter: blur(0); }
+    }
+    .hero-copy > * { animation: heroIn .95s var(--ease) both; }
+    .hero-copy > *:nth-child(1) { animation-delay: .10s; }
+    .hero-copy > *:nth-child(2) { animation-delay: .22s; }
+    .hero-copy > *:nth-child(3) { animation-delay: .34s; }
+    .hero-copy > *:nth-child(4) { animation-delay: .46s; }
+    .hero-copy > *:nth-child(5) { animation-delay: .58s; }
+    .hero-copy > *:nth-child(6) { animation-delay: .70s; }
+    .scroll-hint { animation: heroIn 1s .95s var(--ease) both; }
+
+    /* badge "El nuevo ecosistema" */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.55);
+      padding: .45rem 1.1rem;
+      margin-bottom: 1.5rem;
+      transition: border-color .3s, color .3s;
+    }
+    .hero-badge:hover { border-color: var(--gold-light); color: var(--black); }
+    .hero-badge i {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex: none;
+      animation: blink 2.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
 
     .hero-title {
       font-family: var(--serif);
       font-size: clamp(2.2rem, 4.4vw, 3.8rem);
       font-weight: 700;
       line-height: 1.12;
+      letter-spacing: -.015em;
       color: var(--black);
       margin-bottom: 1.2rem;
       max-width: 18ch;
@@ -221,12 +300,16 @@
       font-weight: 600;
       letter-spacing: .14em;
       text-transform: uppercase;
-      transition: background .25s, transform .25s;
+      transition: color .3s, transform .3s var(--ease), background-size .45s var(--ease);
       border: none;
       cursor: pointer;
       font-family: var(--sans);
+      background-image: linear-gradient(var(--gold-light), var(--gold-light));
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: 100% 0%;
     }
-    .btn-dark:hover { background: var(--gold); color: var(--black); transform: translateY(-2px); }
+    .btn-dark:hover { color: var(--black); transform: translateY(-3px); background-size: 100% 100%; }
 
     .btn-text {
       display: inline-flex;
@@ -268,6 +351,7 @@
     /* ── Shared ──────────────────────────────── */
     .section { padding: 7rem 2rem; }
     .container { max-width: 1100px; margin: 0 auto; }
+    section[id] { scroll-margin-top: 84px; }
 
     .eyebrow {
       font-size: .68rem;
@@ -288,6 +372,9 @@
     }
 
     .gold-rule { width: 44px; height: 2px; background: var(--gold); margin: 1.4rem 0; }
+    /* la línea dorada se dibuja cuando el bloque entra en pantalla */
+    .reveal .gold-rule { width: 0; transition: width .85s .25s var(--ease); }
+    .reveal.visible .gold-rule { width: 44px; }
 
     .lead {
       font-size: 1rem;
@@ -311,13 +398,160 @@
     .ecosystem {
       background: var(--white);
       border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    /* banda dorada superior: marca esta sección como el corazón del sitio */
+    .ecosystem::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
     }
     .ecosystem-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.05fr .95fr;
       gap: 4rem;
-      align-items: start;
+      align-items: center;
     }
+
+    /* ── Mapa del ecosistema ─────────────────── */
+    .eco-map {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      aspect-ratio: 1;
+    }
+    /* anillo punteado que gira lentamente */
+    .eco-map::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 52%; height: 52%;
+      margin: -26% 0 0 -26%;
+      border: 1px dashed var(--gold-light);
+      border-radius: 50%;
+      opacity: .55;
+      animation: spin 44s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .eco-core {
+      position: absolute;
+      top: 35%; left: 35%;
+      width: 30%; height: 30%;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--serif);
+      font-size: clamp(.78rem, 1.5vw, .92rem);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.35;
+      z-index: 2;
+    }
+    .eco-core small {
+      display: block;
+      font-family: var(--sans);
+      font-size: .54rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .25rem;
+    }
+
+    /* conectores que se dibujan desde el centro hacia afuera */
+    .eco-line {
+      position: absolute;
+      background: var(--gold-light);
+      transform: scale(0);
+      transition: transform .7s var(--ease);
+    }
+    .eco-line.v { width: 1px; height: 12%; left: 50%; }
+    .eco-line.h { height: 1px; width: 12%; top: 50%; }
+    .eco-line.up    { top: 23%;  transform-origin: bottom center; }
+    .eco-line.down  { top: 65%;  transform-origin: top center; }
+    .eco-line.left  { left: 23%; transform-origin: right center; }
+    .eco-line.right { left: 65%; transform-origin: left center; }
+    .eco-map.visible .eco-line { transform: scale(1); }
+    .eco-map.visible .eco-line.up    { transition-delay: .35s; }
+    .eco-map.visible .eco-line.right { transition-delay: .45s; }
+    .eco-map.visible .eco-line.down  { transition-delay: .55s; }
+    .eco-map.visible .eco-line.left  { transition-delay: .65s; }
+
+    .eco-node {
+      position: absolute;
+      width: 24%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .45rem;
+      opacity: 0;
+      transform: translate(var(--tx, 0), var(--ty, 0)) scale(.8);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+    .eco-map.visible .eco-node { opacity: 1; transform: translate(var(--tx, 0), var(--ty, 0)) scale(1); }
+    .eco-node.n-top    { top: 0;    left: 50%; --tx: -50%; transition-delay: .50s; }
+    .eco-node.n-bottom { bottom: 0; left: 50%; --tx: -50%; transition-delay: .70s; }
+    .eco-node.n-left   { left: 0;   top: 50%;  --ty: -50%; transition-delay: .80s; }
+    .eco-node.n-right  { right: 0;  top: 50%;  --ty: -50%; transition-delay: .60s; }
+
+    .eco-node .ring {
+      width: clamp(42px, 10vw, 54px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .3s, border-color .3s, transform .3s var(--ease);
+    }
+    .eco-node .ring svg {
+      width: 48%; height: 48%;
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke .3s;
+    }
+    .eco-node span {
+      font-size: .58rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      white-space: nowrap;
+    }
+    .eco-node:hover .ring { background: var(--gold); border-color: var(--gold); transform: scale(1.08); }
+    .eco-node:hover .ring svg { stroke: var(--cream); }
+    .eco-node:hover span { color: var(--black); }
+
+    /* frase de cierre a todo el ancho */
+    .eco-statement {
+      margin-top: 4rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2.1vw, 1.6rem);
+      font-weight: 700;
+      line-height: 1.6;
+      color: var(--black);
+      max-width: 40ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .eco-statement em { font-style: normal; color: var(--gold); }
     .ecosystem-closing {
       margin-top: 2.2rem;
       padding-top: 2.2rem;
@@ -926,9 +1160,13 @@
       font-weight: 600;
       letter-spacing: .14em;
       text-transform: uppercase;
-      transition: background .25s, transform .25s;
+      transition: transform .3s var(--ease), background-size .45s var(--ease);
+      background-image: linear-gradient(var(--gold-light), var(--gold-light));
+      background-repeat: no-repeat;
+      background-position: bottom;
+      background-size: 100% 0%;
     }
-    .btn-light:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-light:hover { transform: translateY(-3px); background-size: 100% 100%; }
 
     .final-note {
       margin-top: 1.8rem;
@@ -991,12 +1229,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 1.8rem;
+      gap: 1.35rem;
+      overflow-y: auto;
+      padding: 4.5rem 1.5rem 2.5rem;
     }
     .nav-drawer.open { display: flex; }
     .nav-drawer a {
       font-family: var(--serif);
-      font-size: 1.75rem;
+      font-size: 1.55rem;
       font-weight: 600;
       color: var(--black);
       letter-spacing: .02em;
@@ -1013,15 +1253,46 @@
       line-height: 1;
     }
 
+    /* ── Velo de apertura ────────────────────── */
+    .veil {
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 500;
+      pointer-events: none;
+      animation: veilOut .8s .15s var(--ease) forwards;
+    }
+    @keyframes veilOut { to { opacity: 0; visibility: hidden; } }
+
     /* ── Reveal on scroll ────────────────────── */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+      will-change: opacity, transform;
+    }
+    .reveal.visible { opacity: 1; transform: none; will-change: auto; }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal .gold-rule { width: 44px; transition: none; }
+      .veil { display: none; }
+      .hero-copy > *, .scroll-hint, .hero::before { animation: none; opacity: 1; filter: none; transform: none; }
+      .hero::before { opacity: .45; transform: translateX(-50%); }
+      .eco-map::before, .hero-badge i, .scroll-hint-line { animation: none; }
+      .eco-line { transform: scale(1); transition: none; }
+      .eco-node { opacity: 1; transform: translate(var(--tx, 0), var(--ty, 0)); transition: none; }
       html { scroll-behavior: auto; }
     }
 
     /* ── Responsive ──────────────────────────── */
+    @media (max-width: 1150px) {
+      .nav { padding: 1.5rem 2rem; }
+      .nav.scrolled { padding: .95rem 2rem; }
+      .nav-links { gap: 1.35rem; }
+      .nav-links a { font-size: .68rem; letter-spacing: .1em; }
+    }
+
     @media (max-width: 1024px) {
       .method-grid { grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255,255,255,.12); }
       .method-step { border-bottom: 1px solid rgba(255,255,255,.12); }
@@ -1031,7 +1302,9 @@
     }
 
     @media (max-width: 900px) {
-      .ecosystem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .ecosystem-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .eco-map { max-width: 330px; }
+      .eco-statement { margin-top: 3rem; padding-top: 2rem; }
       .vertical-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .impact-grid { grid-template-columns: 1fr; }
 
@@ -1075,17 +1348,24 @@
       .hero-pillars li { padding: 0 .3rem; gap: .4rem; }
       .hero-pillars svg { width: 21px; height: 21px; }
       .hero-pillars span { font-size: .52rem; letter-spacing: .1em; }
+      .hero-badge { font-size: .56rem; letter-spacing: .16em; padding: .4rem .9rem; margin-bottom: 1.2rem; }
       .story-img { height: 200px; }
+      .eco-map { max-width: 290px; }
+      .eco-node span { font-size: .5rem; letter-spacing: .1em; }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- Velo de apertura (CSS puro, se desvanece solo) -->
+  <div class="veil" aria-hidden="true"></div>
+
   <!-- Navigation -->
   <nav class="nav" id="mainNav">
     <div class="nav-brand">The Admissions <span>Lab</span></div>
     <ul class="nav-links">
+      <li><a href="#ecosistema">Ecosistema</a></li>
       <li><a href="#study">Study</a></li>
       <li><a href="#career">Career</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -1102,6 +1382,7 @@
   <!-- Mobile drawer -->
   <div class="nav-drawer" id="navDrawer">
     <button class="nav-close" id="navClose" aria-label="Cerrar">✕</button>
+    <a href="#ecosistema" class="drawer-link">Ecosistema</a>
     <a href="#study" class="drawer-link">Study</a>
     <a href="#career" class="drawer-link">Career</a>
     <a href="#skills" class="drawer-link">Skills</a>
@@ -1117,6 +1398,7 @@
 
       <div class="hero-copy">
         <img class="hero-logo" src="assets/img/brand/tal-logo-light-transparent.png" alt="The Admissions Lab — by Lili in London">
+        <a class="hero-badge" href="#ecosistema"><i aria-hidden="true"></i>El nuevo ecosistema</a>
         <h1 class="hero-title">Tu perfil puede llevarte <em>más lejos</em></h1>
         <p class="hero-sub">
           Te ayudamos a descubrir oportunidades, prepararte y construir
@@ -1165,21 +1447,46 @@
             Empezamos ayudando a encontrar becas y universidades.
             Pero estudiar fuera es solo una parte del camino.
           </p>
-        </div>
-
-        <div class="reveal">
-          <p class="stack">
+          <p class="stack" style="margin-top:1.8rem;">
             También están las prácticas.<br>
             Los trabajos.<br>
             Las skills que te faltan.<br>
             Las dudas de <strong>“¿y ahora qué hago?”</strong>.
           </p>
-          <div class="ecosystem-closing">
-            Así nació nuestro ecosistema: descubrir oportunidades, prepararte
-            para ellas y darle proyección internacional a tu perfil.
-          </div>
+        </div>
+
+        <!-- Mapa del ecosistema: 4 verticales alrededor de tu perfil -->
+        <div class="eco-map reveal" id="ecoMap">
+          <div class="eco-line v up" aria-hidden="true"></div>
+          <div class="eco-line v down" aria-hidden="true"></div>
+          <div class="eco-line h left" aria-hidden="true"></div>
+          <div class="eco-line h right" aria-hidden="true"></div>
+
+          <div class="eco-core"><small>Tu</small>perfil</div>
+
+          <a class="eco-node n-top" href="#study">
+            <span class="ring"><svg viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M5 11v5.5c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V11"/><path d="M22 9v6"/></svg></span>
+            <span>Study</span>
+          </a>
+          <a class="eco-node n-right" href="#career">
+            <span class="ring"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7"/><path d="M2.5 12.5h19"/></svg></span>
+            <span>Career</span>
+          </a>
+          <a class="eco-node n-bottom" href="#skills">
+            <span class="ring"><svg viewBox="0 0 24 24"><path d="M3 20.5h18"/><path d="M6 20.5V13"/><path d="M12 20.5V7"/><path d="M18 20.5v-6"/></svg></span>
+            <span>Skills</span>
+          </a>
+          <a class="eco-node n-left" href="#community">
+            <span class="ring"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.2"/><path d="M2.8 20c0-3.3 2.8-5.4 6.2-5.4s6.2 2.1 6.2 5.4"/><path d="M16.2 5.6a3.2 3.2 0 0 1 0 5.9"/><path d="M17.8 14.9c2.1.6 3.4 2.3 3.4 5.1"/></svg></span>
+            <span>Community</span>
+          </a>
         </div>
       </div>
+
+      <p class="eco-statement reveal">
+        Un ecosistema, cuatro caminos: <em>descubrir, prepararte y darle
+        proyección internacional a tu perfil.</em>
+      </p>
     </div>
   </section>
 
@@ -1809,11 +2116,15 @@
   </footer>
 
   <script>
-    // ── Navbar scroll ──────────────────────
+    // ── Navbar scroll + barra de progreso ──
     const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
+    const onScroll = () => {
       nav.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      nav.style.setProperty('--progress', max > 0 ? (window.scrollY / max).toFixed(4) : 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     // ── Mobile drawer ──────────────────────
     const drawer = document.getElementById('navDrawer');
@@ -1823,7 +2134,18 @@
       a.addEventListener('click', () => drawer.classList.remove('open'))
     );
 
-    // ── Reveal on scroll ───────────────────
+    // ── Reveal on scroll (con stagger en grids) ─
+    document.querySelectorAll('.goal-grid, .team-grid, .stories-featured, .stories-rest, .impact-grid')
+      .forEach(grid => {
+        let i = 0;
+        [...grid.children].forEach(child => {
+          if (child.classList.contains('reveal')) {
+            child.style.transitionDelay = (i * 90) + 'ms';
+            i++;
+          }
+        });
+      });
+
     const revealIO = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); }
