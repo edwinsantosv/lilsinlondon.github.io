@@ -129,21 +129,21 @@
     const nav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
-    const WEBHOOK_URL = ''; // TODO: webhook n8n → Notion (Leads B2B diferenciados). Pendiente.
+    // n8n "Registro – Partners (B2B) → Notion": crea el lead en Notion (Leads – Partners (B2B)).
+    const WEBHOOK_URL = 'https://edwinsantos.app.n8n.cloud/webhook/registro-partners-b2b';
 
     document.getElementById('partnerForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
+      const errorEl = document.getElementById('formError');
+      errorEl.style.display = 'none';
       if (!form.checkValidity()) { form.reportValidity(); return; }
       const data = Object.fromEntries(new FormData(form).entries());
-      if (!WEBHOOK_URL) {
-        const local = JSON.parse(localStorage.getItem('tal_partner_leads') || '[]');
-        local.push({ ...data, ts: new Date().toISOString() });
-        localStorage.setItem('tal_partner_leads', JSON.stringify(local));
-        document.getElementById('formCard').style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-        return;
-      }
+      const params = new URLSearchParams(window.location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign'].forEach((k) => { if (params.get(k)) data[k] = params.get(k); });
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
       try {
         const res = await fetch(WEBHOOK_URL, {
           method: 'POST',
@@ -151,10 +151,16 @@
           body: JSON.stringify(data)
         });
         if (!res.ok) throw new Error('HTTP ' + res.status);
+        // n8n answers 200 even when the workflow fails mid-way, so only {ok:true} from the last node counts
+        const body = await res.json().catch(() => null);
+        if (!body || body.ok !== true) throw new Error('Lead not saved');
         document.getElementById('formCard').style.display = 'none';
         document.getElementById('successMsg').style.display = 'block';
       } catch (err) {
-        document.getElementById('formError').style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+        errorEl.textContent = 'No pudimos enviar tu solicitud. Inténtalo de nuevo en unos minutos o escríbenos por WhatsApp al +51 953 572 328.';
+        errorEl.style.display = 'block';
       }
     });
   </script>

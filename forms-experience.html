@@ -374,6 +374,9 @@
         body: JSON.stringify(payload)
       });
       if (!res.ok) throw new Error('HTTP ' + res.status);
+      // n8n answers 200 even when the workflow fails mid-way; only the final node's {status:"ok"} counts
+      const body = await res.json().catch(() => null);
+      if (!body || body.status !== 'ok') throw new Error('Registro no guardado');
 
       overlay.classList.remove('show');
       form.style.display = 'none';
