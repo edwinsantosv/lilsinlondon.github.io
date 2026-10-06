@@ -183,21 +183,28 @@
       document.getElementById('referrer').value = document.referrer || '';
     })();
 
-    const WEBHOOK_URL = ''; // TODO: webhook de producción n8n → Notion (Leads). Pendiente de configurar.
+    // Preselect the goal when a page links here with ?objetivo=Study (or Career, Visa...)
+    (function presetObjetivo() {
+      const val = new URLSearchParams(window.location.search).get('objetivo');
+      const select = document.getElementById('objetivo');
+      if (val && [...select.options].some((o) => o.value === val)) select.value = val;
+    })();
+
+    // n8n "Registro – Evaluación de perfil (Start) → Notion": crea el lead en Notion (Leads – Evaluación de perfil).
+    const WEBHOOK_URL = 'https://edwinsantos.app.n8n.cloud/webhook/registro-evaluacion-perfil';
 
     document.getElementById('leadForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
+      document.getElementById('formFallback').hidden = true;
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
       const data = Object.fromEntries(new FormData(form).entries());
-      if (!WEBHOOK_URL) {
-        document.getElementById('formFallback').hidden = false;
-        document.getElementById('fallbackContact').focus();
-        return;
-      }
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
       try {
         const res = await fetch(WEBHOOK_URL, {
           method: 'POST',
@@ -205,10 +212,16 @@
           body: JSON.stringify(data)
         });
         if (!res.ok) throw new Error('HTTP ' + res.status);
+        // n8n answers 200 even when the workflow fails mid-way, so only {ok:true} from the last node counts
+        const body = await res.json().catch(() => null);
+        if (!body || body.ok !== true) throw new Error('Lead not saved');
         document.getElementById('formCard').style.display = 'none';
         document.getElementById('successMsg').style.display = 'block';
       } catch (err) {
-        document.getElementById('formError').style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar';
+        document.getElementById('formFallback').hidden = false;
+        document.getElementById('fallbackContact').focus();
       }
     });
   </script>
