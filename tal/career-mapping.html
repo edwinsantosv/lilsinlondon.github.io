@@ -453,7 +453,7 @@
       // country chips: must have at least 1 selected
       var cchips = stepEl.querySelectorAll("#countryChips .chip.on");
       if (stepEl.querySelector("#countryChips") && cchips.length === 0) { ok = false; }
-      if (!ok) { document.getElementById("formError").style.display = "block"; return; }
+      if (!ok) { showFieldError(); return; }
       current = Math.min(TOTAL, Math.max(1, current + delta));
       showStep();
     }
@@ -471,46 +471,53 @@
       document.getElementById("referrer").value = document.referrer || "";
     })();
 
+    function showFieldError(){
+      var err = document.getElementById("formError");
+      err.textContent = "Revisa los campos marcados en este paso.";
+      err.style.display = "block";
+    }
+
     // ---------- Submit ----------
-    var WEBHOOK_URL = ""; // TODO: webhook n8n de producción → Notion (Career Mapping leads)
+    // n8n "Registro – Career Mapping → Notion": crea el lead en Notion (Leads – Career Mapping) y adjunta el CV.
+    var WEBHOOK_URL = "https://edwinsantos.app.n8n.cloud/webhook/registro-career-mapping";
     document.getElementById("cmForm").addEventListener("submit", function(e){
       e.preventDefault();
       var form = e.target;
       // final validation (consent + CV)
       if (!document.getElementById("consent").checked || !document.getElementById("cvFile").files.length) {
-        document.getElementById("formError").style.display = "block";
+        showFieldError();
         return;
       }
-      // gather chip selections + languages
-      var data = {};
-      new FormData(form).forEach(function(v, k){ data[k] = v; });
+      // multipart so the CV file travels with the answers; chips + languages go as JSON strings
+      var data = new FormData(form);
       document.querySelectorAll(".chips[data-multi]").forEach(function(g){
-        var name = g.dataset.name;
-        data[name] = Array.from(g.querySelectorAll(".chip.on")).map(function(c){ return c.dataset.val; });
+        data.set(g.dataset.name, JSON.stringify(Array.from(g.querySelectorAll(".chip.on")).map(function(c){ return c.dataset.val; })));
       });
       var langs = [];
       document.querySelectorAll("#langList .lang-row").forEach(function(r){
         langs.push({ idioma: r.querySelector(".lang-name").value, nivel: r.querySelector(".lang-level").value, certificacion: r.querySelector(".lang-cert").value });
       });
-      data.languages = langs;
-      // CV file name (can't serialize file to JSON)
-      data.cv_filename = (document.getElementById("cvFile").files[0] || {}).name || "";
+      data.set("languages", JSON.stringify(langs));
 
-      if (!WEBHOOK_URL) {
-        var local = JSON.parse(localStorage.getItem("tal_career_mapping") || "[]");
-        local.push({ ...data, ts: new Date().toISOString() });
-        localStorage.setItem("tal_career_mapping", JSON.stringify(local));
-        document.getElementById("formCard").style.display = "none";
-        document.getElementById("successMsg").style.display = "block";
-        return;
-      }
-      fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
-        .then(function(res){ if(!res.ok) throw new Error("HTTP " + res.status); })
-        .then(function(){
+      var submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando…";
+      document.getElementById("formError").style.display = "none";
+      fetch(WEBHOOK_URL, { method: "POST", body: data })
+        // n8n answers 200 even when the workflow fails mid-way, so only {ok:true} from the last node counts
+        .then(function(res){ if(!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
+        .then(function(body){
+          if (!body || body.ok !== true) throw new Error("Lead not saved");
           document.getElementById("formCard").style.display = "none";
           document.getElementById("successMsg").style.display = "block";
         })
-        .catch(function(){ document.getElementById("formError").style.display = "block"; });
+        .catch(function(){
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Enviar";
+          var err = document.getElementById("formError");
+          err.textContent = "No pudimos enviar tu información. Inténtalo de nuevo en unos minutos o escríbenos por WhatsApp al +51 953 572 328.";
+          err.style.display = "block";
+        });
     });
 
     // ---------- Init ----------
