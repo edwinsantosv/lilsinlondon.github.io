@@ -239,8 +239,6 @@
               <select id="workingNow" name="working_now" required><option value="">Selecciona</option><option>Sí</option><option>No</option></select>
             </div>
           </div>
-          <div class="field"><label for="industry">Sector o industria principal <span class="req">*</span></label><input type="text" id="industry" name="industry" placeholder="Ej. Banca, retail, tecnología/SaaS, salud, educación, minería, consultoría." required></div>
-          <div class="field"><label for="previousRoles">Cargos anteriores</label><textarea id="previousRoles" name="previous_roles" placeholder="Cargo, empresa y años. Ej. Analista comercial – Empresa X (2021–2023)."></textarea></div>
           <div class="field"><label for="functions">Principales funciones y experiencia <span class="req">*</span></label><textarea id="functions" name="functions" placeholder="Responsabilidades, proyectos y alcance." required></textarea></div>
           <div class="field"><label for="skills">Principales habilidades profesionales <span class="req">*</span></label><textarea id="skills" name="skills" placeholder="Ej. Project Management, ventas B2B, análisis de datos, gestión de clientes." required></textarea></div>
           <div class="field"><label for="tools">Herramientas o softwares que manejas <span class="req">*</span></label><textarea id="tools" name="tools" placeholder="Ej. Excel, Power BI, Salesforce, HubSpot, SAP, SQL, Python, Figma." required></textarea></div>
@@ -278,17 +276,6 @@
             </select>
           </div>
           <div class="field cond" id="visaDetail"><label for="visaText">País y tipo de visa anterior</label><input type="text" id="visaText" name="previous_visa"></div>
-          <div class="field"><label for="intlExp">¿Tienes experiencia laboral o académica internacional?</label>
-            <select id="intlExp" name="international_experience" onchange="toggleCond('intlExpDetail', this.value==='Sí')">
-              <option value="">Selecciona</option><option>Sí</option><option>No</option>
-            </select>
-          </div>
-          <div class="field cond" id="intlExpDetail"><label for="intlExpText">Cuéntanos dónde, qué hiciste y por cuánto tiempo</label><textarea id="intlExpText" name="international_experience_detail" placeholder="Ej. Intercambio en España (6 meses), trabajo remoto para empresa de EE. UU. (2 años)."></textarea></div>
-          <div class="field"><label for="homologation">Si tu profesión lo requiere, ¿estarías dispuesto/a a hacer un proceso de homologación o reconocimiento de tu título?</label>
-            <select id="homologation" name="homologation">
-              <option value="">Selecciona</option><option>Sí</option><option>No</option><option>Depende del tiempo y costo</option><option>No sé si mi profesión lo requiere</option>
-            </select>
-          </div>
           <div class="field"><label for="visaReject">¿Has tenido algún rechazo de visa relevante?</label>
             <select id="visaReject" name="visa_rejection" onchange="toggleCond('rejectDetail', this.value==='Sí')">
               <option value="">Selecciona</option><option>Sí</option><option>No</option>
