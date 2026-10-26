@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Documentos de Postulación — The Admissions Lab</title>
-<meta content="Fase 2 de The Admissions Lab: cuéntanos tu trayectoria, motivaciones y objetivos para preparar tus documentos de postulación." name="description"/>
+<title>Documents Lab — The Admissions Lab</title>
+<meta content="Documents Lab by TAL (Fase 2): cuéntanos tu trayectoria, motivaciones y objetivos para preparar tus documentos de postulación." name="description"/>
 <meta content="noindex" name="robots"/>
 <link href="../assets/img/favicon.png" rel="icon"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="tal.css" rel="stylesheet"/>
 <style>
     .form-shell { max-width: 640px; margin: 0 auto; padding: 9rem 1.5rem 5rem; }
@@ -31,6 +31,7 @@
     .options { display: grid; gap: .55rem; }
     .options label { display: flex; gap: .6rem; align-items: flex-start; font-size: .88rem; line-height: 1.45; cursor: pointer; }
     .options input { width: 18px; min-width: 18px; height: 18px; margin-top: 2px; padding: 0; accent-color: var(--gold); }
+    .field > label.inline-check { text-transform: none; letter-spacing: 0; font-weight: 400; margin-bottom: 0; }
     .inline-check { display: flex; gap: .6rem; align-items: center; font-size: .85rem; margin-top: .6rem; cursor: pointer; }
     .inline-check input { width: 18px; min-width: 18px; height: 18px; padding: 0; accent-color: var(--gold); }
     .cond { display: none; margin-top: .7rem; }
@@ -40,6 +41,30 @@
     .error { color: #a33; font-size: .8rem; margin-top: .35rem; display: none; }
     .success-msg { display: none; text-align: center; padding: 3rem 1rem; }
     .success-msg h2 { font-family: var(--serif); margin-bottom: 1rem; }
+    /* Documents Lab: tech layer on top of the TAL form */
+    :root { --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .lab-head { position: relative; margin: 0 0 2rem; padding: 2rem 1.75rem 1.75rem; border: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background-image: radial-gradient(rgba(123,94,71,.22) 1px, transparent 1px); background-size: 14px 14px; }
+    .lab-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
+    .lab-tag { font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+      padding: .3rem .6rem; border: 1px solid var(--gold); color: var(--gold); background: var(--white); }
+    .lab-tag.solid { background: var(--black); border-color: var(--black); color: var(--cream); }
+    .lab-tag .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #4caf7a; margin-right: .45rem; vertical-align: 1px; animation: blink 1.6s ease-in-out infinite; }
+    @keyframes blink { 50% { opacity: .25; } }
+    @media (prefers-reduced-motion: reduce) { .lab-tag .dot { animation: none; } }
+    .lab-title { font-family: var(--serif); font-size: 2.3rem; line-height: 1.1; margin: 0; }
+    .lab-sub { font-family: var(--mono); font-size: .78rem; color: var(--gray); letter-spacing: .04em; margin-top: .6rem; }
+    .lab-sub::before { content: "> "; color: var(--gold); }
+    .block-title { font-family: var(--mono); font-size: .82rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+    .block-title span { font-family: var(--mono); color: var(--gold); font-size: .82rem; letter-spacing: 0; margin-right: .5rem; }
+    .block-title span::before { content: "["; } .block-title span::after { content: "]"; }
+    .progress { position: sticky; top: 72px; z-index: 5; background: var(--white); padding: .7rem 0 .8rem; margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); }
+    .progress-meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gray); margin-bottom: .45rem; }
+    .progress-meta strong { color: var(--black); font-weight: 600; }
+    .progress-track { height: 4px; background: var(--cream); overflow: hidden; }
+    .progress-fill { height: 100%; width: 0; background: var(--gold); transition: width .3s ease; }
+    .lab-done { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    @media (max-width: 760px) { .lab-head { padding: 1.4rem 1.1rem; } .lab-title { font-size: 1.9rem; } .progress { top: 64px; } }
     @media (max-width: 600px) { .row, .row-phone { grid-template-columns: 1fr; } .form-card { padding: 1.6rem; } }
   </style>
 <link href="tal-web.css?v=home-2026" rel="stylesheet"/></head>
@@ -49,13 +74,16 @@
 <a class="nav-cta" href="../index.html">← Volver</a>
 <details class="site-menu"><summary aria-label="Menú de navegación"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"></path></svg></summary><div class="site-menu-panel"><a href="study.html">Study</a><a href="career.html">Career</a><a href="skills.html">Skills</a><a href="community.html">Community</a><a class="nav-cta" href="../index.html">← Volver</a></div></details></nav><main id="contenido"><div class="form-shell">
 <div class="form-card" id="formCard">
-<p class="eyebrow">Fase 2 | The Admissions Lab</p>
-<h1 class="section-title" style="font-size:1.9rem;">Documentos de Postulación 🎓</h1>
-<div class="gold-rule"></div>
+<header class="lab-head">
+<div class="lab-tags"><span class="lab-tag solid">Documents Lab</span><span class="lab-tag">by TAL</span><span class="lab-tag"><span aria-hidden="true" class="dot"></span>Fase 2</span></div>
+<h1 class="lab-title">Documents Lab</h1>
+<p class="lab-sub">documentos de postulación · intake</p>
+</header>
 <p class="lead" style="margin-bottom:1rem;">¡Estamos un paso más cerca de fortalecer tu postulación! Queremos conocer tu trayectoria, experiencias, motivaciones y objetivos para ayudarte a preparar documentos que reflejen lo mejor de tu perfil y respondan a los requisitos del programa al que deseas aplicar.</p>
 <p class="hint" style="margin:0 0 2rem;">Completa el formulario con el mayor detalle posible. No necesitas tener todas las respuestas definidas: nuestro equipo te acompañará durante el proceso. Los documentos se compartirán por separado en tu carpeta de Google Drive.</p>
 <noscript><p>Para completar este formulario necesitas activar JavaScript, o <a href="https://wa.me/51953572328">escríbenos por WhatsApp</a>.</p><style>#docsForm{display:none}</style></noscript>
 <form id="docsForm" novalidate="">
+<div aria-live="polite" class="progress" id="progress"><div class="progress-meta"><span>Progreso</span><span><strong id="progressCount">0</strong> / <span id="progressTotal">0</span> obligatorias</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
 
 <h2 class="block-title"><span>01</span>Información personal</h2>
 <div class="field">
@@ -203,6 +231,7 @@
 </form>
 </div>
 <div class="success-msg" id="successMsg">
+<p class="lab-done">✓ Documents Lab · formulario recibido</p>
 <h2>¡Gracias por completar tu formulario!</h2>
 <p class="lead" style="margin:0 auto;">Nuestro equipo revisará tus respuestas para comenzar a preparar tu postulación. Recuerda que los documentos e insumos se compartirán por separado en la carpeta de Google Drive que te facilitaremos.</p>
 </div>
@@ -231,6 +260,23 @@
       if (deadlinePending.checked) deadline.value = '';
     });
     docOther.addEventListener('change', () => docOtherWrap.classList.toggle('show', docOther.checked));
+
+    // Progress over the required questions (a radio/checkbox group counts once)
+    function updateProgress() {
+      const done = [
+        form.fullName.value.trim(), form.email.validity.valid && form.email.value, form.countryCode.value && form.phone.value.trim(),
+        form.program.value.trim(), form.programUrl.validity.valid && form.programUrl.value, deadlinePending.checked || deadline.value,
+        form.querySelector('input[name="documents"]:checked'), form.education.value.trim(), form.motivation.value.trim(),
+        form.goals.value.trim(), form.querySelector('input[name="docsStatus"]:checked'), form.consent.checked
+      ];
+      const count = done.filter(Boolean).length;
+      document.getElementById('progressCount').textContent = count;
+      document.getElementById('progressTotal').textContent = done.length;
+      document.getElementById('progressFill').style.width = (count / done.length * 100) + '%';
+    }
+    form.addEventListener('input', updateProgress);
+    form.addEventListener('change', updateProgress);
+    updateProgress();
 
     // n8n "Registro – Documentos de Postulación → Notion": crea el registro en Notion (Documents Lab - STUDY/CAREER).
     const WEBHOOK_URL = 'https://edwinsantos.app.n8n.cloud/webhook/registro-documentos-postulacion';
